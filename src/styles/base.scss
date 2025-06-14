@@ -1,0 +1,189 @@
+@mixin ellipsis($line) {
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// 间距样式
+@for $i from 0 through 15 {
+  $size: $i * 5;
+
+  .g-#{$size} {
+    gap: #{$size}px;
+  }
+
+  $properties: (
+    "p": "padding",
+    "pl": "padding-left",
+    "pr": "padding-right",
+    "pt": "padding-top",
+    "pb": "padding-bottom",
+    "px": "padding-inline",
+    "py": "padding-block",
+    "m": "margin",
+    "ml": "margin-left",
+    "mr": "margin-right",
+    "mt": "margin-top",
+    "mb": "margin-bottom",
+    "mx": "margin-inline",
+    "my": "margin-block",
+  );
+
+  @each $prefix, $property in $properties {
+    .#{$prefix}-#{$size} {
+      #{$property}: #{$size}px;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1025px) {
+    $scaledSize: $size * 0.9;
+
+    .g-#{$size} {
+      gap: #{$scaledSize}px;
+    }
+
+    @each $prefix, $property in $properties {
+      .#{$prefix}-#{$size} {
+        #{$property}: #{$scaledSize}px;
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    $scaledSize: $size * 0.85;
+
+    .g-#{$size} {
+      gap: #{$scaledSize}px;
+    }
+
+    @each $prefix, $property in $properties {
+      .#{$prefix}-#{$size} {
+        #{$property}: #{$scaledSize}px;
+      }
+    }
+  }
+}
+
+@for $i from 1 through 10 {
+  .h-#{$i}x {
+    word-break: break-all;
+    @include ellipsis($i);
+  }
+
+  .fw-#{$i * 100} {
+    font-weight: #{$i * 100};
+  }
+
+  .opa-#{$i * 10} {
+    opacity: #{calc($i / 10)};
+  }
+}
+
+@for $size from 12 through 32 {
+  .fs-#{$size} {
+    font-size: calc($size / 16) * 1rem;
+  }
+}
+
+$size-values: (
+  0: 0,
+  50: 50%,
+  100: 100%,
+  auto: auto,
+  fit: fit-content,
+  min: min-content,
+  max: max-content,
+);
+
+@each $key, $value in $size-values {
+  .w-#{$key} {
+    width: $value;
+  }
+  .h-#{$key} {
+    height: $value;
+  }
+}
+
+$display-values: (
+  none: none,
+  block: block,
+  flex: flex,
+  inline: inline,
+  inline-block: inline-block,
+  grid: grid,
+  table: table,
+);
+
+@each $key, $value in $display-values {
+  .d-#{$key} {
+    display: $value;
+  }
+}
+
+$position-values: (
+  static: static,
+  relative: relative,
+  absolute: absolute,
+  fixed: fixed,
+  sticky: sticky,
+);
+
+@each $key, $value in $position-values {
+  .pos-#{$key} {
+    position: $value;
+  }
+}
+
+$align-items-values: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  baseline: baseline,
+  stretch: stretch,
+);
+
+@each $key, $value in $align-items-values {
+  .ai-#{$key} {
+    align-items: $value;
+  }
+}
+
+$justify-content-values: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around,
+  evenly: space-evenly,
+);
+
+@each $key, $value in $justify-content-values {
+  .jc-#{$key} {
+    justify-content: $value;
+  }
+}
+
+$flex-direction-values: (
+  row: row,
+  column: column,
+  row-reverse: row-reverse,
+  column-reverse: column-reverse,
+);
+
+@each $key, $value in $flex-direction-values {
+  .fd-#{$key} {
+    flex-direction: $value;
+  }
+}
+
+$flex-wrap-values: (
+  nowrap: nowrap,
+  wrap: wrap,
+  wrap-reverse: wrap-reverse,
+);
+
+@each $key, $value in $flex-wrap-values {
+  .fw-#{$key} {
+    flex-wrap: $value;
+  }
+}
