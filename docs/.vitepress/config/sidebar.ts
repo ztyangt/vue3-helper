@@ -8,7 +8,10 @@ export const sidebarConfig = [
   },
   {
     text: "函数",
-    items: [{ text: "is", link: "/utils/is/" }],
+    items: [
+      { text: "is", link: "/utils/is/" },
+      { text: "copy", link: "/utils/copy/" },
+    ],
   },
   {
     text: "Hooks",

@@ -9,7 +9,6 @@ export default defineConfig({
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
       "@wiit/vue3-helper": fileURLToPath(new URL("./dist", import.meta.url)),
-      // "@wiit/vue3-helper": fileURLToPath(new URL("./dist/index.js", import.meta.url)),
       "~/": `${path.resolve(__dirname, "src")}/`,
     },
   },
