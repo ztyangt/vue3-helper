@@ -42,7 +42,6 @@ export default defineComponent({
      */
     color: {
       type: String,
-      default: "#333",
     },
 
     /**

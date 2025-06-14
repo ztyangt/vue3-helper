@@ -1,55 +1,49 @@
 {
-  "hash": "2a7fc009",
-  "configHash": "03b69da6",
-  "lockfileHash": "22babc50",
-  "browserHash": "9a6b3bf3",
+  "hash": "b11fd1df",
+  "configHash": "d2459f4b",
+  "lockfileHash": "5441b38a",
+  "browserHash": "e4bad35c",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "51135805",
+      "fileHash": "1382f873",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "f5239533",
+      "fileHash": "8072b328",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../../node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "dbe411c9",
+      "fileHash": "bbd4b547",
       "needsInterop": false
     },
     "vitepress > @vueuse/integrations/useFocusTrap": {
       "src": "../../../../node_modules/@vueuse/integrations/useFocusTrap.mjs",
       "file": "vitepress___@vueuse_integrations_useFocusTrap.js",
-      "fileHash": "ca98efb3",
+      "fileHash": "a9dd1a73",
       "needsInterop": false
     },
     "vitepress > mark.js/src/vanilla.js": {
       "src": "../../../../node_modules/mark.js/src/vanilla.js",
       "file": "vitepress___mark__js_src_vanilla__js.js",
-      "fileHash": "6b737ac7",
+      "fileHash": "084c1f28",
       "needsInterop": false
     },
     "vitepress > minisearch": {
       "src": "../../../../node_modules/minisearch/dist/es/index.js",
       "file": "vitepress___minisearch.js",
-      "fileHash": "02c1d1b7",
-      "needsInterop": false
-    },
-    "@theme/index": {
-      "src": "../../../../node_modules/vitepress/dist/client/theme-default/index.js",
-      "file": "@theme_index.js",
-      "fileHash": "3eee24f6",
+      "fileHash": "27b55307",
       "needsInterop": false
     },
     "@arco-design/web-vue": {
       "src": "../../../../node_modules/@arco-design/web-vue/es/index.js",
       "file": "@arco-design_web-vue.js",
-      "fileHash": "d98ab064",
+      "fileHash": "dd6f9247",
       "needsInterop": false
     }
   },

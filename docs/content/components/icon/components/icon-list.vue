@@ -8,11 +8,13 @@
     </template>
 
     <div v-if="icons.length">
-      <a-space :size="20" wrap>
+      <a-space :size="5" wrap>
         <a-tooltip v-for="(item, index) in icons" :key="index" :content="item" placement="top">
-          <a-card :hoverable="true" class="pointer flex-center" @click="handleCopy(item, $event)">
-            <c-icon :name="item" size="32" />
-          </a-card>
+          <div :hoverable="true" class="pointer icon-card p-10 flex-center" @click="handleCopy(item, $event)">
+            <div class="wh-100 flex-center">
+              <c-icon :name="item" :size="24" />
+            </div>
+          </div>
         </a-tooltip>
       </a-space>
 
@@ -28,20 +30,20 @@
       </div>
     </div>
 
-    <Empty v-else />
+    <a-empty v-else />
   </a-card>
 </template>
 
 <script setup lang="ts">
 import { reactive, ref } from "vue";
-import { CIcon } from "@/components";
-// import { handleClipboard } from "@/utils/common/comm";
+import { Message } from "@arco-design/web-vue";
+import { copyToClipboardWithCallback } from "@wiit/vue3-helper";
 
 const state = reactive({
   search: "",
   page: 1,
   length: 0,
-  limit: 160,
+  limit: 120,
 });
 
 const icons = ref<string[]>([]);
@@ -2335,6 +2337,14 @@ const searchIcon = () => {
 
 const handleCopy = (icon: string, event: Event) => {
   const copyText = `<c-icon name="${icon}" />`;
+  copyToClipboardWithCallback(copyText, (success: boolean) => {
+    if (success) {
+      Message.success("复制成功！");
+    } else {
+      Message.error("复制失败，请手动复制！");
+    }
+  });
+
   // handleClipboard(`${icon}`, true, event)
   // handleClipboard(`iconfont-${icon}`, true, event)
   // handleClipboard(copyText, true, event);
@@ -2343,13 +2353,8 @@ const handleCopy = (icon: string, event: Event) => {
 getIconList();
 </script>
 
-<style lang="scss" scoped>
-.pointer {
-  cursor: pointer;
-}
-.flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+<style lang="scss">
+.arco-card-body {
+  padding: 0 !important;
 }
 </style>

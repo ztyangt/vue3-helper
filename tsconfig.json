@@ -22,6 +22,7 @@
 
     "baseUrl": ".",
     "paths": {
+      "@wiit/vue3-helper": ["./dist/index.d.ts"],
       "@/*": ["./src/*"]
     }
   },

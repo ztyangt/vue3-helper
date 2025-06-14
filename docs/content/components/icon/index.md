@@ -3,6 +3,8 @@ outline: deep
 ---
 
 <script setup>
+import '@wiit/vue3-helper/dist/fonts.css'
+import '@wiit/vue3-helper/dist/remix.css'
 import IconList from './components/icon-list.vue'
 </script>
 
@@ -39,5 +41,5 @@ import { CIcon } from '@wiit/vue3-helper'
 | --- | --- | --- | --- | --- |
 | name | 图标名称 | string | 是 | - |
 | size | 图标大小 | number | 否 | 16 |
-| color | 图标颜色 | string | 否 | #333 |
+| color | 图标颜色 | string | 否 | - |
 | spin | 是否旋转 | boolean | 否 | false |
