@@ -7,17 +7,17 @@ export const sidebarConfig = [
     ],
   },
   {
-    text: "utils",
+    text: "函数",
     items: [{ text: "is", link: "/utils/is/" }],
   },
   {
-    text: "hooks",
+    text: "Hooks",
   },
   {
-    text: "compoents",
-    items: [],
+    text: "组件",
+    items: [{ text: "字体图标", link: "/components/icon/" }],
   },
   {
-    text: "directives",
+    text: "指令",
   },
 ];

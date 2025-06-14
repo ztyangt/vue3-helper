@@ -1,13 +1,14 @@
 import { h, defineComponent } from "vue";
 import { getPrefixCls } from "@/components/_utils/config";
 import type { IconType } from "./type";
+import "./index.scss";
 
 /**
  * 图标组件，支持 remix 和 svg 两种类型的图标
  *
  * @example
  * <Icon type="svg" name="close" size="20" />
- * <Icon type="iconfont" name="home" color="#1890ff" />
+ * <Icon type="iconfont" name="home" color="#1890ff" spin />
  */
 export default defineComponent({
   name: "Icon",
@@ -53,18 +54,32 @@ export default defineComponent({
       type: String,
       required: true,
     },
+
+    /**
+     * 是否旋转图标
+     * @type {boolean}
+     * @default false
+     */
+    spin: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   render() {
-    const { type, size, color, name } = this;
+    const { type, size, color, name, spin } = this;
     const cls = getPrefixCls(`${type}-icon`);
+    const spinClass = spin ? getPrefixCls(`${type}-icon-spin`) : "";
 
     if (type === "svg") {
       return h(
         "svg",
         {
-          class: cls,
-          style: { width: `${size}px`, height: `${size}px` },
+          class: [cls, spinClass],
+          style: {
+            width: `${size}px`,
+            height: `${size}px`,
+          },
         },
         {
           default: () => [h("use", { "xlink:href": `#${name}` })],
@@ -72,7 +87,7 @@ export default defineComponent({
       );
     } else {
       return h("i", {
-        class: ["ri-" + name, cls],
+        class: ["ri-" + name, cls, spinClass],
         style: {
           fontSize: `${size}px`,
           color,

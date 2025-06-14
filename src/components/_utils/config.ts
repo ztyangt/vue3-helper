@@ -1,4 +1,4 @@
-const COMPONENT_PREFIX = "Cl"; // 组件前缀
+const COMPONENT_PREFIX = "C"; // 组件前缀
 const CLASS_PREFIX = "cl"; // 类名前缀
 // const GLOBAL_CONFIG_NAME = "$cl"; // 全局配置名称
 

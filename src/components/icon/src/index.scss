@@ -1,0 +1,28 @@
+.cl__ {
+  &remix-icon-spin {
+    display: inline-block;
+    animation: remix-icon-spin 1s infinite linear;
+  }
+
+  &svg-icon-spin {
+    animation: svg-icon-spin 1s infinite linear;
+  }
+
+  @keyframes remix-icon-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes svg-icon-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

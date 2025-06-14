@@ -9,10 +9,10 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /start/getting-started
+      link: /start/about
     - theme: alt
       text: 安装使用
-      link: /markdown-examples
+      link: /start/install
 
 features:
   - icon: 🦾

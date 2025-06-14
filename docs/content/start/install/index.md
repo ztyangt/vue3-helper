@@ -24,4 +24,38 @@ yarn add @wiit/vue3-helper
 
 :::
 
-## 使用示例
+## 样式引用
+
+```ts
+import '@wiit/vue3-helper/dist/index.css' // 引入基础样式
+import '@wiit/vue3-helper/dist/fonts.css'  // 引入字体样式
+import '@wiit/vue3-helper/dist/remix.css'  // 引入remix图标样式
+```
+
+## 组件注册
+
+```ts
+import { createApp } from 'vue'
+import App from './App.vue'
+import { RegisterComponents } from '@wiit/vue3-helper'
+
+const app = createApp(App)
+
+app.use(RegisterComponents)
+
+app.mount('#app')
+```
+
+## 指令注册
+
+```ts
+import { createApp } from 'vue'
+import App from './App.vue'
+import { RegisterDirectives } from '@wiit/vue3-helper'
+
+const app = createApp(App)
+
+app.use(RegisterDirectives)
+
+app.mount('#app')
+```
