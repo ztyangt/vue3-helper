@@ -11,6 +11,7 @@ export const sidebarConfig = [
     items: [
       { text: "is", link: "/utils/is/" },
       { text: "copy", link: "/utils/copy/" },
+      { text: "listen", link: "/utils/listen/" },
     ],
   },
   {
