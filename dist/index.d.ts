@@ -82,7 +82,7 @@ export declare const CIcon: {
     validator: (value: string) => boolean;
     };
     size: {
-    type: NumberConstructor;
+    type: (StringConstructor | NumberConstructor)[];
     default: number;
     };
     color: {
@@ -98,7 +98,7 @@ export declare const CIcon: {
     };
     }>> & Readonly<{}>, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, PublicProps, {
     type: IconType;
-    size: number;
+    size: string | number;
     spin: boolean;
     }, true, {}, {}, GlobalComponents, GlobalDirectives, string, {}, any, ComponentProvideOptions, {
     P: {};
@@ -114,7 +114,7 @@ export declare const CIcon: {
     validator: (value: string) => boolean;
     };
     size: {
-    type: NumberConstructor;
+    type: (StringConstructor | NumberConstructor)[];
     default: number;
     };
     color: {
@@ -130,7 +130,7 @@ export declare const CIcon: {
     };
     }>> & Readonly<{}>, {}, {}, {}, {}, {
     type: IconType;
-    size: number;
+    size: string | number;
     spin: boolean;
     }>;
     __isFragment?: never;
@@ -143,7 +143,7 @@ default: string;
 validator: (value: string) => boolean;
 };
 size: {
-type: NumberConstructor;
+type: (StringConstructor | NumberConstructor)[];
 default: number;
 };
 color: {
@@ -159,7 +159,7 @@ default: boolean;
 };
 }>> & Readonly<{}>, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, {
 type: IconType;
-size: number;
+size: string | number;
 spin: boolean;
 }, {}, string, {}, GlobalComponents, GlobalDirectives, string, ComponentProvideOptions> & VNodeProps & AllowedComponentProps & ComponentCustomProps & {
     install(app: App): void;
@@ -204,7 +204,7 @@ validator: (value: string) => boolean;
 * @default 16
 */
 size: {
-type: NumberConstructor;
+type: (StringConstructor | NumberConstructor)[];
 default: number;
 };
 /**
@@ -251,7 +251,7 @@ validator: (value: string) => boolean;
 * @default 16
 */
 size: {
-type: NumberConstructor;
+type: (StringConstructor | NumberConstructor)[];
 default: number;
 };
 /**
@@ -282,7 +282,7 @@ default: boolean;
 };
 }>> & Readonly<{}>, {
 type: IconType_2;
-size: number;
+size: string | number;
 spin: boolean;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 

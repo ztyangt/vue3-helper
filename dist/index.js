@@ -659,7 +659,7 @@ const Ce = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
      * @default 16
      */
     size: {
-      type: Number,
+      type: [Number, String],
       default: 16
     },
     /**

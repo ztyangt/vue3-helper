@@ -78,6 +78,10 @@
     border-radius: #{$i}px;
   }
 
+  .flex-#{$i} {
+    flex: #{$i};
+  }
+
   .opa-#{$i * 10} {
     opacity: #{calc($i / 10)};
   }
@@ -206,6 +210,11 @@ $flex-wrap-values: (
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
 }
 
 .flex-sb {
