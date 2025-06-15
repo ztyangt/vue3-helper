@@ -28,5 +28,6 @@ export const sidebarConfig = [
   },
   {
     text: "指令",
+    items: [{ text: "resize", link: "/directives/resize/" }],
   },
 ];
