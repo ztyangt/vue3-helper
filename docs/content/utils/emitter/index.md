@@ -80,6 +80,7 @@ type AppEvents = 'click' | 'data-loaded' | 'error'
 // 创建发射器实例
 const emitter = new Emitter<AppEvents>(['click', 'data-loaded', 'error'])
 
+
 // 持久监听器
 emitter.on('click', (x: number, y: number) => {
   console.log(`Clicked at (${x}, ${y})`)
@@ -98,6 +99,19 @@ emitter.emit('data-loaded', ['c', 'd']) // 不会触发
 // 获取监听器数量
 console.log(emitter.listenerCount('click')) // 1
 ```
+
+:::tip
+
+使用 `as const` 断言，将事件数组转换为只读的元组类型，并保留每个元素的字面量类型，避免事件名重复定义的同时，还能保证类型安全。
+
+```ts
+import { Emitter } from '@wiit/vue3-helper'
+
+// 定义事件类型
+const eventList = ['click', 'data-loaded', 'error'] as const
+const emitter = new Emitter<AppEvents>([...eventList])
+```
+:::
 
 #### Vue组件集成
 ```vue
