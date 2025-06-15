@@ -17,6 +17,10 @@ export const sidebarConfig = [
   },
   {
     text: "Hooks",
+    items: [
+      { text: "useLoading", link: "/hooks/loading/" },
+      { text: "useTheme", link: "/hooks/theme/" },
+    ],
   },
   {
     text: "组件",

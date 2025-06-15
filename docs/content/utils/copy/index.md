@@ -5,7 +5,9 @@ outline: deep
 
 # 复制
 
+:::info
 将内容复制到剪贴板，先尝试使用 `navigator.clipboard.writeText`，如果失败则使用 `document.execCommand('copy')`。
+:::
 
 ## copyToClipboard
 

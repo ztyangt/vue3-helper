@@ -10,7 +10,9 @@ import IconList from './components/icon-list.vue'
 
 # 字体图标
 
+:::tip
 基于 [REMIX ICON](https://remixicon.com/) 免费用于个人用途和商业用途的图标库进行封装。
+:::
 
 ## 使用方式
 
