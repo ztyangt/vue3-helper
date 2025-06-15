@@ -1,6 +1,6 @@
 import { createApp, type Directive, type App, type ComponentPublicInstance, type DirectiveBinding, nextTick } from "vue";
 import LoadingComponent from "./loading.ts";
-import type { LoadingOptions, LoadingBinding } from "./types";
+import type { LoadingOptions, LoadingBinding } from "./types.ts";
 
 // 定义 Loading 组件实例类型
 interface LoadingInstance extends ComponentPublicInstance {

@@ -13,6 +13,7 @@ export const sidebarConfig = [
       { text: "copy", link: "/utils/copy/" },
       { text: "listen", link: "/utils/listen/" },
       { text: "webgl", link: "/utils/webgl/" },
+      { text: "emitter", link: "/utils/emitter/" },
     ],
   },
   {

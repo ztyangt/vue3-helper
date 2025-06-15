@@ -56,5 +56,5 @@ export const themeConfig = {
     // copyright: `Copyright © 2024 相左`,
   },
   // 社交链接
-  socialLinks: [{ icon: "github", link: "https://github.com/ztyangt" }],
+  socialLinks: [{ icon: "github", link: "https://github.com/ztyangt/vue3-helper" }],
 };

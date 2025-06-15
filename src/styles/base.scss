@@ -74,6 +74,10 @@
     font-weight: #{$i * 100};
   }
 
+  .br-#{$i} {
+    border-radius: #{$i}px;
+  }
+
   .opa-#{$i * 10} {
     opacity: #{calc($i / 10)};
   }
@@ -235,4 +239,9 @@ $flex-wrap-values: (
 
 .z-999 {
   z-index: 999;
+}
+
+.wh-100 {
+  width: 100%;
+  height: 100%;
 }
