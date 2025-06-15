@@ -8,7 +8,9 @@ outline: deep
 提供一个响应式的加载状态及其操作方法，适用于管理异步操作的加载状态。
 :::
 
-## 类型声明
+## useLoading
+
+### 类型声明
 
 ```ts
 /**
@@ -23,7 +25,7 @@ export declare function useLoading(initValue?: boolean): {
 };
 ```
 
-## 使用示例
+### 使用示例
 
 ```ts
 import { useLoading } from '@wiit/vue3-helper'
@@ -40,13 +42,13 @@ toggleLoading()
 console.log(loading.value)
 ```
 
-## 参数
+### 参数
 
 | 参数名    | 类型    | 默认值   | 说明               |
 | --------- | ------- | -------- | ------------------ |
 | initValue | boolean | false    | 初始加载状态值     |
 
-## 返回值
+### 返回值
 
 | 属性名       | 类型                  | 说明                     |
 | ------------ | --------------------- | ------------------------ |
@@ -54,7 +56,7 @@ console.log(loading.value)
 | setLoading   | (value: boolean) => void | 设置加载状态的方法       |
 | toggleLoading| () => void            | 切换加载状态的方法       |
 
-## 使用场景
+### 使用场景
 
 ```vue
 <script setup>
