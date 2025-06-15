@@ -13,6 +13,7 @@ export default defineConfig({
   title: "Vue3 Helper",
   description: "vue3开发常用辅助工具",
   head: headConfig as any,
+  base: "/",
   // appearance: false,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config

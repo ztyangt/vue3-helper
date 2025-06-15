@@ -1,7 +1,7 @@
 export const themeConfig = {
   logo: "/logo.svg",
 
-  appearance: false,
+  appearance: true,
 
   outline: {
     label: "页面导航",
