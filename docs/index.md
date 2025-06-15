@@ -16,13 +16,15 @@ hero:
 
 features:
   - icon: 🦾
-    title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    title: Utils
+    details: 提供日常开发中常用的工具函数集合，包括数据处理、格式转换、验证检查等实用功能
   - icon: 🎪
-    title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - icon: 👐
-    title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    title: Hooks
+    details: 精心封装的Vue3组合式API，覆盖常见业务场景，帮助您快速构建响应式逻辑
+  - icon: 👐 
+    title: Components
+    details: 高质量的可复用组件库，遵循最佳实践，提升开发效率与用户体验
+  - icon: 📦
+    title: Directives
+    details: 实用的Vue指令集合，为元素添加特殊行为，简化DOM操作和交互逻辑
 ---
-

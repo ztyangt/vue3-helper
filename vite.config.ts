@@ -45,7 +45,7 @@ export default defineConfig({
   plugins: [
     glsl(),
     dts({
-      rollupTypes: false, // 所有的类型合并到一个文件中
+      rollupTypes: true, // 所有的类型合并到一个文件中
       outDir: ["dist/"],
       tsconfigPath: path.resolve(__dirname, "tsconfig.json"),
       copyDtsFiles: true,
