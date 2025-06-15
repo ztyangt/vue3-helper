@@ -1,5 +1,5 @@
 export const headConfig = [
-  ["link", { rel: "icon", type: "image/png", href: "/favicon.ico" }],
+  ["link", { rel: "icon", type: "image/png", href: "/vue3-helper/favicon.ico" }],
   [
     "link",
     {
