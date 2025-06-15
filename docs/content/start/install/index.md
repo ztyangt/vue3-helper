@@ -6,7 +6,7 @@ outline: deep
 
 ## 安装
 
-推荐使用包管理工具安装，这里通过`npm`举例：
+推荐使用包管理工具安装：
 
 ::: code-group
 
@@ -28,8 +28,6 @@ yarn add @wiit/vue3-helper
 
 ```ts
 import '@wiit/vue3-helper/dist/index.css' // 引入基础样式
-import '@wiit/vue3-helper/dist/fonts.css'  // 引入字体样式
-import '@wiit/vue3-helper/dist/remix.css'  // 引入remix图标样式
 ```
 
 ## 组件注册
