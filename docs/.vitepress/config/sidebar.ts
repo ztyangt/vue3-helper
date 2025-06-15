@@ -32,6 +32,7 @@ export const sidebarConfig = [
       { text: "resize", link: "/directives/resize/" },
       { text: "ripple", link: "/directives/ripple/" },
       { text: "slideIn", link: "/directives/slide-in/" },
+      { text: "draggable", link: "/directives/draggable/" },
     ],
   },
 ];
