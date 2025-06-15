@@ -1,0 +1,11 @@
+@font-face {
+  font-family: remix;
+  src: url(./fonts/remix/iconfont.eot);
+  src: url(./fonts/remix/iconfont.eot);
+  src:
+    url(./fonts/remix/iconfont.eot#iefix) format('embedded-opentype'),
+    url(./fonts/remix/iconfont.woff2) format('woff2'),
+    url(./fonts/remix/iconfont.woff) format('woff'),
+    url(./fonts/remix/iconfont.ttf) format('truetype');
+  font-display: swap;
+}

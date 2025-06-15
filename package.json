@@ -53,7 +53,6 @@
     "@arco-design/web-vue": "^2.57.0",
     "@arco-plugins/vite-vue": "^1.4.5",
     "@types/node": "^22.15.30",
-    "@wiit/vue3-helper": "^0.0.11",
     "markdown-it-custom-attrs": "^1.0.2",
     "markdown-it-mathjax3": "^4.3.2",
     "sass-embedded": "^1.89.1",
