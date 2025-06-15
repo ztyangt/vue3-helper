@@ -4,26 +4,26 @@ export const headConfig = [
     "link",
     {
       rel: "stylesheet",
-      href: "/css/fancybox.css",
+      href: "/vue3-helper/css/fancybox.css",
     },
   ],
   [
     "link",
     {
       rel: "stylesheet",
-      href: "/css/style.css",
+      href: "/vue3-helper/css/style.css",
     },
   ],
   [
     "script",
     {
-      src: "/js/fancybox.umd.js",
+      src: "/vue3-helper/js/fancybox.umd.js",
     },
   ],
   [
     "script",
     {
-      src: "/js/update-arco-theme.js",
+      src: "/vue3-helper/js/update-arco-theme.js",
     },
   ],
 ];
