@@ -1,3 +1,7 @@
+---
+outline: deep
+---
+
 # 事件监听
 
 提供安全的事件监听和移除功能，封装了标准的 `addEventListener` 和 `removeEventListener` 方法，并添加了类型检查和函数存在性验证。

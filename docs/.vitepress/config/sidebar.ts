@@ -7,11 +7,12 @@ export const sidebarConfig = [
     ],
   },
   {
-    text: "函数",
+    text: "函数类",
     items: [
       { text: "is", link: "/utils/is/" },
       { text: "copy", link: "/utils/copy/" },
       { text: "listen", link: "/utils/listen/" },
+      { text: "webgl", link: "/utils/webgl/" },
     ],
   },
   {

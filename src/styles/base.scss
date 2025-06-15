@@ -172,6 +172,7 @@ $flex-direction-values: (
 
 @each $key, $value in $flex-direction-values {
   .fd-#{$key} {
+    display: flex;
     flex-direction: $value;
   }
 }
@@ -186,4 +187,22 @@ $flex-wrap-values: (
   .fw-#{$key} {
     flex-wrap: $value;
   }
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-yc {
+  display: flex;
+  align-items: center;
+}
+
+.flex-sb {
+  display: flex;
+  justify-content: space-between;
+}
+
+.overhide {
+  overflow: hidden;
 }

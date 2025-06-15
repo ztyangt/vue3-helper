@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 import path from "path";
 import { fileURLToPath, URL } from "node:url";
+import glsl from "vite-plugin-glsl";
 import pkg from "./package.json";
 
 export default defineConfig({
@@ -26,10 +27,11 @@ export default defineConfig({
       fileName: "index",
     },
     rollupOptions: {
-      external: [...Object.keys(pkg.dependencies || {})],
+      external: [...Object.keys(pkg.dependencies || {}), "vue"],
       output: {
         globals: {
           vue: "vue",
+          "@vueuse/core": "@vueuse/core",
         },
         assetFileNames: (assetInfo) => {
           if (assetInfo.name?.endsWith(".css")) return "index.css";
@@ -41,6 +43,7 @@ export default defineConfig({
   },
 
   plugins: [
+    glsl(),
     dts({
       rollupTypes: false, // 所有的类型合并到一个文件中
       outDir: ["dist/"],

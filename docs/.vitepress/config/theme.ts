@@ -14,8 +14,8 @@ export const themeConfig = {
           //这里是个大坑，zh是不生效的，改为root即可
           translations: {
             button: {
-              buttonText: "搜索笔记",
-              buttonAriaLabel: "搜索笔记",
+              buttonText: "搜索文档",
+              buttonAriaLabel: "搜索文档",
             },
             modal: {
               noResultsText: "无法找到相关结果",
