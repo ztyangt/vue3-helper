@@ -11,7 +11,8 @@ const map = new WeakMap(); // 使用WeakMap存储元素与其动画的映射关�
  * @param distance 移动距离
  * @param duration 动画时长
  */
-const handleObserve = (el: HTMLElement, distance: number, duration: number) => {
+// 移除未使用的 duration 参数
+const handleObserve = (el: HTMLElement) => {
   // 创建IntersectionObserver观察元素是否进入视口
   const obServer = new IntersectionObserver((entries) => {
     for (const entry of entries) {
@@ -80,7 +81,7 @@ const slideIn: Directive<HTMLElement, number | { distance?: number; duration?: n
 
     animation.pause(); // 先暂停动画
     map.set(el, animation); // 将动画存入WeakMap
-    handleObserve(el, distance, duration); // 开始观察元素
+    handleObserve(el); // 开始观察元素
   },
 };
 
