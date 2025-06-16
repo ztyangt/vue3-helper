@@ -28,6 +28,8 @@ yarn add @wiit/vue3-helper
 
 ```ts
 import '@wiit/vue3-helper/dist/index.css' // 引入基础样式
+import '@wiit/vue3-helper/dist/fonts.css' // 引入字体样式
+import '@wiit/vue3-helper/dist/remix.css' // 引入图标样式
 ```
 
 ## 组件注册
