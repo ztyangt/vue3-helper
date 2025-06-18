@@ -16,7 +16,7 @@ vec4 _Star2Color=vec4(.18,.03,.41,.7);
 vec4 _Star3Color=vec4(.63,.50,.81,.7);
 
 // 网格大小
-float _Grid=40.;
+float _Grid=80.;
 float _Size=.15;
 
 // 视差速度

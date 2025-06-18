@@ -2,6 +2,10 @@
 outline: deep
 ---
 
+<script setup>
+import Demo from './demo.vue'
+</script>
+
 # 主题切换
 
 :::info
@@ -24,6 +28,8 @@ export declare function useTheme(): {
 ```
 
 ### 使用示例
+
+<demo />
 
 ### 基本用法
 ```ts

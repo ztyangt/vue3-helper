@@ -21,6 +21,7 @@ export const sidebarConfig = [
     items: [
       { text: "useLoading", link: "/hooks/loading/" },
       { text: "useTheme", link: "/hooks/theme/" },
+      { text: "useFileSelect", link: "/hooks/file-select/" },
     ],
   },
   {
