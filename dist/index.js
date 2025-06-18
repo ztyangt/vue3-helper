@@ -314,10 +314,6 @@ const bt = () => {
       type: String,
       default: ""
     },
-    background: {
-      type: String,
-      default: "rgba(255, 255, 255, 0.2)"
-    },
     spinnerColor: {
       type: String,
       default: "#3498db"
@@ -340,10 +336,7 @@ const bt = () => {
     return T(
       "div",
       {
-        class: ["loading-overlay", { "show-loading-overlay": this.visible }],
-        style: {
-          backgroundColor: this.background
-        }
+        class: ["loading-overlay", { "show-loading-overlay": this.visible }]
       },
       [
         T("div", {

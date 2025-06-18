@@ -8,10 +8,6 @@ export default defineComponent({
       type: String,
       default: "",
     },
-    background: {
-      type: String,
-      default: "rgba(255, 255, 255, 0.2)",
-    },
     spinnerColor: {
       type: String,
       default: "#3498db",
@@ -35,9 +31,6 @@ export default defineComponent({
       "div",
       {
         class: ["loading-overlay", { "show-loading-overlay": this.visible }],
-        style: {
-          backgroundColor: this.background,
-        },
       },
       [
         h("div", {

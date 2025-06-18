@@ -1,6 +1,8 @@
+/* https://css-loaders.com/ */
+
 .dark {
   .loading-overlay {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }
 
@@ -18,7 +20,7 @@
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.5);
 
   &.show-loading-overlay {
     opacity: 1;
@@ -27,10 +29,16 @@
 
   .loading-spinner {
     width: 30px;
-    height: 30px;
-    border: 4px solid transparent;
+    --b: 8px;
+    aspect-ratio: 1;
     border-radius: 50%;
-    animation: spin 1s linear infinite;
+    padding: 1px;
+    background: conic-gradient(#0000 10%, var(--theme-color, #f03355)) content-box;
+    -webkit-mask: repeating-conic-gradient(#0000 0deg, #000 1deg 20deg, #0000 21deg 36deg),
+      radial-gradient(farthest-side, #0000 calc(100% - var(--b) - 1px), #000 calc(100% - var(--b)));
+    -webkit-mask-composite: destination-in;
+    mask-composite: intersect;
+    animation: l4 1s infinite steps(10);
   }
 
   .loading-text {
@@ -38,13 +46,9 @@
     font-size: 12px;
   }
 
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-
-    100% {
-      transform: rotate(360deg);
+  @keyframes l4 {
+    to {
+      transform: rotate(1turn);
     }
   }
 }
