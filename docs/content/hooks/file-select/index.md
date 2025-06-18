@@ -5,7 +5,7 @@ outline: deep
 # 文件选择
 
 :::info
-提供一个组合式函数，用于处理文件选择和文件夹选择操作，支持拖拽上传和自定义回调。
+提供完整的文件选择解决方案，支持单选/多选、文件夹选择、文件类型过滤和拖拽上传功能。
 :::
 
 ## useFileSelect
@@ -13,55 +13,68 @@ outline: deep
 ### 类型声明
 
 ```ts
-/**
- * 文件选择组合函数
- * @param options - 配置选项
- * @returns 返回文件选择方法
- */
+interface SelectionOptions {
+  dragRef?: Readonly<ShallowRef<HTMLElement | null>>;  // 拖拽区域引用
+  selectFile?: (e: Event) => void;                     // 文件选择回调
+  selectFolder?: (e: Event) => void;                   // 文件夹选择回调
+  dragCallback?: (e: DragEvent) => void;               // 拖拽完成回调
+}
+
+interface FileSelectOptions {
+  multiple?: boolean;      // 是否允许多选
+  accept?: string[];       // 允许的文件类型
+  directory?: boolean;     // 是否选择文件夹
+}
+
 export function useFileSelect(options?: SelectionOptions): {
-  selectFile: () => Promise<FileList>;
+  selectFile: (selectOptions?: { multiple?: boolean; accept?: string[] }) => Promise<FileList>;
   selectFolder: () => Promise<FileList>;
 };
-
-interface SelectionOptions {
-  dragRef?: Readonly<ShallowRef<HTMLDivElement | null>>; // 拖拽区域引用
-  selectFile?: (e: Event) => void;                       // 文件选择回调
-  selectFolder?: (e: Event) => void;                     // 文件夹选择回调
-  dragCallback?: (e: DragEvent) => void;                 // 拖拽完成回调
-}
 ```
 
 ### 使用示例
 
-#### 基本用法
+#### 基本文件选择
 ```vue
 <script setup>
-import { ref } from 'vue'
 import { useFileSelect } from '@wiit/vue3-helper'
 
-const { selectFile, selectFolder } = useFileSelect()
+const { selectFile } = useFileSelect()
 
-const handleFiles = async () => {
+const handleSelect = async () => {
   try {
     const files = await selectFile()
     console.log('Selected files:', files)
   } catch (err) {
-    console.error('File selection error:', err)
+    console.error('Selection error:', err)
   }
 }
 </script>
 
 <template>
-  <button @click="handleFiles">选择文件</button>
-  <button @click="selectFolder">选择文件夹</button>
+  <button @click="handleSelect">选择文件</button>
 </template>
 ```
 
-#### 拖拽上传
+#### 带类型限制的单选
+```vue
+<script setup>
+const { selectFile } = useFileSelect()
+
+const selectImage = async () => {
+  const files = await selectFile({
+    multiple: false,
+    accept: ['image/png', 'image/jpeg']
+  })
+  // 处理选择的图片
+}
+</script>
+```
+
+#### 拖拽上传区域
 ```vue
 <script setup>
 import { ref } from 'vue'
-import { useFileSelect } from '@wiit/vue3-helper'
 
 const dropZone = ref(null)
 
@@ -77,74 +90,91 @@ const { selectFile } = useFileSelect({
 </script>
 
 <template>
-  <div ref="dropZone" class="drop-area">
-    拖拽文件到此处
+  <div 
+    ref="dropZone" 
+    class="drop-zone"
+    @click="selectFile"
+  >
+    点击或拖拽文件到此处
   </div>
 </template>
 
 <style>
-.drop-area {
+.drop-zone {
   border: 2px dashed #ccc;
-  padding: 20px;
+  padding: 2rem;
   text-align: center;
+  cursor: pointer;
 }
 
 .drag-active {
   border-color: #3498db;
-  background-color: rgba(52, 152, 219, 0.1);
+  background: rgba(52, 152, 219, 0.1);
 }
 </style>
 ```
 
 ### 方法说明
 
-| 方法名 | 返回值 | 说明 |
-|--------|--------|------|
-| `selectFile` | `Promise<FileList>` | 打开文件选择对话框(多选) |
-| `selectFolder` | `Promise<FileList>` | 打开文件夹选择对话框 |
+| 方法 | 参数 | 返回值 | 说明 |
+|------|------|--------|------|
+| `selectFile` | `{ multiple?: boolean, accept?: string[] }` | `Promise<FileList>` | 选择文件，可配置多选和文件类型 |
+| `selectFolder` | - | `Promise<FileList>` | 选择文件夹 |
 
 ### 配置选项
 
-| 参数名 | 类型 | 说明 |
-|--------|------|------|
-| `dragRef` | `ShallowRef<HTMLDivElement>` | 拖拽区域DOM引用 |
+#### 全局选项 (SelectionOptions)
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| `dragRef` | `ShallowRef<HTMLElement>` | 拖拽区域DOM引用 |
 | `selectFile` | `(e: Event) => void` | 文件选择成功回调 |
 | `selectFolder` | `(e: Event) => void` | 文件夹选择成功回调 |
 | `dragCallback` | `(e: DragEvent) => void` | 文件拖拽完成回调 |
 
+#### 文件选择选项 (FileSelectOptions)
+| 参数 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `multiple` | `boolean` | `true` | 是否允许多选 |
+| `accept` | `string[]` | - | 允许的文件MIME类型数组 |
+| `directory` | `boolean` | `false` | 是否选择文件夹 |
+
 ### 功能特性
 
-1. **文件选择**：
-   - 支持多文件选择
-   - 返回原生FileList对象
-   - 自动重置input元素
+1. **灵活选择模式**：
+   - 支持单选/多选文件
+   - 支持文件夹选择
+   - 支持文件类型过滤
 
-2. **文件夹选择**：
-   - 支持webkitdirectory/mozdirectory
-   - 返回文件夹内所有文件
+2. **拖拽上传**：
+   - 可视化拖拽状态反馈
+   - 自动处理拖拽事件
+   - 支持自定义拖拽回调
 
-3. **拖拽上传**：
-   - 自动处理拖拽状态样式
-   - 支持拖拽事件回调
-   - 自动清理事件监听器
-
-4. **类型安全**：
+3. **类型安全**：
    - 完整的TypeScript支持
-   - 明确的返回类型
+   - 明确的参数和返回类型
+
+4. **用户体验优化**：
+   - 自动重置input元素
+   - 清晰的错误反馈
+   - 可定制的UI反馈
 
 ### 实现细节
 
-1. **动态创建input**：
+1. **动态创建input元素**：
    ```ts
    const fileInput = document.createElement("input")
    fileInput.type = "file"
    fileInput.multiple = config.multiple
+   fileInput.accept = config.accept?.join(",") || ""
    ```
 
-2. **拖拽区域处理**：
+2. **拖拽事件处理**：
    ```ts
-   dragElement.addEventListener("dragover", handleDragEvent)
-   dragElement.addEventListener("drop", handleDrop)
+   element.addEventListener("dragover", (e) => {
+     e.preventDefault()
+     element.classList.add("drag-active")
+   })
    ```
 
 3. **Promise封装**：
@@ -157,33 +187,24 @@ const { selectFile } = useFileSelect({
    })
    ```
 
-### 注意事项
+### 最佳实践
 
-1. **浏览器兼容性**：
-   - 文件夹选择需要现代浏览器
-   - 移动端需额外处理触摸事件
+1. **文件类型过滤**：
+   ```ts
+   // 只允许图片文件
+   accept: ['image/png', 'image/jpeg', 'image/gif']
+   ```
 
-2. **样式要求**：
-   - 拖拽区域需要自定义样式
-   - 建议添加过渡效果
-
-3. **安全限制**：
-   - 文件选择必须由用户交互触发
-   - 不能自动获取文件路径
+2. **错误处理**：
+   ```ts
+   try {
+     const files = await selectFile()
+   } catch (err) {
+     showToast('请选择有效的文件')
+   }
+   ```
 
 ### 扩展用法
-
-#### 自定义文件过滤
-```ts
-const { selectFile } = useFileSelect({
-  selectFile: (e) => {
-    const input = e.target as HTMLInputElement
-    const files = Array.from(input.files || [])
-      .filter(file => file.type.startsWith('image/'))
-    console.log('Filtered files:', files)
-  }
-})
-```
 
 #### 结合上传组件
 ```vue
@@ -191,9 +212,10 @@ const { selectFile } = useFileSelect({
 const { selectFile } = useFileSelect()
 
 const uploadFiles = async () => {
-  const files = await selectFile()
-  // 调用上传API
-  await api.upload(files)
+  const files = await selectFile({
+    accept: ['.pdf', '.docx']
+  })
+  await uploadToServer(files)
 }
 </script>
 ```
