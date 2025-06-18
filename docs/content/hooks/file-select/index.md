@@ -29,6 +29,7 @@ interface FileSelectOptions {
 export function useFileSelect(options?: SelectionOptions): {
   selectFile: (selectOptions?: { multiple?: boolean; accept?: string[] }) => Promise<FileList>;
   selectFolder: () => Promise<FileList>;
+  initDragDom: () => () => void;
 };
 ```
 
@@ -120,6 +121,7 @@ const { selectFile } = useFileSelect({
 |------|------|--------|------|
 | `selectFile` | `{ multiple?: boolean, accept?: string[] }` | `Promise<FileList>` | 选择文件，可配置多选和文件类型 |
 | `selectFolder` | - | `Promise<FileList>` | 选择文件夹 |
+| `initDragDom` | - | - | 初始化拖拽区域DOM引用 |
 
 ### 配置选项
 

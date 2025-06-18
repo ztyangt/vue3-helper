@@ -76,12 +76,6 @@ export const useFileSelect = (options?: SelectionOptions) => {
     };
   };
 
-  // 只在需要时初始化拖拽区域
-  if (options?.dragRef) {
-    const cleanup = initDragDom();
-    // 在实际Vue组件中，应该在onUnmounted中调用cleanup
-  }
-
   // 通用选择方法
   const select = (config: FileSelectOptions): Promise<FileList> => {
     return new Promise((resolve, reject) => {
@@ -127,5 +121,6 @@ export const useFileSelect = (options?: SelectionOptions) => {
   return {
     selectFile,
     selectFolder,
+    initDragDom,
   };
 };
