@@ -1,9 +1,9 @@
-var se = Object.defineProperty;
-var oe = (e, t, n) => t in e ? se(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[t] = n;
-var p = (e, t, n) => oe(e, typeof t != "symbol" ? t + "" : t, n);
-import { useDark as re } from "@vueuse/core";
-import { ref as ae, defineComponent as N, h as T, createApp as le, nextTick as ce } from "vue";
-const We = (e) => typeof e == "string", Xe = (e) => typeof e == "number", Ye = (e) => typeof e == "object", Ge = (e) => typeof e == "function", Ve = (e) => Array.isArray(e), Ze = (e) => typeof e == "boolean", qe = (e) => e === null, Je = (e) => e === void 0, Ke = (e) => e instanceof RegExp, Qe = (e) => e instanceof Promise, et = (e) => e instanceof Date, tt = (e) => e == null, nt = (e) => /^http[s]?:\/\/.*/.test(e), it = (e) => /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(e), st = (e) => /^0?(13[0-9]|15[012356789]|18[0-9]|14[123578]|16[6]|17[035768]|19[19])[0-9]{8}$/.test(e), ot = (e) => /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(e), rt = (e) => /^[\u4e00-\u9fa5]{0,}$/.test(e), at = (e) => /^[a-zA-Z]+$/.test(e), lt = (e) => /^[A-Za-z0-9]+$/.test(e), ct = (e) => /^[A-Za-z0-9_]+$/.test(e), dt = (e) => /^[A-Z]+$/.test(e), ut = (e) => /^[a-z]+$/.test(e), ht = (e) => /^(400|800)([0-9\\-]{7,10})|(([0-9]{4}|[0-9]{3})([- ])?)?([0-9]{7,8})(([- 转])*([0-9]{1,4}))?$/.test(e), pt = (e) => /^([0-9]|[1-9]\d|[1-9]\d{2}|[1-9]\d{3}|[1-5]\d{4}|6[0-4]\d{3}|65[0-4]\d{2}|655[0-2]\d|6553[0-5])$/.test(e), mt = (e) => e == null || e === "" || e === 0 || e === !1 || Array.isArray(e) && e.length === 0 || typeof e == "object" && Object.keys(e).length === 0;
+var re = Object.defineProperty;
+var se = (e, t, n) => t in e ? re(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[t] = n;
+var m = (e, t, n) => se(e, typeof t != "symbol" ? t + "" : t, n);
+import { useDark as oe } from "@vueuse/core";
+import { ref as ae, defineComponent as N, h as L, createApp as le, nextTick as ce } from "vue";
+const We = (e) => typeof e == "string", Xe = (e) => typeof e == "number", Ye = (e) => typeof e == "object", Ge = (e) => typeof e == "function", Ve = (e) => Array.isArray(e), Ze = (e) => typeof e == "boolean", qe = (e) => e === null, Je = (e) => e === void 0, Ke = (e) => e instanceof RegExp, Qe = (e) => e instanceof Promise, et = (e) => e instanceof Date, tt = (e) => e == null, nt = (e) => /^http[s]?:\/\/.*/.test(e), it = (e) => /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(e), rt = (e) => /^0?(13[0-9]|15[012356789]|18[0-9]|14[123578]|16[6]|17[035768]|19[19])[0-9]{8}$/.test(e), st = (e) => /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(e), ot = (e) => /^[\u4e00-\u9fa5]{0,}$/.test(e), at = (e) => /^[a-zA-Z]+$/.test(e), lt = (e) => /^[A-Za-z0-9]+$/.test(e), ct = (e) => /^[A-Za-z0-9_]+$/.test(e), dt = (e) => /^[A-Z]+$/.test(e), ut = (e) => /^[a-z]+$/.test(e), ht = (e) => /^(400|800)([0-9\\-]{7,10})|(([0-9]{4}|[0-9]{3})([- ])?)?([0-9]{7,8})(([- 转])*([0-9]{1,4}))?$/.test(e), pt = (e) => /^([0-9]|[1-9]\d|[1-9]\d{2}|[1-9]\d{3}|[1-5]\d{4}|6[0-4]\d{3}|65[0-4]\d{2}|655[0-2]\d|6553[0-5])$/.test(e), mt = (e) => e == null || e === "" || e === 0 || e === !1 || Array.isArray(e) && e.length === 0 || typeof e == "object" && Object.keys(e).length === 0;
 async function de(e) {
   try {
     if (navigator.clipboard && window.isSecureContext)
@@ -27,7 +27,7 @@ function gt(e, t) {
 function ft(e, t, n, i = !1) {
   e.addEventListener && typeof e.addEventListener == "function" && e.addEventListener(t, n, i);
 }
-function _t(e, t, n, i = !1) {
+function vt(e, t, n, i = !1) {
   e.removeEventListener && typeof e.removeEventListener == "function" && e.removeEventListener(t, n, i);
 }
 var ue = `#version 300 es
@@ -47,20 +47,20 @@ void main(){
 }`;
 class pe {
   constructor(t, n = {}) {
-    p(this, "gl");
-    p(this, "vertexShader");
-    p(this, "fragmentShader");
-    p(this, "program");
-    p(this, "canvas");
-    p(this, "compileError");
+    m(this, "gl");
+    m(this, "vertexShader");
+    m(this, "fragmentShader");
+    m(this, "program");
+    m(this, "canvas");
+    m(this, "compileError");
     let i = null;
     if (typeof t == "string" ? i = document.getElementById(t) : i = t, !i) throw new Error("Canvas not found");
     this.canvas = i;
-    const s = window.devicePixelRatio || 1;
-    this.canvas.width = this.canvas.clientWidth * s, this.canvas.height = this.canvas.clientHeight * s;
-    const o = i.getContext("webgl2", { alpha: !1 });
-    if (!o) throw new Error("WebGL2 not supported");
-    this.gl = o, this.resizeCanvas(), this.program = this.initProgram(n.vertexShaderSource || ue, n.fragmentShaderSource || he);
+    const r = window.devicePixelRatio || 1;
+    this.canvas.width = this.canvas.clientWidth * r, this.canvas.height = this.canvas.clientHeight * r;
+    const s = i.getContext("webgl2", { alpha: !1 });
+    if (!s) throw new Error("WebGL2 not supported");
+    this.gl = s, this.resizeCanvas(), this.program = this.initProgram(n.vertexShaderSource || ue, n.fragmentShaderSource || he);
   }
   // 更新片段着色器
   updateFragmentShader(t) {
@@ -123,20 +123,20 @@ in vec4 a_Position;
 void main(){
   gl_Position=a_Position;
 }`;
-class vt extends pe {
+class _t extends pe {
   // 控制渲染的标志
   constructor(n, i) {
     super(n, { vertexShaderSource: me, fragmentShaderSource: i });
-    p(this, "startTime");
-    p(this, "endTime");
-    p(this, "currentAnimationFrame", 0);
-    p(this, "lastFrameTime", performance.now());
+    m(this, "startTime");
+    m(this, "endTime");
+    m(this, "currentAnimationFrame", 0);
+    m(this, "lastFrameTime", performance.now());
     // 上一帧的时间
-    p(this, "frameCount", 0);
+    m(this, "frameCount", 0);
     // 帧数计数器
-    p(this, "fps", 0);
+    m(this, "fps", 0);
     // 当前 FPS
-    p(this, "isRendering", !0);
+    m(this, "isRendering", !0);
     this.initRect(), this.startTime = performance.now(), this.endTime = performance.now(), this.render();
   }
   pause() {
@@ -165,10 +165,10 @@ class vt extends pe {
     this.clearGL();
     const n = performance.now(), i = n - this.lastFrameTime;
     this.frameCount++, i >= 1e3 && (this.fps = parseFloat((this.frameCount / (i / 1e3)).toFixed(2)), this.frameCount = 0, this.lastFrameTime = n);
-    const s = this.gl.getUniformLocation(this.program, "iResolution");
-    this.gl.uniform2f(s, this.gl.canvas.width, this.gl.canvas.height);
-    const o = this.gl.getUniformLocation(this.program, "iTime");
-    this.endTime = performance.now(), this.gl.uniform1f(o, (this.endTime - this.startTime) / 1e3), this.gl.drawArrays(this.gl.TRIANGLES, 0, 6), this.isRendering && (this.currentAnimationFrame = requestAnimationFrame(() => this.render()));
+    const r = this.gl.getUniformLocation(this.program, "iResolution");
+    this.gl.uniform2f(r, this.gl.canvas.width, this.gl.canvas.height);
+    const s = this.gl.getUniformLocation(this.program, "iTime");
+    this.endTime = performance.now(), this.gl.uniform1f(s, (this.endTime - this.startTime) / 1e3), this.gl.drawArrays(this.gl.TRIANGLES, 0, 6), this.isRendering && (this.currentAnimationFrame = requestAnimationFrame(() => this.render()));
   }
   initRect() {
     const n = this.gl.getAttribLocation(this.program, "a_Position");
@@ -177,8 +177,8 @@ class vt extends pe {
 }
 class yt {
   constructor(t) {
-    p(this, "_listeners");
-    p(this, "_onceListeners");
+    m(this, "_listeners");
+    m(this, "_onceListeners");
     this._listeners = {}, this._onceListeners = /* @__PURE__ */ new WeakMap();
     for (const n of t)
       this._listeners[n] = /* @__PURE__ */ new Set();
@@ -197,8 +197,8 @@ class yt {
    * @param listener 回调函数
    */
   once(t, n) {
-    const i = (...s) => {
-      n(...s), this.off(t, i);
+    const i = (...r) => {
+      n(...r), this.off(t, i);
     };
     this._onceListeners.set(n, i), this.on(t, i);
   }
@@ -209,7 +209,7 @@ class yt {
    */
   emit(t, ...n) {
     const i = this._listeners[t];
-    i && new Set(i).forEach((o) => o(...n));
+    i && new Set(i).forEach((s) => s(...n));
   }
   /**
    * 移除事件监听器
@@ -242,7 +242,7 @@ class yt {
   }
 }
 const bt = () => {
-  const e = re({
+  const e = oe({
     selector: "html",
     attribute: "class",
     valueDark: "dark",
@@ -258,25 +258,25 @@ const bt = () => {
       return;
     }
     try {
-      const s = n.clientX, o = n.clientY, l = Math.hypot(Math.max(s, innerWidth - s), Math.max(o, innerHeight - o));
-      let c;
-      const u = document.startViewTransition(() => {
+      const r = n.clientX, s = n.clientY, o = Math.hypot(Math.max(r, innerWidth - r), Math.max(s, innerHeight - s));
+      let a;
+      const h = document.startViewTransition(() => {
         const d = document.documentElement;
-        c = d.classList.contains("dark"), d.classList.add(c ? "light" : "dark"), d.classList.remove(c ? "dark" : "light");
+        a = d.classList.contains("dark"), d.classList.add(a ? "light" : "dark"), d.classList.remove(a ? "dark" : "light");
       });
-      u.ready.then(() => {
-        const d = [`circle(0px at ${s}px ${o}px)`, `circle(${l}px at ${s}px ${o}px)`];
+      h.ready.then(() => {
+        const d = [`circle(0px at ${r}px ${s}px)`, `circle(${o}px at ${r}px ${s}px)`];
         document.documentElement.animate(
           {
-            clipPath: c ? [...d].reverse() : d
+            clipPath: a ? [...d].reverse() : d
           },
           {
             duration: 500,
             easing: "ease-in",
-            pseudoElement: c ? "::view-transition-old(root)" : "::view-transition-new(root)"
+            pseudoElement: a ? "::view-transition-old(root)" : "::view-transition-new(root)"
           }
         );
-      }), await u.finished, e.value = !e.value;
+      }), await h.finished, e.value = !e.value;
     } catch {
       e.value = !e.value;
     }
@@ -285,20 +285,64 @@ const bt = () => {
   const t = ae(e);
   return {
     loading: t,
-    setLoading: (s) => {
-      t.value = s;
+    setLoading: (r) => {
+      t.value = r;
     },
     toggleLoading: () => {
       t.value = !t.value;
     }
   };
+}, St = (e) => {
+  const t = (o) => {
+    const a = document.createElement("input");
+    return a.type = "file", a.multiple = !!o.multiple, o.directory && (a.webkitdirectory = !0, a.mozdirectory = !0), o.accept && o.accept.length > 0 && (a.accept = o.accept.join(",")), a;
+  }, n = () => {
+    const { dragRef: o } = e || {};
+    if (!(o != null && o.value)) return;
+    const a = o.value, h = (u) => {
+      u.preventDefault();
+    }, d = (u) => {
+      u.preventDefault(), a.classList.add("drag-active");
+    }, _ = (u) => {
+      u.preventDefault(), a.classList.remove("drag-active");
+    }, y = (u) => {
+      var g;
+      u.preventDefault(), a.classList.remove("drag-active"), (g = e == null ? void 0 : e.dragCallback) == null || g.call(e, u);
+    };
+    return a.addEventListener("dragover", h), a.addEventListener("dragenter", d), a.addEventListener("dragleave", _), a.addEventListener("drop", y), () => {
+      a.removeEventListener("dragover", h), a.removeEventListener("dragenter", d), a.removeEventListener("dragleave", _), a.removeEventListener("drop", y);
+    };
+  }, i = (o) => new Promise((a, h) => {
+    const d = t(o);
+    d.style.display = "none";
+    const _ = setTimeout(() => {
+      h(new Error("选择取消或超时")), document.body.removeChild(d);
+    }, 3e4);
+    d.onchange = (y) => {
+      clearTimeout(_);
+      const u = y.target.files;
+      u != null && u.length ? a(u) : h(new Error("未选择文件")), document.body.removeChild(d);
+    }, document.body.appendChild(d), d.click();
+  });
+  return {
+    selectFile: (o) => i({
+      multiple: (o == null ? void 0 : o.multiple) ?? !0,
+      accept: o == null ? void 0 : o.accept,
+      directory: !1
+    }),
+    selectFolder: () => i({
+      multiple: !1,
+      directory: !0
+    }),
+    initDragDom: n
+  };
 }, ge = {
   mounted: function(e) {
     e.style.cursor = "move", e.style.position = "absolute", e.onmousedown = function(t) {
       let n = t.pageX - e.offsetLeft, i = t.pageY - e.offsetTop;
-      document.onmousemove = function(s) {
-        let o = s.pageX - n, l = s.pageY - i, c = parseInt(window.getComputedStyle(e.parentNode).width) - parseInt(window.getComputedStyle(e).width), u = parseInt(window.getComputedStyle(e.parentNode).height) - parseInt(window.getComputedStyle(e).height);
-        o < 0 ? o = 0 : o > c && (o = c), l < 0 ? l = 0 : l > u && (l = u), e.style.left = o + "px", e.style.top = l + "px";
+      document.onmousemove = function(r) {
+        let s = r.pageX - n, o = r.pageY - i, a = parseInt(window.getComputedStyle(e.parentNode).width) - parseInt(window.getComputedStyle(e).width), h = parseInt(window.getComputedStyle(e.parentNode).height) - parseInt(window.getComputedStyle(e).height);
+        s < 0 ? s = 0 : s > a && (s = a), o < 0 ? o = 0 : o > h && (o = h), e.style.left = s + "px", e.style.top = o + "px";
       }, document.onmouseup = function() {
         document.onmousemove = document.onmouseup = null;
       };
@@ -333,45 +377,45 @@ const bt = () => {
     }
   },
   render() {
-    return T(
+    return L(
       "div",
       {
         class: ["loading-overlay", { "show-loading-overlay": this.visible }]
       },
       [
-        T("div", {
+        L("div", {
           class: this.styleClass || "loading-spinner",
           style: {
             borderTopColor: this.spinnerColor
           }
         }),
-        this.text ? T("div", { class: "loading-text" }, this.text) : null
+        this.text ? L("div", { class: "loading-text" }, this.text) : null
       ]
     );
   }
-}), _e = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}), ve = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: H
-}, Symbol.toStringTag, { value: "Module" })), ve = {
+}, Symbol.toStringTag, { value: "Module" })), _e = {
   mounted(e, t) {
     e.style.position = "relative";
     const n = typeof t.value == "boolean" ? { value: t.value } : t.value || {}, i = n.delay || 300;
-    let s = null;
-    const o = () => {
-      const l = le(H, {
+    let r = null;
+    const s = () => {
+      const o = le(H, {
         text: n.text,
         background: n.background,
         spinnerColor: n.spinnerColor,
         style: n.style || "loader-l13",
         visible: n.value ?? !0
-      }), c = l.mount(document.createElement("div"));
-      e._loadingInstance = c, e._loadingApp = l, e.appendChild(c.$el), ce(() => {
+      }), a = o.mount(document.createElement("div"));
+      e._loadingInstance = a, e._loadingApp = o, e.appendChild(a.$el), ce(() => {
         P(e, t);
       });
     };
-    n.value && (s = window.setTimeout(() => {
-      n.value && o();
-    }, i)), e._loadingTimeoutId = s;
+    n.value && (r = window.setTimeout(() => {
+      n.value && s();
+    }, i)), e._loadingTimeoutId = r;
   },
   updated(e, t) {
     if (JSON.stringify(t.oldValue) !== JSON.stringify(t.value)) {
@@ -392,81 +436,81 @@ const bt = () => {
   }
 };
 function P(e, t) {
-  var s, o, l;
+  var r, s, o;
   if (!e._loadingInstance) return;
-  const n = typeof t.value == "boolean" ? t.value : ((s = t.value) == null ? void 0 : s.value) ?? !0;
+  const n = typeof t.value == "boolean" ? t.value : ((r = t.value) == null ? void 0 : r.value) ?? !0;
   e.style.position = n ? "relative" : "";
   const i = e._loadingInstance.$el.parentElement;
-  i && i.parentNode === e && i !== e.lastElementChild && e.appendChild(i), (l = (o = e._loadingInstance).setVisible) == null || l.call(o, n), e._loadingInstance.$el && (e._loadingInstance.$el.style.display = n ? "flex" : "none");
+  i && i.parentNode === e && i !== e.lastElementChild && e.appendChild(i), (o = (s = e._loadingInstance).setVisible) == null || o.call(s, n), e._loadingInstance.$el && (e._loadingInstance.$el.style.display = n ? "flex" : "none");
 }
 const ye = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: ve
+  default: _e
 }, Symbol.toStringTag, { value: "Module" })), be = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null
 }, Symbol.toStringTag, { value: "Module" })), we = {
   mounted(e, t) {
-    var O, M;
+    var M, O;
     e.style.position = "absolute", e.style.userSelect = "none";
     const n = () => {
-      var a;
-      const r = document.createElement("div");
-      return r.style.position = "absolute", r.style.pointerEvents = "none", r.style.border = "2px dashed #3498db", r.style.backgroundColor = "rgba(52, 152, 219, 0.1)", r.style.zIndex = "1000", r.style.display = "none", (a = e.parentElement) == null || a.appendChild(r), r;
-    }, i = (r) => {
-      const a = document.createElement("div");
-      return a.className = `resize-handle resize-handle-${r}`, a.style.position = "absolute", a.style.width = "10px", a.style.height = "10px", a.style.backgroundColor = "#fff", a.style.opacity = "0", a.style.border = "1px solid #333", a.style.zIndex = "100", a.style.touchAction = "none", r.includes("top") && (a.style.top = "-5px"), r.includes("bottom") && (a.style.bottom = "-5px"), r.includes("left") && (a.style.left = "-5px"), r.includes("right") && (a.style.right = "-5px"), r === "top-left" && (a.style.cursor = "nwse-resize"), r === "top-right" && (a.style.cursor = "nesw-resize"), r === "bottom-left" && (a.style.cursor = "nesw-resize"), r === "bottom-right" && (a.style.cursor = "nwse-resize"), e.appendChild(a), a;
+      var c;
+      const l = document.createElement("div");
+      return l.style.position = "absolute", l.style.pointerEvents = "none", l.style.border = "2px dashed #3498db", l.style.backgroundColor = "rgba(52, 152, 219, 0.1)", l.style.zIndex = "1000", l.style.display = "none", (c = e.parentElement) == null || c.appendChild(l), l;
+    }, i = (l) => {
+      const c = document.createElement("div");
+      return c.className = `resize-handle resize-handle-${l}`, c.style.position = "absolute", c.style.width = "10px", c.style.height = "10px", c.style.backgroundColor = "#fff", c.style.opacity = "0", c.style.border = "1px solid #333", c.style.zIndex = "100", c.style.touchAction = "none", l.includes("top") && (c.style.top = "-5px"), l.includes("bottom") && (c.style.bottom = "-5px"), l.includes("left") && (c.style.left = "-5px"), l.includes("right") && (c.style.right = "-5px"), l === "top-left" && (c.style.cursor = "nwse-resize"), l === "top-right" && (c.style.cursor = "nesw-resize"), l === "bottom-left" && (c.style.cursor = "nesw-resize"), l === "bottom-right" && (c.style.cursor = "nwse-resize"), e.appendChild(c), c;
     };
     e.__dragPreview = n();
-    const s = [
+    const r = [
       i("top-left"),
       i("top-right"),
       i("bottom-left"),
       i("bottom-right")
     ];
-    e.__resizeHandles = s, e.__resizeListeners = [];
-    const o = e.parentElement;
-    if (!o) return;
-    getComputedStyle(o).position === "static" && (o.style.position = "relative");
-    const l = ((O = t.value) == null ? void 0 : O.minWidth) ?? 50, c = ((M = t.value) == null ? void 0 : M.minHeight) ?? 50;
-    let u = !1, d = null, S = 0, x = 0, f = 0, v = 0, _ = 0, y = 0, h = 0, m = 0, b = 0, w = 0;
+    e.__resizeHandles = r, e.__resizeListeners = [];
+    const s = e.parentElement;
+    if (!s) return;
+    getComputedStyle(s).position === "static" && (s.style.position = "relative");
+    const o = ((M = t.value) == null ? void 0 : M.minWidth) ?? 50, a = ((O = t.value) == null ? void 0 : O.minHeight) ?? 50;
+    let h = !1, d = null, _ = 0, y = 0, u = 0, g = 0, b = 0, w = 0, p = 0, f = 0, S = 0, x = 0;
     const Q = () => ({
       left: 0,
       top: 0,
-      right: o.clientWidth,
-      bottom: o.clientHeight
+      right: s.clientWidth,
+      bottom: s.clientHeight
     }), ee = () => {
       if (!e.__dragPreview) return;
-      const r = e.__dragPreview;
-      r.style.display = "block", r.style.left = `${b}px`, r.style.top = `${w}px`, r.style.width = `${h}px`, r.style.height = `${m}px`;
+      const l = e.__dragPreview;
+      l.style.display = "block", l.style.left = `${S}px`, l.style.top = `${x}px`, l.style.width = `${p}px`, l.style.height = `${f}px`;
     }, te = () => {
       e.__dragPreview && (e.__dragPreview.style.display = "none");
-    }, ne = (r, a) => {
-      r.preventDefault(), r.stopPropagation(), u = !0, d = a, S = r.clientX, x = r.clientY, f = e.offsetWidth, v = e.offsetHeight, _ = e.offsetLeft, y = e.offsetTop, h = f, m = v, b = _, w = y, document.addEventListener("mousemove", A), document.addEventListener("mouseup", I);
-    }, A = (r) => {
-      if (!u || !d) return;
-      const a = r.clientX - S, E = r.clientY - x, g = Q();
+    }, ne = (l, c) => {
+      l.preventDefault(), l.stopPropagation(), h = !0, d = c, _ = l.clientX, y = l.clientY, u = e.offsetWidth, g = e.offsetHeight, b = e.offsetLeft, w = e.offsetTop, p = u, f = g, S = b, x = w, document.addEventListener("mousemove", z), document.addEventListener("mouseup", A);
+    }, z = (l) => {
+      if (!h || !d) return;
+      const c = l.clientX - _, E = l.clientY - y, v = Q();
       switch (d) {
         case "top-left":
-          h = Math.max(l, f - a), m = Math.max(c, v - E), b = _ + (f - h), w = y + (v - m);
+          p = Math.max(o, u - c), f = Math.max(a, g - E), S = b + (u - p), x = w + (g - f);
           break;
         case "top-right":
-          h = Math.max(l, f + a), m = Math.max(c, v - E), w = y + (v - m);
+          p = Math.max(o, u + c), f = Math.max(a, g - E), x = w + (g - f);
           break;
         case "bottom-left":
-          h = Math.max(l, f - a), m = Math.max(c, v + E), b = _ + (f - h);
+          p = Math.max(o, u - c), f = Math.max(a, g + E), S = b + (u - p);
           break;
         case "bottom-right":
-          h = Math.max(l, f + a), m = Math.max(c, v + E);
+          p = Math.max(o, u + c), f = Math.max(a, g + E);
           break;
       }
-      b < g.left && (b = g.left, d.includes("left") && (h = f + _ - g.left)), w < g.top && (w = g.top, d.includes("top") && (m = v + y - g.top)), b + h > g.right && (h = g.right - b), w + m > g.bottom && (m = g.bottom - w), h = Math.max(l, h), m = Math.max(c, m), ee();
-    }, I = () => {
-      u && (u = !1, e.style.width = `${h}px`, e.style.height = `${m}px`, e.style.left = `${b}px`, e.style.top = `${w}px`, te(), document.removeEventListener("mousemove", A), document.removeEventListener("mouseup", I));
+      S < v.left && (S = v.left, d.includes("left") && (p = u + b - v.left)), x < v.top && (x = v.top, d.includes("top") && (f = g + w - v.top)), S + p > v.right && (p = v.right - S), x + f > v.bottom && (f = v.bottom - x), p = Math.max(o, p), f = Math.max(a, f), ee();
+    }, A = () => {
+      h && (h = !1, e.style.width = `${p}px`, e.style.height = `${f}px`, e.style.left = `${S}px`, e.style.top = `${x}px`, te(), document.removeEventListener("mousemove", z), document.removeEventListener("mouseup", A));
     };
-    s.forEach((r, a) => {
-      var k;
-      const E = ["top-left", "top-right", "bottom-left", "bottom-right"], g = (ie) => ne(ie, E[a]);
-      r.addEventListener("mousedown", g), (k = e.__resizeListeners) == null || k.push({ mousedown: g });
+    r.forEach((l, c) => {
+      var F;
+      const E = ["top-left", "top-right", "bottom-left", "bottom-right"], v = (ie) => ne(ie, E[c]);
+      l.addEventListener("mousedown", v), (F = e.__resizeListeners) == null || F.push({ mousedown: v });
     });
   },
   unmounted(e) {
@@ -499,43 +543,43 @@ const ye = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   borderBottomLeftRadius: n,
   borderBottomRightRadius: i
 }) => {
-  const s = document.createElement("div");
-  return s.style.top = "0", s.style.left = "0", s.style.width = "100%", s.style.height = "100%", s.style.position = "absolute", s.style.borderRadius = `${e} ${t} ${i} ${n}`, s.style.overflow = "hidden", s.style.pointerEvents = "none", s.style.webkitMaskImage = "-webkit-radial-gradient(white, black)", s;
+  const r = document.createElement("div");
+  return r.style.top = "0", r.style.left = "0", r.style.width = "100%", r.style.height = "100%", r.style.position = "absolute", r.style.borderRadius = `${e} ${t} ${i} ${n}`, r.style.overflow = "hidden", r.style.pointerEvents = "none", r.style.webkitMaskImage = "-webkit-radial-gradient(white, black)", r;
 }, Ee = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   createContainer: X
-}, Symbol.toStringTag, { value: "Module" })), Y = (e, t, n, i, s) => {
-  const o = document.createElement("div");
-  return o.style.position = "absolute", o.style.width = i.center ? `${Math.sqrt(s.width * s.width + s.height * s.height)}px` : `${n * 2}px`, o.style.height = i.center ? `${Math.sqrt(s.width * s.width + s.height * s.height)}px` : `${n * 2}px`, o.style.top = i.center ? `${s.height / 2}px` : `${t}px`, o.style.left = i.center ? `${s.width / 2}px` : `${e}px`, o.style.background = i.color, o.style.borderRadius = "50%", o.style.opacity = `${i.initialOpacity}`, o.style.transform = "translate(-50%,-50%) scale(0)", o.style.transition = `transform ${i.duration / 1e3}s   cubic-bezier(0, 0.5, 0.25, 1)
+}, Symbol.toStringTag, { value: "Module" })), Y = (e, t, n, i, r) => {
+  const s = document.createElement("div");
+  return s.style.position = "absolute", s.style.width = i.center ? `${Math.sqrt(r.width * r.width + r.height * r.height)}px` : `${n * 2}px`, s.style.height = i.center ? `${Math.sqrt(r.width * r.width + r.height * r.height)}px` : `${n * 2}px`, s.style.top = i.center ? `${r.height / 2}px` : `${t}px`, s.style.left = i.center ? `${r.width / 2}px` : `${e}px`, s.style.background = i.color, s.style.borderRadius = "50%", s.style.opacity = `${i.initialOpacity}`, s.style.transform = "translate(-50%,-50%) scale(0)", s.style.transition = `transform ${i.duration / 1e3}s   cubic-bezier(0, 0.5, 0.25, 1)
   , opacity ${i.duration / 1e3}s
   cubic-bezier(0.0, 0, 0.2, 1)
-  `, o;
-}, Te = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  `, s;
+}, Le = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   createRippleElement: Y
 }, Symbol.toStringTag, { value: "Module" }));
-function L(e, t, n, i) {
-  const s = e - n, o = t - i;
-  return Math.sqrt(s * s + o * o);
+function T(e, t, n, i) {
+  const r = e - n, s = t - i;
+  return Math.sqrt(r * r + s * s);
 }
-function G(e, { width: t, height: n, left: i, top: s }) {
-  const o = e.clientX - i, l = e.clientY - s, c = L(o, l, 0, 0), u = L(o, l, t, 0), d = L(o, l, 0, n), S = L(o, l, t, n), x = Math.max(c, u, d, S);
+function G(e, { width: t, height: n, left: i, top: r }) {
+  const s = e.clientX - i, o = e.clientY - r, a = T(s, o, 0, 0), h = T(s, o, t, 0), d = T(s, o, 0, n), _ = T(s, o, t, n), y = Math.max(a, h, d, _);
   return {
-    x: o,
-    y: l,
-    diameter: x
+    x: s,
+    y: o,
+    diameter: y
   };
 }
-const Le = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const Te = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   getDistanceToFurthestCorner: G,
-  getPythagoreanDistance: L
-}, Symbol.toStringTag, { value: "Module" })), z = "vRippleCountInternal";
+  getPythagoreanDistance: T
+}, Symbol.toStringTag, { value: "Module" })), R = "vRippleCountInternal";
 function V(e, t) {
-  e.dataset[z] = t.toString();
+  e.dataset[R] = t.toString();
 }
 function C(e) {
-  return parseInt(e.dataset[z] ?? "0", 10);
+  return parseInt(e.dataset[R] ?? "0", 10);
 }
 function Z(e) {
   const t = C(e);
@@ -546,7 +590,7 @@ function q(e) {
   V(e, t - 1);
 }
 function J(e) {
-  delete e.dataset[z];
+  delete e.dataset[R];
 }
 const Ce = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
@@ -554,55 +598,55 @@ const Ce = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   deleteRippleCount: J,
   getRippleCount: C,
   incrementRippleCount: Z
-}, Symbol.toStringTag, { value: "Module" })), Pe = 1.05, R = /* @__PURE__ */ new WeakMap(), Re = { ...W }, $e = (e, t, n) => {
-  const i = t.getBoundingClientRect(), s = window.getComputedStyle(t), { diameter: o, x: l, y: c } = G(e, i), u = X(s), d = Y(l, c, o * Pe, n, i);
-  let S = "", x = !1, f;
-  function v() {
+}, Symbol.toStringTag, { value: "Module" })), Pe = 1.05, $ = /* @__PURE__ */ new WeakMap(), $e = { ...W }, Ie = (e, t, n) => {
+  const i = t.getBoundingClientRect(), r = window.getComputedStyle(t), { diameter: s, x: o, y: a } = G(e, i), h = X(r), d = Y(o, a, s * Pe, n, i);
+  let _ = "", y = !1, u;
+  function g() {
     d.style.transition = "opacity 120ms ease in out", d.style.opacity = "0", setTimeout(() => {
-      u.remove(), q(t), C(t) === 0 && (J(t), t.style.position = S);
+      h.remove(), q(t), C(t) === 0 && (J(t), t.style.position = _);
     }, 100);
   }
-  function _(h) {
-    typeof h < "u" && document.removeEventListener("pointerup", _), x ? v() : x = !0;
+  function b(p) {
+    typeof p < "u" && document.removeEventListener("pointerup", b), y ? g() : y = !0;
   }
-  function y() {
-    clearTimeout(f), u.remove(), document.removeEventListener("pointerup", _), document.removeEventListener("pointercancel", _), document.removeEventListener("pointercancel", y);
+  function w() {
+    clearTimeout(u), h.remove(), document.removeEventListener("pointerup", b), document.removeEventListener("pointercancel", b), document.removeEventListener("pointercancel", w);
   }
-  Z(t), s.position === "static" && (t.style.position && (S = t.style.position), t.style.position = "relative"), u.appendChild(d), t.appendChild(u), document.addEventListener("pointerup", _), document.addEventListener("pointercancel", _), f = setTimeout(() => {
-    document.removeEventListener("pointercancel", y), d.style.transform = "translate(-50%,-50%) scale(1)", d.style.opacity = `${n.finalOpacity}`, setTimeout(() => _(), n.duration);
-  }, n.delay), document.addEventListener("pointercancel", y);
-}, ze = {
+  Z(t), r.position === "static" && (t.style.position && (_ = t.style.position), t.style.position = "relative"), h.appendChild(d), t.appendChild(h), document.addEventListener("pointerup", b), document.addEventListener("pointercancel", b), u = setTimeout(() => {
+    document.removeEventListener("pointercancel", w), d.style.transform = "translate(-50%,-50%) scale(1)", d.style.opacity = `${n.finalOpacity}`, setTimeout(() => b(), n.duration);
+  }, n.delay), document.addEventListener("pointercancel", w);
+}, Re = {
   mounted(e, t) {
-    R.set(e, t.value ?? {}), e.addEventListener("pointerdown", (n) => {
-      var s;
-      const i = R.get(e);
-      (s = t.value) != null && s.disabled || i !== !1 && $e(n, e, {
-        ...Re,
+    $.set(e, t.value ?? {}), e.addEventListener("pointerdown", (n) => {
+      var r;
+      const i = $.get(e);
+      (r = t.value) != null && r.disabled || i !== !1 && Ie(n, e, {
+        ...$e,
         ...i
       });
     });
   },
   updated(e, t) {
-    R.set(e, t.value ?? {});
+    $.set(e, t.value ?? {});
   }
-}, Ae = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}, ze = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: ze
-}, Symbol.toStringTag, { value: "Module" })), F = 50, j = 500, K = /* @__PURE__ */ new WeakMap(), Ie = (e) => {
+  default: Re
+}, Symbol.toStringTag, { value: "Module" })), k = 50, D = 500, K = /* @__PURE__ */ new WeakMap(), Ae = (e) => {
   const t = new IntersectionObserver((n) => {
     for (const i of n)
       if (i.isIntersecting) {
-        const s = K.get(i.target);
-        s && s.play(), t.unobserve(e);
+        const r = K.get(i.target);
+        r && r.play(), t.unobserve(e);
       }
   });
   t.observe(e);
-}, Oe = (e, t) => e.getBoundingClientRect().top - t > window.innerHeight, Me = {
+}, Me = (e, t) => e.getBoundingClientRect().top - t > window.innerHeight, Oe = {
   mounted(e, t) {
-    let n = F, i = j;
-    if (typeof t.value == "number" ? n = t.value : t.value && typeof t.value == "object" && (n = t.value.distance ?? F, i = t.value.duration ?? j), !Oe(e, n))
+    let n = k, i = D;
+    if (typeof t.value == "number" ? n = t.value : t.value && typeof t.value == "object" && (n = t.value.distance ?? k, i = t.value.duration ?? D), !Me(e, n))
       return;
-    const s = e.animate(
+    const r = e.animate(
       [
         { transform: `translateY(${n}px)`, opacity: 0.5 },
         // 起始状态：向下偏移，半透明
@@ -618,21 +662,21 @@ const Ce = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
         // 动画结束后保持最终状态
       }
     );
-    s.pause(), K.set(e, s), Ie(e);
+    r.pause(), K.set(e, r), Ae(e);
   }
-}, ke = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}, Fe = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: Me
-}, Symbol.toStringTag, { value: "Module" })), D = /* @__PURE__ */ Object.assign({ "./draggable/index.ts": fe, "./loading/index.ts": ye, "./loading/loading.ts": _e, "./loading/types.ts": be, "./resize/index.ts": Se, "./ripple/index.ts": Ae, "./ripple/options.ts": xe, "./ripple/utils/create-container-element.ts": Ee, "./ripple/utils/create-ripple-element.ts": Te, "./ripple/utils/get-element-position-utils.ts": Le, "./ripple/utils/ripple-count.ts": Ce, "./slide-in/index.ts": ke }), St = {
+  default: Oe
+}, Symbol.toStringTag, { value: "Module" })), j = /* @__PURE__ */ Object.assign({ "./draggable/index.ts": fe, "./loading/index.ts": ye, "./loading/loading.ts": ve, "./loading/types.ts": be, "./resize/index.ts": Se, "./ripple/index.ts": ze, "./ripple/options.ts": xe, "./ripple/utils/create-container-element.ts": Ee, "./ripple/utils/create-ripple-element.ts": Le, "./ripple/utils/get-element-position-utils.ts": Te, "./ripple/utils/ripple-count.ts": Ce, "./slide-in/index.ts": Fe }), xt = {
   install: function(e) {
-    for (const t in D) {
-      const n = D[t].default;
+    for (const t in j) {
+      const n = j[t].default;
       if (!n) continue;
       const i = t.split("/")[1];
       t.split("/")[2] === "index.ts" && e.directive(i, n);
     }
   }
-}, Fe = "C", je = "cl", U = (e) => `${je}__${e}`, De = (e) => `${Fe}${e || ""}`, $ = N({
+}, ke = "C", De = "cl", U = (e) => `${De}__${e}`, je = (e) => `${ke}${e || ""}`, I = N({
   name: "Icon",
   props: {
     /**
@@ -683,45 +727,45 @@ const Ce = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     }
   },
   render() {
-    const { type: e, size: t, color: n, name: i, spin: s } = this, o = U(`${e}-icon`), l = s ? U(`${e}-icon-spin`) : "";
-    return e === "svg" ? T(
+    const { type: e, size: t, color: n, name: i, spin: r } = this, s = U(`${e}-icon`), o = r ? U(`${e}-icon-spin`) : "";
+    return e === "svg" ? L(
       "svg",
       {
-        class: [o, l],
+        class: [s, o],
         style: {
           width: `${t}px`,
           height: `${t}px`
         }
       },
       {
-        default: () => [T("use", { "xlink:href": `#${i}` })]
+        default: () => [L("use", { "xlink:href": `#${i}` })]
       }
-    ) : T("i", {
-      class: ["ri-" + i, o, l],
+    ) : L("i", {
+      class: ["ri-" + i, s, o],
       style: {
         fontSize: `${t}px`,
         color: n
       }
     });
   }
-}), Ue = Object.assign($, {
+}), Ue = Object.assign(I, {
   install(e) {
-    e.component(De($.name), $);
+    e.component(je(I.name), I);
   }
 }), B = {
   Icon: Ue
-}, xt = (e) => {
+}, Et = (e) => {
   Object.keys(B).forEach((t) => {
     e.use(B[t]);
   });
 };
 export {
-  vt as BaseCanvas,
+  _t as BaseCanvas,
   pe as BaseGL,
   Ue as CIcon,
   yt as Emitter,
-  xt as RegisterComponents,
-  St as RegisterDirectives,
+  Et as RegisterComponents,
+  xt as RegisterDirectives,
   ft as addEventListen,
   de as copyToClipboard,
   gt as copyToClipboardWithCallback,
@@ -731,17 +775,17 @@ export {
   Ve as isArray,
   mt as isBlank,
   Ze as isBoolean,
-  rt as isChinese,
+  ot as isChinese,
   et as isDate,
   it as isEmail,
   Ge as isFunction,
-  ot as isIdCard,
+  st as isIdCard,
   ut as isLower,
   qe as isNull,
   tt as isNullOrUndefined,
   Xe as isNumber,
   Ye as isObject,
-  st as isPhone,
+  rt as isPhone,
   pt as isPort,
   Qe as isPromise,
   Ke as isRegExp,
@@ -750,7 +794,8 @@ export {
   Je as isUndefined,
   dt as isUpper,
   nt as isUrl,
-  _t as removeEventListen,
+  vt as removeEventListen,
+  St as useFileSelect,
   wt as useLoading,
   bt as useTheme
 };

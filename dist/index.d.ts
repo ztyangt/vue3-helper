@@ -12,6 +12,7 @@ import { GlobalDirectives } from 'vue';
 import { IconType } from './src/type';
 import { PublicProps } from 'vue';
 import { Ref } from 'vue';
+import { ShallowRef } from 'vue';
 import { VNodeProps } from 'vue';
 import { WritableComputedRef } from 'vue';
 
@@ -523,6 +524,22 @@ export declare const RegisterDirectives: {
  * @param capture 是否在捕获阶段触发，默认为false
  */
 export declare function removeEventListen(target: Window | HTMLElement, event: string, handler: EventListenerOrEventListenerObject, capture?: boolean): void;
+
+declare interface SelectionOptions {
+    dragRef?: Readonly<ShallowRef<HTMLDivElement | null>>;
+    selectFile?: (e: Event) => void;
+    selectFolder?: (e: Event) => void;
+    dragCallback?: (e: DragEvent) => void;
+}
+
+export declare const useFileSelect: (options?: SelectionOptions) => {
+    selectFile: (selectOptions?: {
+        multiple?: boolean;
+        accept?: string[];
+    }) => Promise<FileList>;
+    selectFolder: () => Promise<FileList>;
+    initDragDom: () => (() => void) | undefined;
+};
 
 /**
  * 创建一个加载状态管理对象

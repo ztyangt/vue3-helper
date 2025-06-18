@@ -80,24 +80,27 @@ export const useFileSelect = (options?: SelectionOptions) => {
   const select = (config: FileSelectOptions): Promise<FileList> => {
     return new Promise((resolve, reject) => {
       const fileInput = createFileInput(config);
+      fileInput.style.display = "none"; // 隐藏但必须挂载到DOM
+
+      // 添加超时拒绝（防止用户取消选择）
+      const timeoutId = setTimeout(() => {
+        reject(new Error("选择取消或超时"));
+        document.body.removeChild(fileInput);
+      }, 30_000); // 30秒超时
 
       fileInput.onchange = (e) => {
+        clearTimeout(timeoutId);
         const files = (e.target as HTMLInputElement).files;
-        if (files && files.length > 0) {
-          // 根据是文件还是文件夹调用不同的回调
-          if (config.directory) {
-            options?.selectFolder?.(e);
-          } else {
-            options?.selectFile?.(e);
-          }
+        if (files?.length) {
           resolve(files);
         } else {
-          reject(new Error("No files selected"));
+          reject(new Error("未选择文件"));
         }
-        fileInput.value = ""; // 重置input值
+        document.body.removeChild(fileInput); // 使用后立即清理
       };
 
-      fileInput.click();
+      document.body.appendChild(fileInput); // 挂载到DOM
+      fileInput.click(); // 触发选择
     });
   };
 
