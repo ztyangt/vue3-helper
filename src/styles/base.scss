@@ -262,3 +262,11 @@ $flex-wrap-values: (
 .br-50 {
   border-radius: 50%;
 }
+
+.no-select {
+  user-select: none;
+}
+
+.text-center {
+  text-align: center;
+}
