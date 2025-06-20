@@ -1,7 +1,7 @@
 import { type Listener } from "./types";
 
-export class Emitter<T extends string> {
-  private _listeners: Record<string, Set<Listener<any>>>;
+export class Emitter<T extends string, EventMap extends Record<T, any[]>> {
+  private _listeners: Partial<Record<T, Set<Listener<any>>>>;
   private _onceListeners: WeakMap<Listener<any>, Listener<any>>;
 
   constructor(eventNameList: T[]) {
@@ -19,11 +19,11 @@ export class Emitter<T extends string> {
    * @param eventName 事件名称
    * @param listener 回调函数
    */
-  on<U extends any[]>(eventName: T, listener: Listener<U>): void {
+  on<U extends EventMap[K], K extends T>(eventName: K, listener: Listener<U>): void {
     if (!this._listeners[eventName]) {
       this._listeners[eventName] = new Set();
     }
-    this._listeners[eventName].add(listener);
+    this._listeners[eventName]!.add(listener);
   }
 
   /**
@@ -31,7 +31,7 @@ export class Emitter<T extends string> {
    * @param eventName 事件名称
    * @param listener 回调函数
    */
-  once<U extends any[]>(eventName: T, listener: Listener<U>): void {
+  once<U extends EventMap[K], K extends T>(eventName: K, listener: Listener<U>): void {
     const onceWrapper: Listener<U> = (...args) => {
       // 执行原监听器
       listener(...args);
@@ -49,7 +49,7 @@ export class Emitter<T extends string> {
    * @param eventName 事件名称
    * @param args 传递给监听器的参数
    */
-  emit<U extends any[]>(eventName: T, ...args: U): void {
+  emit<U extends EventMap[K], K extends T>(eventName: K, ...args: U): void {
     const listeners = this._listeners[eventName];
     if (listeners) {
       // 创建副本避免在迭代过程中修改集合
@@ -63,21 +63,21 @@ export class Emitter<T extends string> {
    * @param eventName 事件名称
    * @param listener 要移除的回调函数（可选）
    */
-  off<U extends any[]>(eventName: T, listener?: Listener<U>): void {
+  off<U extends EventMap[K], K extends T>(eventName: K, listener?: Listener<U>): void {
     if (!this._listeners[eventName]) return;
 
     if (listener) {
       // 检查是否为一次性监听器
       const wrappedListener = this._onceListeners.get(listener);
       if (wrappedListener) {
-        this._listeners[eventName].delete(wrappedListener);
+        this._listeners[eventName]!.delete(wrappedListener);
         this._onceListeners.delete(listener);
       } else {
-        this._listeners[eventName].delete(listener);
+        this._listeners[eventName]!.delete(listener);
       }
     } else {
       // 如果没有指定监听器，则移除所有监听器
-      this._listeners[eventName].clear();
+      this._listeners[eventName]!.clear();
     }
   }
 
@@ -93,8 +93,8 @@ export class Emitter<T extends string> {
    * 清除所有事件监听器
    */
   clear(): void {
-    for (const eventName of Object.keys(this._listeners)) {
-      this._listeners[eventName].clear();
+    for (const eventName of Object.keys(this._listeners) as T[]) {
+      this._listeners[eventName]!.clear();
     }
     this._onceListeners = new WeakMap();
   }
