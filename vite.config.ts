@@ -3,6 +3,8 @@ import dts from "vite-plugin-dts";
 import path from "path";
 import { fileURLToPath, URL } from "node:url";
 import glsl from "vite-plugin-glsl";
+import vueJsx from "@vitejs/plugin-vue-jsx";
+import vue from "@vitejs/plugin-vue";
 import pkg from "./package.json";
 
 export default defineConfig({
@@ -43,6 +45,8 @@ export default defineConfig({
   },
 
   plugins: [
+    vue(),
+    vueJsx(),
     glsl(),
     dts({
       rollupTypes: true, // 所有的类型合并到一个文件中

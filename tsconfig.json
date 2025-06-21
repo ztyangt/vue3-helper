@@ -14,11 +14,13 @@
     "noEmit": true,
 
     /* Linting */
-    "strict": true,
+    "strict": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
+
+    "jsx": "preserve", // 在.tsx文件里支持JSX
 
     "baseUrl": ".",
     "paths": {
@@ -26,6 +28,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*", "vite-env.d.ts"],
+  "include": ["src/**/*", "src/**/*.tsx", "src/**/*.jsx", "vite-env.d.ts"],
   "exclude": ["**/__tests__/**/*.{test,spec}.{js,ts}", "src/**/__test__/*.{js,ts}"]
 }

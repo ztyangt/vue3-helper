@@ -26,7 +26,10 @@ export const sidebarConfig = [
   },
   {
     text: "组件",
-    items: [{ text: "字体图标", link: "/components/icon/" }],
+    items: [
+      { text: "字体图标", link: "/components/icon/" },
+      { text: "分段控制器", link: "/components/segmented/" },
+    ],
   },
   {
     text: "指令",

@@ -12,6 +12,7 @@ import { GlobalDirectives } from 'vue';
 import { IconType } from './src/type';
 import { PublicProps } from 'vue';
 import { Ref } from 'vue';
+import { SegmentedOption } from './src/types';
 import { ShallowRef } from 'vue';
 import { VNodeProps } from 'vue';
 import { WritableComputedRef } from 'vue';
@@ -180,6 +181,121 @@ export declare function copyToClipboard(text: string): Promise<boolean>;
  */
 export declare function copyToClipboardWithCallback(text: string, callback: (success: boolean) => void): void;
 
+export declare const CSegmented: {
+    new (...args: any[]): CreateComponentPublicInstanceWithMixins<Readonly<ExtractPropTypes<    {
+    block: {
+    type: BooleanConstructor;
+    default: boolean;
+    };
+    options: {
+    type: () => SegmentedOption[];
+    required: true;
+    validator: (value: SegmentedOption[]) => boolean;
+    };
+    value: {
+    type: (StringConstructor | NumberConstructor)[];
+    default: string;
+    };
+    disabled: {
+    type: BooleanConstructor;
+    default: boolean;
+    };
+    size: {
+    type: () => "small" | "medium" | "large";
+    default: string;
+    validator: (value: string) => boolean;
+    };
+    }>> & Readonly<{
+    onChange?: (_value: string | number) => any;
+    "onUpdate:value"?: (_value: string | number) => any;
+    }>, () => any, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+    "update:value": (_value: string | number) => true;
+    change: (_value: string | number) => true;
+    }, PublicProps, {
+    value: string | number;
+    size: "small" | "medium" | "large";
+    block: boolean;
+    disabled: boolean;
+    }, true, {}, {}, GlobalComponents, GlobalDirectives, string, {}, any, ComponentProvideOptions, {
+    P: {};
+    B: {};
+    D: {};
+    C: {};
+    M: {};
+    Defaults: {};
+    }, Readonly<ExtractPropTypes<    {
+    block: {
+    type: BooleanConstructor;
+    default: boolean;
+    };
+    options: {
+    type: () => SegmentedOption[];
+    required: true;
+    validator: (value: SegmentedOption[]) => boolean;
+    };
+    value: {
+    type: (StringConstructor | NumberConstructor)[];
+    default: string;
+    };
+    disabled: {
+    type: BooleanConstructor;
+    default: boolean;
+    };
+    size: {
+    type: () => "small" | "medium" | "large";
+    default: string;
+    validator: (value: string) => boolean;
+    };
+    }>> & Readonly<{
+    onChange?: (_value: string | number) => any;
+    "onUpdate:value"?: (_value: string | number) => any;
+    }>, () => any, {}, {}, {}, {
+    value: string | number;
+    size: "small" | "medium" | "large";
+    block: boolean;
+    disabled: boolean;
+    }>;
+    __isFragment?: never;
+    __isTeleport?: never;
+    __isSuspense?: never;
+} & ComponentOptionsBase<Readonly<ExtractPropTypes<    {
+block: {
+type: BooleanConstructor;
+default: boolean;
+};
+options: {
+type: () => SegmentedOption[];
+required: true;
+validator: (value: SegmentedOption[]) => boolean;
+};
+value: {
+type: (StringConstructor | NumberConstructor)[];
+default: string;
+};
+disabled: {
+type: BooleanConstructor;
+default: boolean;
+};
+size: {
+type: () => "small" | "medium" | "large";
+default: string;
+validator: (value: string) => boolean;
+};
+}>> & Readonly<{
+onChange?: (_value: string | number) => any;
+"onUpdate:value"?: (_value: string | number) => any;
+}>, () => any, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+"update:value": (_value: string | number) => true;
+change: (_value: string | number) => true;
+}, string, {
+value: string | number;
+size: "small" | "medium" | "large";
+block: boolean;
+disabled: boolean;
+}, {}, string, {}, GlobalComponents, GlobalDirectives, string, ComponentProvideOptions> & VNodeProps & AllowedComponentProps & ComponentCustomProps & {
+    install(app: App): void;
+};
+
 /**
  * 图标组件，支持 remix 和 svg 两种类型的图标
  *
@@ -287,7 +403,66 @@ size: string | number;
 spin: boolean;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
-export declare class Emitter<T extends string> {
+declare const _default_2: DefineComponent<ExtractPropTypes<    {
+block: {
+type: BooleanConstructor;
+default: boolean;
+};
+options: {
+type: () => SegmentedOption_2[];
+required: true;
+validator: (value: SegmentedOption_2[]) => boolean;
+};
+value: {
+type: (StringConstructor | NumberConstructor)[];
+default: string;
+};
+disabled: {
+type: BooleanConstructor;
+default: boolean;
+};
+size: {
+type: () => "small" | "medium" | "large";
+default: string;
+validator: (value: string) => boolean;
+};
+}>, () => any, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
+"update:value": (_value: string | number) => true;
+change: (_value: string | number) => true;
+}, string, PublicProps, Readonly<ExtractPropTypes<    {
+block: {
+type: BooleanConstructor;
+default: boolean;
+};
+options: {
+type: () => SegmentedOption_2[];
+required: true;
+validator: (value: SegmentedOption_2[]) => boolean;
+};
+value: {
+type: (StringConstructor | NumberConstructor)[];
+default: string;
+};
+disabled: {
+type: BooleanConstructor;
+default: boolean;
+};
+size: {
+type: () => "small" | "medium" | "large";
+default: string;
+validator: (value: string) => boolean;
+};
+}>> & Readonly<{
+onChange?: (_value: string | number) => any;
+"onUpdate:value"?: (_value: string | number) => any;
+}>, {
+value: string | number;
+size: "small" | "medium" | "large";
+block: boolean;
+disabled: boolean;
+}, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
+
+export declare class Emitter<T extends string, EventMap extends Record<T, any[]>> {
     private _listeners;
     private _onceListeners;
     constructor(eventNameList: T[]);
@@ -296,25 +471,25 @@ export declare class Emitter<T extends string> {
      * @param eventName 事件名称
      * @param listener 回调函数
      */
-    on<U extends any[]>(eventName: T, listener: Listener<U>): void;
+    on<U extends EventMap[K], K extends T>(eventName: K, listener: Listener<U>): void;
     /**
      * 注册一次性事件监听器
      * @param eventName 事件名称
      * @param listener 回调函数
      */
-    once<U extends any[]>(eventName: T, listener: Listener<U>): void;
+    once<U extends EventMap[K], K extends T>(eventName: K, listener: Listener<U>): void;
     /**
      * 触发事件
      * @param eventName 事件名称
      * @param args 传递给监听器的参数
      */
-    emit<U extends any[]>(eventName: T, ...args: U): void;
+    emit<U extends EventMap[K], K extends T>(eventName: K, ...args: U): void;
     /**
      * 移除事件监听器
      * @param eventName 事件名称
      * @param listener 要移除的回调函数（可选）
      */
-    off<U extends any[]>(eventName: T, listener?: Listener<U>): void;
+    off<U extends EventMap[K], K extends T>(eventName: K, listener?: Listener<U>): void;
     /**
      * 获取某个事件的监听器数量
      * @param eventName 事件名称
@@ -525,6 +700,17 @@ export declare const RegisterDirectives: {
  */
 export declare function removeEventListen(target: Window | HTMLElement, event: string, handler: EventListenerOrEventListenerObject, capture?: boolean): void;
 
+export declare type SegmentedInstance = InstanceType<typeof _default_2>;
+
+declare interface SegmentedOption_2 {
+    label?: string;
+    icon?: string;
+    value: string | number;
+    disabled?: boolean;
+}
+
+export declare type SegmentedProps = SegmentedInstance["$props"];
+
 declare interface SelectionOptions {
     dragRef?: Readonly<ShallowRef<HTMLDivElement | null>>;
     selectFile?: (e: Event) => void;
@@ -538,7 +724,7 @@ export declare const useFileSelect: (options?: SelectionOptions) => {
         accept?: string[];
     }) => Promise<FileList>;
     selectFolder: () => Promise<FileList>;
-    initDragDom: () => (() => void) | undefined;
+    initDragDom: () => () => void;
 };
 
 /**
