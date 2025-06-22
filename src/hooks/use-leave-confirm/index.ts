@@ -37,7 +37,7 @@ export function useLeaveConfirm(options: Options = {}) {
     return message;
   };
 
-  onBeforeRouteLeave((to, from, next) => {
+  onBeforeRouteLeave((_to, _from, next) => {
     if (isEnabled.value && !confirm(options.message || "确定要离开吗？")) {
       return next(false); // 取消导航
     }

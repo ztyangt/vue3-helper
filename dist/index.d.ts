@@ -99,8 +99,8 @@ export declare const CIcon: {
     default: boolean;
     };
     }>> & Readonly<{}>, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, PublicProps, {
-    type: IconType;
     size: string | number;
+    type: IconType;
     spin: boolean;
     }, true, {}, {}, GlobalComponents, GlobalDirectives, string, {}, any, ComponentProvideOptions, {
     P: {};
@@ -131,8 +131,8 @@ export declare const CIcon: {
     default: boolean;
     };
     }>> & Readonly<{}>, {}, {}, {}, {}, {
-    type: IconType;
     size: string | number;
+    type: IconType;
     spin: boolean;
     }>;
     __isFragment?: never;
@@ -160,8 +160,8 @@ type: BooleanConstructor;
 default: boolean;
 };
 }>> & Readonly<{}>, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, {
-type: IconType;
 size: string | number;
+type: IconType;
 spin: boolean;
 }, {}, string, {}, GlobalComponents, GlobalDirectives, string, ComponentProvideOptions> & VNodeProps & AllowedComponentProps & ComponentCustomProps & {
     install(app: App): void;
@@ -398,8 +398,8 @@ type: BooleanConstructor;
 default: boolean;
 };
 }>> & Readonly<{}>, {
-type: IconType_2;
 size: string | number;
+type: IconType_2;
 spin: boolean;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
@@ -685,6 +685,11 @@ export declare const isUrl: (value: any) => value is string;
 
 declare type Listener<T extends any[]> = (...args: T) => void;
 
+declare interface Options {
+    enabled?: Ref<boolean> | boolean;
+    message?: string;
+}
+
 export declare const RegisterComponents: (app: App) => void;
 
 export declare const RegisterDirectives: {
@@ -725,6 +730,29 @@ export declare const useFileSelect: (options?: SelectionOptions) => {
     }) => Promise<FileList>;
     selectFolder: () => Promise<FileList>;
     initDragDom: () => () => void;
+};
+
+/**
+ * 离开网站确认提示 Hook
+ * @param options 配置选项
+ *
+ * 使用示例：
+ * 1. 基本用法（始终启用）：
+ *    useLeaveConfirm();
+ *
+ * 2. 动态控制：
+ *    const hasUnsavedChanges = ref(true);
+ *    useLeaveConfirm({ enabled: hasUnsavedChanges });
+ *
+ * 3. 自定义消息：
+ *    useLeaveConfirm({ message: '您有未保存的更改！' });
+ */
+export declare function useLeaveConfirm(options?: Options): {
+    /**
+     * 手动启用/禁用提示
+     * @example setEnabled(false)
+     */
+    setEnabled: (value: boolean) => void;
 };
 
 /**

@@ -14,6 +14,7 @@ export const sidebarConfig = [
       { text: "listen", link: "/utils/listen/" },
       { text: "webgl", link: "/utils/webgl/" },
       { text: "emitter", link: "/utils/emitter/" },
+      { text: "timeDiff", link: "/utils/time-diff/" },
     ],
   },
   {
