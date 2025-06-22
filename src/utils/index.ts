@@ -4,3 +4,4 @@ export * from "./listen";
 export * from "./webgl";
 export * from "./emitter";
 export * from "./time-diff";
+export * from "./random";

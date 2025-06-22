@@ -11,8 +11,9 @@ export const sidebarConfig = [
     items: [
       { text: "is", link: "/utils/is/" },
       { text: "copy", link: "/utils/copy/" },
-      { text: "listen", link: "/utils/listen/" },
       { text: "webgl", link: "/utils/webgl/" },
+      { text: "random", link: "/utils/random/" },
+      { text: "listen", link: "/utils/listen/" },
       { text: "emitter", link: "/utils/emitter/" },
       { text: "timeDiff", link: "/utils/time-diff/" },
     ],

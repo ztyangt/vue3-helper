@@ -84,7 +84,7 @@ export declare const CIcon: {
     validator: (value: string) => boolean;
     };
     size: {
-    type: (StringConstructor | NumberConstructor)[];
+    type: (NumberConstructor | StringConstructor)[];
     default: number;
     };
     color: {
@@ -116,7 +116,7 @@ export declare const CIcon: {
     validator: (value: string) => boolean;
     };
     size: {
-    type: (StringConstructor | NumberConstructor)[];
+    type: (NumberConstructor | StringConstructor)[];
     default: number;
     };
     color: {
@@ -145,7 +145,7 @@ default: string;
 validator: (value: string) => boolean;
 };
 size: {
-type: (StringConstructor | NumberConstructor)[];
+type: (NumberConstructor | StringConstructor)[];
 default: number;
 };
 color: {
@@ -193,7 +193,7 @@ export declare const CSegmented: {
     validator: (value: SegmentedOption[]) => boolean;
     };
     value: {
-    type: (StringConstructor | NumberConstructor)[];
+    type: (NumberConstructor | StringConstructor)[];
     default: string;
     };
     disabled: {
@@ -234,7 +234,7 @@ export declare const CSegmented: {
     validator: (value: SegmentedOption[]) => boolean;
     };
     value: {
-    type: (StringConstructor | NumberConstructor)[];
+    type: (NumberConstructor | StringConstructor)[];
     default: string;
     };
     disabled: {
@@ -269,7 +269,7 @@ required: true;
 validator: (value: SegmentedOption[]) => boolean;
 };
 value: {
-type: (StringConstructor | NumberConstructor)[];
+type: (NumberConstructor | StringConstructor)[];
 default: string;
 };
 disabled: {
@@ -321,7 +321,7 @@ validator: (value: string) => boolean;
 * @default 16
 */
 size: {
-type: (StringConstructor | NumberConstructor)[];
+type: (NumberConstructor | StringConstructor)[];
 default: number;
 };
 /**
@@ -368,7 +368,7 @@ validator: (value: string) => boolean;
 * @default 16
 */
 size: {
-type: (StringConstructor | NumberConstructor)[];
+type: (NumberConstructor | StringConstructor)[];
 default: number;
 };
 /**
@@ -414,7 +414,7 @@ required: true;
 validator: (value: SegmentedOption_2[]) => boolean;
 };
 value: {
-type: (StringConstructor | NumberConstructor)[];
+type: (NumberConstructor | StringConstructor)[];
 default: string;
 };
 disabled: {
@@ -440,7 +440,7 @@ required: true;
 validator: (value: SegmentedOption_2[]) => boolean;
 };
 value: {
-type: (StringConstructor | NumberConstructor)[];
+type: (NumberConstructor | StringConstructor)[];
 default: string;
 };
 disabled: {
@@ -690,6 +690,62 @@ declare interface Options {
     message?: string;
 }
 
+export declare class Random {
+    /**
+     * 生成随机字符串
+     * @param length 字符串长度
+     * @returns 随机字符串
+     */
+    static string(length: number): string;
+    /**
+     * 生成指定范围内的随机数
+     * @param min 最小值
+     * @param max 最大值
+     * @returns 随机数
+     */
+    static number(min: number, max: number): number;
+    /**
+     * 生成随机布尔值
+     * @returns 随机 true 或 false
+     */
+    static boolean(): boolean;
+    /**
+     * 从数组中随机选择指定数量的元素
+     * @param array 源数组
+     * @param length 要选择的元素数量
+     * @returns 随机元素数组
+     */
+    static array<T>(array: T[], length: number): T[];
+    /**
+     * 生成包含随机值的对象
+     * @param object 模板对象
+     * @param length 数组长度（如果属性是数组）
+     * @returns 填充随机值的对象
+     */
+    static object<T>(object: T, length: number): T;
+    /**
+     * 生成随机十六进制颜色代码
+     * @returns 颜色代码，如 #ff0000
+     */
+    static color(): string;
+    /**
+     * 生成随机日期
+     * @returns 随机日期对象
+     */
+    static date(): Date;
+    /**
+     * 生成随机UUID
+     * @returns UUID字符串
+     */
+    static uuid(): string;
+    /**
+     * 生成随机密码
+     * @param length 密码长度，默认为12
+     * @returns 随机密码
+     */
+    static password(length?: number): string;
+}
+
 export declare const RegisterComponents: (app: App) => void;
 
 export declare const RegisterDirectives: {
@@ -722,6 +778,88 @@ declare interface SelectionOptions {
     selectFolder?: (e: Event) => void;
     dragCallback?: (e: DragEvent) => void;
 }
+
+export declare class TimeDiff {
+    /**
+     * 计算时间差或格式化日期
+     * @param date 目标日期
+     * @param baseDate 基准日期（默认当前时间）
+     * @param options 配置选项
+     * @returns 时间差结果或格式化后的日期字符串
+     */
+    static diff(date: Date | string | number, baseDate?: Date | string | number, options?: TimeDiffOptions): string | string[] | TimeDiffResult | Record<string, number>;
+    /**
+     * 解析时间范围值为毫秒
+     * @param value 时间范围值
+     * @returns 毫秒数
+     */
+    private static parseTimeRangeValue;
+    /**
+     * 检查日期是否在相对时间范围内
+     * @param targetDate 目标日期
+     * @param now 当前时间戳（毫秒）
+     * @param range 范围配置
+     * @returns 是否在范围内
+     */
+    private static checkRelativeTimeRange;
+    /**
+     * 计算两个日期的时间差
+     * @param date1 开始日期
+     * @param date2 结束日期
+     * @param options 配置选项
+     * @returns 时间差结果
+     */
+    private static calculateTimeDiff;
+    /**
+     * 格式化超出范围的日期
+     * @param date 日期
+     * @param format 格式化方式
+     * @returns 格式化后的字符串
+     */
+    private static formatOutOfRange;
+    /**
+     * 获取可读的时间差描述（中文）
+     * @param date 目标日期
+     * @param baseDate 基准日期（默认当前时间）
+     * @returns 人类友好的时间差描述
+     */
+    static humanize(date: Date | string | number, options?: {
+        range?: TimeRangeOptions;
+    }): string;
+    /**
+     * 解析日期输入
+     * @param date 日期输入
+     * @returns 解析后的Date对象
+     * @throws 如果输入格式无效将抛出错误
+     */
+    private static parseDate;
+}
+
+declare type TimeDiffFormat = "full" | "short" | "long" | "object" | "array";
+
+declare type TimeDiffOptions = {
+    format?: TimeDiffFormat;
+    units?: TimeUnit[];
+    round?: boolean;
+    range?: TimeRangeOptions;
+};
+
+declare type TimeDiffResult = Record<TimeUnit, number>;
+
+declare type TimeRangeOptions = {
+    /** 最早时间（相对于当前时间），如："2 days" 或毫秒值 */
+    earliest?: TimeRangeValue;
+    /** 最晚时间（相对于当前时间），如："1 hour" 或毫秒值 */
+    latest?: TimeRangeValue;
+    /** 超出范围的日期格式化方式 */
+    outOfRangeFormat?: string | ((date: Date) => string);
+    /** 是否包含边界值（默认包含） */
+    inclusive?: boolean;
+};
+
+declare type TimeRangeValue = `${number} ${TimeUnit}` | number;
+
+declare type TimeUnit = "year" | "month" | "week" | "day" | "hour" | "minute" | "second";
 
 export declare const useFileSelect: (options?: SelectionOptions) => {
     selectFile: (selectOptions?: {
