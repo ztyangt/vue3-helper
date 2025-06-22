@@ -22,6 +22,7 @@ export const sidebarConfig = [
       { text: "useLoading", link: "/hooks/loading/" },
       { text: "useTheme", link: "/hooks/theme/" },
       { text: "useFileSelect", link: "/hooks/file-select/" },
+      { text: "useLeaveConfirm", link: "/hooks/leave-confirm/" },
     ],
   },
   {

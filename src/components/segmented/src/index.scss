@@ -3,32 +3,37 @@
 // 通过变量定义前缀
 $prefix-cls: "cl__segmented";
 
-// 变量定义
-$segmented-bg: #f5f5f5 !default;
-$segmented-color: rgba(0, 0, 0, 0.85) !default;
-$segmented-selected-bg: #fff !default;
-$segmented-selected-color: rgba(0, 0, 0, 0.88) !default;
-$segmented-hover-color: #4096ff !default;
-$segmented-disabled-color: rgba(0, 0, 0, 0.25) !default;
-$segmented-border-radius: 6px !default;
-$segmented-transition-duration: 0.3s !default;
-$segmented-thumb-bg: $segmented-selected-bg !default;
-$segmented-thumb-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02) !default;
+// 变量定义 - 同时支持CSS变量和Sass变量
+$segmented-bg: var(--segmented-bg, #f5f5f5) !default;
+$segmented-color: var(--segmented-color) !default;
+$segmented-selected-bg: var(--segmented-selected-bg, #fff) !default;
+$segmented-selected-color: var(--segmented-selected-color) !default;
+$segmented-hover-color: var(--segmented-hover-color, var(--theme-color, #2997f7)) !default;
+$segmented-disabled-color: var(--segmented-disabled-color) !default;
+$segmented-border-radius: var(--segmented-border-radius, 6px) !default;
+$segmented-transition-duration: var(--segmented-transition-duration, 0.3s) !default;
+$segmented-thumb-bg: var(--segmented-thumb-bg, $segmented-selected-bg) !default;
+$segmented-thumb-shadow: var(
+  --segmented-thumb-shadow,
+  0 1px 2px 0 rgba(0, 0, 0, 0.03),
+  0 1px 6px -1px rgba(0, 0, 0, 0.02),
+  0 2px 4px 0 rgba(0, 0, 0, 0.02)
+) !default;
 
 // 尺寸变量
-$segmented-padding-small: 0 11px !default;
-$segmented-padding-medium: 0 15px !default;
-$segmented-padding-large: 0 19px !default;
-$segmented-height-small: 24px !default;
-$segmented-height-medium: 32px !default;
-$segmented-height-large: 40px !default;
-$segmented-font-size-small: 12px !default;
-$segmented-font-size-medium: 14px !default;
-$segmented-font-size-large: 16px !default;
+$segmented-padding-small: var(--segmented-padding-small, 0 11px) !default;
+$segmented-padding-medium: var(--segmented-padding-medium, 0 15px) !default;
+$segmented-padding-large: var(--segmented-padding-large, 0 19px) !default;
+$segmented-height-small: var(--segmented-height-small, 24px) !default;
+$segmented-height-medium: var(--segmented-height-medium, 32px) !default;
+$segmented-height-large: var(--segmented-height-large, 40px) !default;
+$segmented-font-size-small: var(--segmented-font-size-small, 12px) !default;
+$segmented-font-size-medium: var(--segmented-font-size-medium, 14px) !default;
+$segmented-font-size-large: var(--segmented-font-size-large, 16px) !default;
 
 .#{$prefix-cls} {
   display: inline-flex;
-  padding: 2px;
+  // padding: 2px;
   background-color: $segmented-bg;
   border-radius: $segmented-border-radius;
   box-sizing: border-box;
@@ -64,11 +69,11 @@ $segmented-font-size-large: 16px !default;
 
   &-thumb {
     position: absolute;
-    top: 2px;
-    bottom: 2px;
+    // top: 2px;
+    // bottom: 2px;
     background-color: $segmented-thumb-bg;
-    border-radius: calc(#{$segmented-border-radius} - 2px);
-    box-shadow: $segmented-thumb-shadow;
+    // border-radius: calc(#{$segmented-border-radius} - 2px);
+    // box-shadow: $segmented-thumb-shadow;
     transition: all $segmented-transition-duration cubic-bezier(0.645, 0.045, 0.355, 1);
     z-index: 1;
     pointer-events: none;
@@ -89,13 +94,13 @@ $segmented-font-size-large: 16px !default;
     justify-content: center;
     padding: $segmented-padding-medium;
     cursor: pointer;
-    color: $segmented-color;
     transition: color $segmented-transition-duration;
     border-radius: calc(#{$segmented-border-radius} - 2px);
     flex: 1;
     white-space: nowrap;
     user-select: none;
     z-index: 2;
+    color: $segmented-color;
 
     &-icon {
       margin-right: 6px;
@@ -106,6 +111,7 @@ $segmented-font-size-large: 16px !default;
     &-label {
       overflow: hidden;
       text-overflow: ellipsis;
+      transition: all $segmented-transition-duration;
     }
 
     &:hover:not(&-selected):not(&-disabled) {
