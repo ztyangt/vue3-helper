@@ -687,7 +687,7 @@ const $e = {
 }, Symbol.toStringTag, { value: "Module" })), Me = {
   mounted(e, t) {
     e.style.position = "relative";
-    const n = typeof t.value == "boolean" ? { value: t.value } : t.value || {}, r = n.delay || 300;
+    const n = typeof t.value == "boolean" ? { value: t.value } : t.value || {}, r = n.delay || 50;
     let s = null;
     const i = () => {
       const o = ve(J, {

@@ -22,7 +22,7 @@ const loadingDirective: Directive<LoadingEl, LoadingBinding> = {
     const options: LoadingOptions = typeof binding.value === "boolean" ? { value: binding.value } : binding.value || {};
 
     // 添加延迟处理
-    const delay = options.delay || 300;
+    const delay = options.delay || 50;
     let timeoutId: number | null = null;
 
     const showLoading = () => {
