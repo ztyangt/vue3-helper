@@ -3,9 +3,11 @@ import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ArcoResolver } from "unplugin-vue-components/resolvers";
 import glsl from "vite-plugin-glsl";
+import { MermaidPlugin } from "vitepress-plugin-mermaid";
 
 export const viteConfig = {
   plugins: [
+    MermaidPlugin(),
     glsl(),
     vitePluginForArco({
       style: "css",
@@ -31,8 +33,9 @@ export const viteConfig = {
       },
     },
   },
-  ssr: { noExternal: ["@arco-design/web-vue"], external: ["cesium"] },
+  ssr: { noExternal: ["@arco-design/web-vue", "mermaid"], external: ["cesium"] },
   optimizeDeps: {
+    include: ["mermaid"],
     exclude: [],
   },
 };

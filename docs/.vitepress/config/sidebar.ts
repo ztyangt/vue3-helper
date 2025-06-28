@@ -16,6 +16,7 @@ export const sidebarConfig = [
       { text: "listen", link: "/utils/listen/" },
       { text: "emitter", link: "/utils/emitter/" },
       { text: "timeDiff", link: "/utils/time-diff/" },
+      { text: "objectUtils", link: "/utils/object-utils/" },
     ],
   },
   {

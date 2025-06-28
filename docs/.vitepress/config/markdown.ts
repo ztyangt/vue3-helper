@@ -1,4 +1,5 @@
 import mdItCustomAttrs from "markdown-it-custom-attrs";
+import { MermaidMarkdown } from "vitepress-plugin-mermaid";
 
 export const markdownConfig = {
   image: {
@@ -10,5 +11,6 @@ export const markdownConfig = {
     md.use(mdItCustomAttrs, "image", {
       "data-fancybox": "gallery",
     });
+    md.use(MermaidMarkdown);
   },
 };
