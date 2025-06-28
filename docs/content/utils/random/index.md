@@ -2,7 +2,7 @@
 outline: deep
 ---
 
-# Random 随机生成工具
+# Random <Badge type="tip" text="静态类" />
 
 :::info
 提供多种随机数据生成功能，包括字符串、数字、布尔值、颜色、日期、UUID和密码等，适用于测试数据生成、演示场景等。

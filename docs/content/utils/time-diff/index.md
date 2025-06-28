@@ -2,7 +2,7 @@
 outline: deep
 ---
 
-# TimeDiff 时间间隔计算
+# TimeDiff <Badge type="tip" text="静态类" />
 
 :::info
 提供强大的时间差计算和格式化功能，支持多种输出格式、时间范围校验和人性化显示。

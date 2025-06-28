@@ -8,7 +8,7 @@ import Taichi from './demo/taichi.vue'
 import Star from './demo/star.vue'
 </script>
 
-# WebGL 基础着色器
+# WebGL 着色器 <Badge type="tip" text="类" />
 
 :::info
 提供 WebGL2 基础着色器功能，封装了 WebGL2 的初始化、着色器管理和渲染循环控制。

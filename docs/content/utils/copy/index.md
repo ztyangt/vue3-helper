@@ -3,7 +3,7 @@ outline: deep
 ---
 
 
-# 复制
+# 复制 <Badge type="tip" text="函数" />
 
 :::info
 将内容复制到剪贴板，先尝试使用 `navigator.clipboard.writeText`，如果失败则使用 `document.execCommand('copy')`。

@@ -2,7 +2,7 @@
 outline: deep
 ---
 
-# ObjectUtils <Badge type="tip" text="工具类" />
+# ObjectUtils <Badge type="tip" text="静态类" />
 
 :::info 对象操作工具集
 提供全面的对象操作工具方法，包括深度克隆、深度合并、属性筛选等，所有方法均支持TypeScript类型推断。

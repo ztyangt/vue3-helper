@@ -685,6 +685,56 @@ export declare const isUrl: (value: any) => value is string;
 
 declare type Listener<T extends any[]> = (...args: T) => void;
 
+export declare class objectUtils {
+    /**
+     * @description 检查对象是否为空
+     * @param obj
+     * @returns {boolean}
+     * */
+    static isEmpty(obj?: any): boolean;
+    /**
+     * @description 深拷贝
+     * @param obj
+     * @param hash 缓存对象，避免循环引用
+     * @returns {any}
+     */
+    static deepClone(obj: any, hash?: WeakMap<object, any>): any;
+    /**
+     * @description 深度合并两个或多个对象
+     * @param target 目标对象，合并结果将存储在此对象中
+     * @param source 源对象，提供要合并的属性
+     * @param options 合并选项
+     * @param {boolean} [options.overwrite=true] 是否覆盖目标对象已有值
+     * @param {boolean} [options.cloneDeep=true] 是否深拷贝源对象属性
+     * @returns {any} 合并后的目标对象
+     */
+    static deepMerge(target: any, source: any, options?: {
+        overwrite?: boolean;
+        cloneDeep?: boolean;
+    }): any;
+    /**
+     * @description 从对象中移除指定键
+     * @param obj 对象
+     * @param keys 键数组
+     * @returns 移除指定键后的对象
+     */
+    static omit<T, K extends keyof T>(obj: T, keys: K[]): Omit<T, K>;
+    /**
+     * @description 从对象中提取指定键
+     * @param obj 对象
+     * @param keys 键数组
+     * @returns 提取指定键后的对象
+     */
+    static pick<T, K extends keyof T>(obj: T, keys: K[]): Pick<T, K>;
+    /**
+     * @description 深度比较两个对象是否相等
+     * @param obj1 第一个要比较的对象
+     * @param obj2 第二个要比较的对象
+     * @returns {boolean} 如果两个对象深度相等则返回true，否则返回false
+     */
+    static isEqual(obj1: any, obj2: any): boolean;
+}
+
 declare interface Options {
     enabled?: Ref<boolean> | boolean;
     message?: string;
