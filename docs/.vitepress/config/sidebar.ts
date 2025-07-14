@@ -43,6 +43,7 @@ export const sidebarConfig = [
       { text: "slideIn", link: "/directives/slide-in/" },
       { text: "draggable", link: "/directives/draggable/" },
       { text: "loading", link: "/directives/loading/" },
+      { text: "blurFadeIn", link: "/directives/blur-fade-in/" },
     ],
   },
 ];
