@@ -2,6 +2,10 @@
 outline: deep
 ---
 
+<script setup>
+import Color from './demo/color.vue'
+</script>
+
 # Random <Badge type="tip" text="静态类" />
 
 :::info
@@ -112,7 +116,11 @@ Random.object({name:'', age:0, tags:[]}, 3)
 ### Random.color()
 
 ```ts
-static color(): string
+static color(
+  hueRanges?:[number, number][] | null, 
+  saturationRanges?:[number, number][] | null, 
+  lightnessRanges?:[number, number][] | null
+): string
 ```
 
 **功能**：生成随机十六进制颜色代码  
@@ -121,6 +129,16 @@ static color(): string
 ```ts
 Random.color() // "#3a7bd5"
 ```
+
+### 参数
+
+| 参数名 | 类型 | 默认值 | 说明 |
+| ------ | ---- | ------ | ---- |
+| hueRanges | [number, number][] \| null | [[0, 360]] | 色相范围数组（0-360） |
+| saturationRanges | [number, number][] \| null | [[50, 100]] | 饱和度范围数组（0-100） |
+| lightnessRanges | [number, number][] \| null | [[30, 70]] | 亮度范围数组（0-100） |
+
+<Color />
 
 ### Random.date()
 

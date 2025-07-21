@@ -2,9 +2,9 @@ var pe = Object.defineProperty;
 var ge = (e, t, n) => t in e ? pe(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[t] = n;
 var b = (e, t, n) => ge(e, typeof t != "symbol" ? t + "" : t, n);
 import { useDark as ve } from "@vueuse/core";
-import { ref as E, onMounted as J, onBeforeUnmount as ye, defineComponent as N, h as $, createApp as _e, nextTick as K, computed as X, watch as be, createVNode as L, Fragment as we } from "vue";
+import { ref as E, onMounted as J, onBeforeUnmount as ye, defineComponent as N, h as $, createApp as _e, nextTick as K, computed as V, watch as be, createVNode as L, Fragment as we } from "vue";
 import { onBeforeRouteLeave as xe } from "vue-router";
-const ot = (e) => typeof e == "string", lt = (e) => typeof e == "number", ct = (e) => typeof e == "object", ut = (e) => typeof e == "function", dt = (e) => Array.isArray(e), ft = (e) => typeof e == "boolean", ht = (e) => e === null, mt = (e) => e === void 0, pt = (e) => e instanceof RegExp, gt = (e) => e instanceof Promise, vt = (e) => e instanceof Date, yt = (e) => e == null, _t = (e) => /^http[s]?:\/\/.*/.test(e), bt = (e) => /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(e), wt = (e) => /^0?(13[0-9]|15[012356789]|18[0-9]|14[123578]|16[6]|17[035768]|19[19])[0-9]{8}$/.test(e), xt = (e) => /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(e), St = (e) => /^[\u4e00-\u9fa5]{0,}$/.test(e), Et = (e) => /^[a-zA-Z]+$/.test(e), Tt = (e) => /^[A-Za-z0-9]+$/.test(e), Lt = (e) => /^[A-Za-z0-9_]+$/.test(e), $t = (e) => /^[A-Z]+$/.test(e), Ct = (e) => /^[a-z]+$/.test(e), Mt = (e) => /^(400|800)([0-9\\-]{7,10})|(([0-9]{4}|[0-9]{3})([- ])?)?([0-9]{7,8})(([- 转])*([0-9]{1,4}))?$/.test(e), Rt = (e) => /^([0-9]|[1-9]\d|[1-9]\d{2}|[1-9]\d{3}|[1-5]\d{4}|6[0-4]\d{3}|65[0-4]\d{2}|655[0-2]\d|6553[0-5])$/.test(e), Pt = (e) => e == null || e === "" || e === 0 || e === !1 || Array.isArray(e) && e.length === 0 || typeof e == "object" && Object.keys(e).length === 0;
+const ct = (e) => typeof e == "string", ut = (e) => typeof e == "number", dt = (e) => typeof e == "object", ft = (e) => typeof e == "function", ht = (e) => Array.isArray(e), mt = (e) => typeof e == "boolean", pt = (e) => e === null, gt = (e) => e === void 0, vt = (e) => e instanceof RegExp, yt = (e) => e instanceof Promise, _t = (e) => e instanceof Date, bt = (e) => e == null, wt = (e) => /^http[s]?:\/\/.*/.test(e), xt = (e) => /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(e), St = (e) => /^0?(13[0-9]|15[012356789]|18[0-9]|14[123578]|16[6]|17[035768]|19[19])[0-9]{8}$/.test(e), Et = (e) => /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(e), Tt = (e) => /^[\u4e00-\u9fa5]{0,}$/.test(e), Lt = (e) => /^[a-zA-Z]+$/.test(e), $t = (e) => /^[A-Za-z0-9]+$/.test(e), Ct = (e) => /^[A-Za-z0-9_]+$/.test(e), Mt = (e) => /^[A-Z]+$/.test(e), Rt = (e) => /^[a-z]+$/.test(e), Pt = (e) => /^(400|800)([0-9\\-]{7,10})|(([0-9]{4}|[0-9]{3})([- ])?)?([0-9]{7,8})(([- 转])*([0-9]{1,4}))?$/.test(e), Dt = (e) => /^([0-9]|[1-9]\d|[1-9]\d{2}|[1-9]\d{3}|[1-5]\d{4}|6[0-4]\d{3}|65[0-4]\d{2}|655[0-2]\d|6553[0-5])$/.test(e), It = (e) => e == null || e === "" || e === 0 || e === !1 || Array.isArray(e) && e.length === 0 || typeof e == "object" && Object.keys(e).length === 0;
 async function Se(e) {
   try {
     if (navigator.clipboard && window.isSecureContext)
@@ -22,13 +22,13 @@ async function Se(e) {
     return console.error("Copy to clipboard failed:", t), !1;
   }
 }
-function Dt(e, t) {
+function At(e, t) {
   Se(e).then(t).catch(() => t(!1));
 }
-function It(e, t, n, r = !1) {
+function Ot(e, t, n, r = !1) {
   e.addEventListener && typeof e.addEventListener == "function" && e.addEventListener(t, n, r);
 }
-function At(e, t, n, r = !1) {
+function kt(e, t, n, r = !1) {
   e.removeEventListener && typeof e.removeEventListener == "function" && e.removeEventListener(t, n, r);
 }
 var Ee = `#version 300 es
@@ -57,11 +57,11 @@ class Le {
     let r = null;
     if (typeof t == "string" ? r = document.getElementById(t) : r = t, !r) throw new Error("Canvas not found");
     this.canvas = r;
-    const i = window.devicePixelRatio || 1;
-    this.canvas.width = this.canvas.clientWidth * i, this.canvas.height = this.canvas.clientHeight * i;
-    const s = r.getContext("webgl2", { alpha: !1 });
-    if (!s) throw new Error("WebGL2 not supported");
-    this.gl = s, this.resizeCanvas(), this.program = this.initProgram(n.vertexShaderSource || Ee, n.fragmentShaderSource || Te);
+    const s = window.devicePixelRatio || 1;
+    this.canvas.width = this.canvas.clientWidth * s, this.canvas.height = this.canvas.clientHeight * s;
+    const i = r.getContext("webgl2", { alpha: !1 });
+    if (!i) throw new Error("WebGL2 not supported");
+    this.gl = i, this.resizeCanvas(), this.program = this.initProgram(n.vertexShaderSource || Ee, n.fragmentShaderSource || Te);
   }
   // 更新片段着色器
   updateFragmentShader(t) {
@@ -124,7 +124,7 @@ in vec4 a_Position;
 void main(){
   gl_Position=a_Position;
 }`;
-class Ot extends Le {
+class zt extends Le {
   // 控制渲染的标志
   constructor(n, r) {
     super(n, { vertexShaderSource: $e, fragmentShaderSource: r });
@@ -166,17 +166,17 @@ class Ot extends Le {
     this.clearGL();
     const n = performance.now(), r = n - this.lastFrameTime;
     this.frameCount++, r >= 1e3 && (this.fps = parseFloat((this.frameCount / (r / 1e3)).toFixed(2)), this.frameCount = 0, this.lastFrameTime = n);
-    const i = this.gl.getUniformLocation(this.program, "iResolution");
-    this.gl.uniform2f(i, this.gl.canvas.width, this.gl.canvas.height);
-    const s = this.gl.getUniformLocation(this.program, "iTime");
-    this.endTime = performance.now(), this.gl.uniform1f(s, (this.endTime - this.startTime) / 1e3), this.gl.drawArrays(this.gl.TRIANGLES, 0, 6), this.isRendering && (this.currentAnimationFrame = requestAnimationFrame(() => this.render()));
+    const s = this.gl.getUniformLocation(this.program, "iResolution");
+    this.gl.uniform2f(s, this.gl.canvas.width, this.gl.canvas.height);
+    const i = this.gl.getUniformLocation(this.program, "iTime");
+    this.endTime = performance.now(), this.gl.uniform1f(i, (this.endTime - this.startTime) / 1e3), this.gl.drawArrays(this.gl.TRIANGLES, 0, 6), this.isRendering && (this.currentAnimationFrame = requestAnimationFrame(() => this.render()));
   }
   initRect() {
     const n = this.gl.getAttribLocation(this.program, "a_Position");
     this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.gl.createBuffer()), this.gl.bufferData(this.gl.ARRAY_BUFFER, new Float32Array([-1, 1, -1, -1, 1, -1, 1, -1, 1, 1, -1, 1]), this.gl.STATIC_DRAW), this.gl.vertexAttribPointer(n, 2, this.gl.FLOAT, !1, 0, 0), this.gl.enableVertexAttribArray(n);
   }
 }
-class kt {
+class Ft {
   constructor(t) {
     b(this, "_listeners");
     b(this, "_onceListeners");
@@ -198,8 +198,8 @@ class kt {
    * @param listener 回调函数
    */
   once(t, n) {
-    const r = (...i) => {
-      n(...i), this.off(t, r);
+    const r = (...s) => {
+      n(...s), this.off(t, r);
     };
     this._onceListeners.set(n, r), this.on(t, r);
   }
@@ -210,7 +210,7 @@ class kt {
    */
   emit(t, ...n) {
     const r = this._listeners[t];
-    r && new Set(r).forEach((s) => s(...n));
+    r && new Set(r).forEach((i) => i(...n));
   }
   /**
    * 移除事件监听器
@@ -253,7 +253,7 @@ const C = {
   minute: 6e4,
   second: 1e3
 };
-class zt {
+class Nt {
   /**
    * 计算时间差或格式化日期
    * @param date 目标日期
@@ -262,8 +262,8 @@ class zt {
    * @returns 时间差结果或格式化后的日期字符串
    */
   static diff(t, n = /* @__PURE__ */ new Date(), r = {}) {
-    const i = this.parseDate(t), s = this.parseDate(n), a = s.getTime();
-    return r.range && !this.checkRelativeTimeRange(i, a, r.range) ? this.formatOutOfRange(i, r.range.outOfRangeFormat) : this.calculateTimeDiff(i, s, r);
+    const s = this.parseDate(t), i = this.parseDate(n), o = i.getTime();
+    return r.range && !this.checkRelativeTimeRange(s, o, r.range) ? this.formatOutOfRange(s, r.range.outOfRangeFormat) : this.calculateTimeDiff(s, i, r);
   }
   /**
    * 解析时间范围值为毫秒
@@ -272,10 +272,10 @@ class zt {
    */
   static parseTimeRangeValue(t) {
     if (typeof t == "number") return t;
-    const [n, r] = t.split(" "), i = parseFloat(n);
-    if (isNaN(i) || !C[r])
+    const [n, r] = t.split(" "), s = parseFloat(n);
+    if (isNaN(s) || !C[r])
       throw new Error(`无效的时间范围值: ${t}`);
-    return i * C[r];
+    return s * C[r];
   }
   /**
    * 检查日期是否在相对时间范围内
@@ -285,15 +285,15 @@ class zt {
    * @returns 是否在范围内
    */
   static checkRelativeTimeRange(t, n, r) {
-    const { earliest: i, latest: s, inclusive: a = !0 } = r, l = t.getTime();
-    if (i !== void 0) {
-      const o = this.parseTimeRangeValue(i), u = n - Math.abs(o);
-      if (a ? l < u : l <= u)
+    const { earliest: s, latest: i, inclusive: o = !0 } = r, l = t.getTime();
+    if (s !== void 0) {
+      const a = this.parseTimeRangeValue(s), c = n - Math.abs(a);
+      if (o ? l < c : l <= c)
         return !1;
     }
-    if (s !== void 0) {
-      const o = this.parseTimeRangeValue(s), u = n + Math.abs(o);
-      if (a ? l > u : l >= u)
+    if (i !== void 0) {
+      const a = this.parseTimeRangeValue(i), c = n + Math.abs(a);
+      if (o ? l > c : l >= c)
         return !1;
     }
     return !0;
@@ -306,7 +306,7 @@ class zt {
    * @returns 时间差结果
    */
   static calculateTimeDiff(t, n, r) {
-    const i = Math.abs(n.getTime() - t.getTime()), s = ["year", "month", "day", "hour", "minute", "second"], a = r.units || s, l = r.round !== !1, o = {
+    const s = Math.abs(n.getTime() - t.getTime()), i = ["year", "month", "day", "hour", "minute", "second"], o = r.units || i, l = r.round !== !1, a = {
       year: 0,
       month: 0,
       week: 0,
@@ -315,28 +315,28 @@ class zt {
       minute: 0,
       second: 0
     };
-    let u = i;
-    switch (a.forEach((m) => {
-      if (C[m]) {
-        const g = u / C[m];
-        o[m] = l ? Math.round(g) : g, u -= o[m] * C[m];
+    let c = s;
+    switch (o.forEach((h) => {
+      if (C[h]) {
+        const p = c / C[h];
+        a[h] = l ? Math.round(p) : p, c -= a[h] * C[h];
       }
     }), r.format) {
       case "object":
-        return o;
+        return a;
       case "array":
-        return a.map((c) => `${o[c]} ${c}${o[c] !== 1 ? "s" : ""}`);
+        return o.map((u) => `${a[u]} ${u}${a[u] !== 1 ? "s" : ""}`);
       case "short":
-        return a.filter((c) => o[c] > 0).map((c) => `${o[c]}${c[0]}`).join(" ");
+        return o.filter((u) => a[u] > 0).map((u) => `${a[u]}${u[0]}`).join(" ");
       case "long":
-        return a.filter((c) => o[c] > 0).map((c) => `${o[c]} ${c}${o[c] !== 1 ? "s" : ""}`).join(" ");
+        return o.filter((u) => a[u] > 0).map((u) => `${a[u]} ${u}${a[u] !== 1 ? "s" : ""}`).join(" ");
       case "full":
       default:
-        const m = a.filter((c) => o[c] > 0).map((c) => `${o[c]} ${c}${o[c] !== 1 ? "s" : ""}`);
-        if (m.length === 0) return "0秒";
-        if (m.length === 1) return m[0];
-        const g = m.pop();
-        return `${m.join("、")}和${g}`;
+        const h = o.filter((u) => a[u] > 0).map((u) => `${a[u]} ${u}${a[u] !== 1 ? "s" : ""}`);
+        if (h.length === 0) return "0秒";
+        if (h.length === 1) return h[0];
+        const p = h.pop();
+        return `${h.join("、")}和${p}`;
     }
   }
   /**
@@ -355,38 +355,38 @@ class zt {
    * @returns 人类友好的时间差描述
    */
   static humanize(t, n) {
-    const r = this.parseDate(t), i = this.parseDate(/* @__PURE__ */ new Date()).getTime();
-    if (n != null && n.range && !this.checkRelativeTimeRange(r, i, n.range))
+    const r = this.parseDate(t), s = this.parseDate(/* @__PURE__ */ new Date()).getTime();
+    if (n != null && n.range && !this.checkRelativeTimeRange(r, s, n.range))
       return this.formatOutOfRange(r, n.range.outOfRangeFormat);
-    const s = i - r.getTime(), a = Math.abs(s);
-    if (a < 1e3)
-      return s < 0 ? "即将" : "刚刚";
-    if (a < 6e4) {
-      const o = Math.round(a / 1e3);
-      return s < 0 ? `${o}秒后` : `${o}秒前`;
+    const i = s - r.getTime(), o = Math.abs(i);
+    if (o < 1e3)
+      return i < 0 ? "即将" : "刚刚";
+    if (o < 6e4) {
+      const a = Math.round(o / 1e3);
+      return i < 0 ? `${a}秒后` : `${a}秒前`;
     }
-    if (a < 36e5) {
-      const o = Math.round(a / 6e4);
-      return s < 0 ? `${o}分钟后` : `${o}分钟前`;
+    if (o < 36e5) {
+      const a = Math.round(o / 6e4);
+      return i < 0 ? `${a}分钟后` : `${a}分钟前`;
     }
-    if (a < 864e5) {
-      const o = Math.round(a / 36e5);
-      return s < 0 ? `${o}小时后` : `${o}小时前`;
+    if (o < 864e5) {
+      const a = Math.round(o / 36e5);
+      return i < 0 ? `${a}小时后` : `${a}小时前`;
     }
-    if (a < 2592e6) {
-      const o = Math.round(a / 864e5);
-      if (o === 1) return s < 0 ? "明天" : "昨天";
-      if (o < 7)
-        return s < 0 ? `${o}天后` : `${o}天前`;
-      const u = Math.round(o / 7);
-      return s < 0 ? `${u}周后` : `${u}周前`;
+    if (o < 2592e6) {
+      const a = Math.round(o / 864e5);
+      if (a === 1) return i < 0 ? "明天" : "昨天";
+      if (a < 7)
+        return i < 0 ? `${a}天后` : `${a}天前`;
+      const c = Math.round(a / 7);
+      return i < 0 ? `${c}周后` : `${c}周前`;
     }
-    if (a < 31536e6) {
-      const o = Math.round(a / 2592e6);
-      return s < 0 ? `${o}个月后` : `${o}个月前`;
+    if (o < 31536e6) {
+      const a = Math.round(o / 2592e6);
+      return i < 0 ? `${a}个月后` : `${a}个月前`;
     }
-    const l = Math.round(a / 31536e6);
-    return s < 0 ? `${l}年后` : `${l}年前`;
+    const l = Math.round(o / 31536e6);
+    return i < 0 ? `${l}年后` : `${l}年前`;
   }
   /**
    * 解析日期输入
@@ -414,7 +414,25 @@ class zt {
     throw new Error("不支持的日期类型");
   }
 }
-class Ft {
+function Ce(e, t, n) {
+  const r = [[0, 360]], s = [[50, 100]], i = [[30, 70]], o = e && e.length > 0 ? e : r, l = t && t.length > 0 ? t : s, a = n && n.length > 0 ? n : i, c = (v) => {
+    const d = v[Math.floor(Math.random() * v.length)];
+    return Math.floor(Math.random() * (d[1] - d[0] + 1)) + d[0];
+  }, h = c(o), p = c(l), u = c(a);
+  return Me(h, p, u);
+}
+function Me(e, t, n) {
+  t /= 100, n /= 100;
+  const r = (1 - Math.abs(2 * n - 1)) * t, s = r * (1 - Math.abs(e / 60 % 2 - 1)), i = n - r / 2;
+  let o = 0, l = 0, a = 0;
+  0 <= e && e < 60 ? (o = r, l = s, a = 0) : 60 <= e && e < 120 ? (o = s, l = r, a = 0) : 120 <= e && e < 180 ? (o = 0, l = r, a = s) : 180 <= e && e < 240 ? (o = 0, l = s, a = r) : 240 <= e && e < 300 ? (o = s, l = 0, a = r) : 300 <= e && e < 360 && (o = r, l = 0, a = s);
+  const c = (h) => {
+    const p = Math.round((h + i) * 255).toString(16);
+    return p.length === 1 ? "0" + p : p;
+  };
+  return `#${c(o)}${c(l)}${c(a)}`.toUpperCase();
+}
+class Bt {
   /**
    * 生成随机字符串
    * @param length 字符串长度
@@ -423,7 +441,7 @@ class Ft {
   static string(t) {
     const n = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     let r = "";
-    for (let i = 0; i < t; i++)
+    for (let s = 0; s < t; s++)
       r += n.charAt(Math.floor(Math.random() * n.length));
     return r;
   }
@@ -460,10 +478,10 @@ class Ft {
    */
   static object(t, n) {
     const r = {};
-    for (const i in t)
-      if (t.hasOwnProperty(i)) {
-        const s = typeof t[i];
-        s === "string" ? r[i] = this.string(10) : s === "number" ? r[i] = this.number(0, 100) : s === "boolean" ? r[i] = this.boolean() : Array.isArray(t[i]) && (r[i] = this.array(t[i], n));
+    for (const s in t)
+      if (t.hasOwnProperty(s)) {
+        const i = typeof t[s];
+        i === "string" ? r[s] = this.string(10) : i === "number" ? r[s] = this.number(0, 100) : i === "boolean" ? r[s] = this.boolean() : Array.isArray(t[s]) && (r[s] = this.array(t[s], n));
       }
     return r;
   }
@@ -471,8 +489,8 @@ class Ft {
    * 生成随机十六进制颜色代码
    * @returns 颜色代码，如 #ff0000
    */
-  static color() {
-    return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0")}`;
+  static color(...t) {
+    return Ce(...t);
   }
   /**
    * 生成随机日期
@@ -500,7 +518,7 @@ class Ft {
   static password(t = 12) {
     const n = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
     let r = "";
-    for (let i = 0; i < t; i++)
+    for (let s = 0; s < t; s++)
       r += n.charAt(Math.floor(Math.random() * n.length));
     return r;
   }
@@ -531,8 +549,8 @@ class P {
       return new RegExp(t);
     let r = Array.isArray(t) ? [] : {};
     n.set(t, r);
-    for (let i in t)
-      t.hasOwnProperty(i) && (r[i] = P.deepClone(t[i], n));
+    for (let s in t)
+      t.hasOwnProperty(s) && (r[s] = P.deepClone(t[s], n));
     return r;
   }
   /**
@@ -555,8 +573,8 @@ class P {
       return r.overwrite && (t = r.cloneDeep ? this.deepClone(n) : n), t;
     if (n instanceof Date || n instanceof RegExp)
       return r.overwrite && (t = r.cloneDeep ? this.deepClone(n) : n), t;
-    for (const i in n)
-      Object.prototype.hasOwnProperty.call(n, i) && (n[i] && typeof n[i] == "object" && t[i] && typeof t[i] == "object" && !(n[i] instanceof Date) && !(n[i] instanceof RegExp) && !Array.isArray(n[i]) ? this.deepMerge(t[i], n[i], r) : (r.overwrite || !(i in t)) && (t[i] = r.cloneDeep ? this.deepClone(n[i]) : n[i]));
+    for (const s in n)
+      Object.prototype.hasOwnProperty.call(n, s) && (n[s] && typeof n[s] == "object" && t[s] && typeof t[s] == "object" && !(n[s] instanceof Date) && !(n[s] instanceof RegExp) && !Array.isArray(n[s]) ? this.deepMerge(t[s], n[s], r) : (r.overwrite || !(s in t)) && (t[s] = r.cloneDeep ? this.deepClone(n[s]) : n[s]));
     return t;
   }
   /**
@@ -567,8 +585,8 @@ class P {
    */
   static omit(t, n) {
     const r = P.deepClone(t);
-    return n.forEach((i) => {
-      delete r[i];
+    return n.forEach((s) => {
+      delete r[s];
     }), r;
   }
   /**
@@ -579,8 +597,8 @@ class P {
    */
   static pick(t, n) {
     const r = P.deepClone(t);
-    return Object.keys(r).forEach((i) => {
-      n.includes(i) || delete r[i];
+    return Object.keys(r).forEach((s) => {
+      n.includes(s) || delete r[s];
     }), r;
   }
   /**
@@ -599,17 +617,17 @@ class P {
     if (t instanceof RegExp && n instanceof RegExp)
       return t.toString() === n.toString();
     if (typeof t == "object") {
-      const r = Object.keys(t), i = Object.keys(n);
-      if (r.length !== i.length) return !1;
-      for (const s of r)
-        if (!i.includes(s) || !this.isEqual(t[s], n[s]))
+      const r = Object.keys(t), s = Object.keys(n);
+      if (r.length !== s.length) return !1;
+      for (const i of r)
+        if (!s.includes(i) || !this.isEqual(t[i], n[i]))
           return !1;
       return !0;
     }
     return !1;
   }
 }
-const Nt = () => {
+const Ut = () => {
   const e = ve({
     selector: "html",
     attribute: "class",
@@ -626,17 +644,17 @@ const Nt = () => {
       return;
     }
     try {
-      const i = n.clientX, s = n.clientY, a = Math.hypot(Math.max(i, innerWidth - i), Math.max(s, innerHeight - s));
+      const s = n.clientX, i = n.clientY, o = Math.hypot(Math.max(s, innerWidth - s), Math.max(i, innerHeight - i));
       let l;
-      const o = document.startViewTransition(() => {
-        const u = document.documentElement;
-        l = u.classList.contains("dark"), u.classList.add(l ? "light" : "dark"), u.classList.remove(l ? "dark" : "light");
+      const a = document.startViewTransition(() => {
+        const c = document.documentElement;
+        l = c.classList.contains("dark"), c.classList.add(l ? "light" : "dark"), c.classList.remove(l ? "dark" : "light");
       });
-      o.ready.then(() => {
-        const u = [`circle(0px at ${i}px ${s}px)`, `circle(${a}px at ${i}px ${s}px)`];
+      a.ready.then(() => {
+        const c = [`circle(0px at ${s}px ${i}px)`, `circle(${o}px at ${s}px ${i}px)`];
         document.documentElement.animate(
           {
-            clipPath: l ? [...u].reverse() : u
+            clipPath: l ? [...c].reverse() : c
           },
           {
             duration: 500,
@@ -644,58 +662,58 @@ const Nt = () => {
             pseudoElement: l ? "::view-transition-old(root)" : "::view-transition-new(root)"
           }
         );
-      }), await o.finished, e.value = !e.value;
+      }), await a.finished, e.value = !e.value;
     } catch {
       e.value = !e.value;
     }
   } };
-}, Bt = (e = !1) => {
+}, Ht = (e = !1) => {
   const t = E(e);
   return {
     loading: t,
-    setLoading: (i) => {
-      t.value = i;
+    setLoading: (s) => {
+      t.value = s;
     },
     toggleLoading: () => {
       t.value = !t.value;
     }
   };
-}, Ut = (e) => {
-  const t = (a) => {
+}, Wt = (e) => {
+  const t = (o) => {
     const l = document.createElement("input");
-    return l.type = "file", l.multiple = !!a.multiple, a.directory && (l.webkitdirectory = !0, l.mozdirectory = !0), a.accept && a.accept.length > 0 && (l.accept = a.accept.join(",")), l;
+    return l.type = "file", l.multiple = !!o.multiple, o.directory && (l.webkitdirectory = !0, l.mozdirectory = !0), o.accept && o.accept.length > 0 && (l.accept = o.accept.join(",")), l;
   }, n = () => {
-    const { dragRef: a } = e || {};
-    if (!(a != null && a.value)) return;
-    const l = a.value, o = (c) => {
-      c.preventDefault();
-    }, u = (c) => {
-      c.preventDefault(), l.classList.add("drag-active");
-    }, m = (c) => {
-      c.preventDefault(), l.classList.remove("drag-active");
-    }, g = (c) => {
-      var _;
-      c.preventDefault(), l.classList.remove("drag-active"), (_ = e == null ? void 0 : e.dragCallback) == null || _.call(e, c);
+    const { dragRef: o } = e || {};
+    if (!(o != null && o.value)) return;
+    const l = o.value, a = (u) => {
+      u.preventDefault();
+    }, c = (u) => {
+      u.preventDefault(), l.classList.add("drag-active");
+    }, h = (u) => {
+      u.preventDefault(), l.classList.remove("drag-active");
+    }, p = (u) => {
+      var v;
+      u.preventDefault(), l.classList.remove("drag-active"), (v = e == null ? void 0 : e.dragCallback) == null || v.call(e, u);
     };
-    return l.addEventListener("dragover", o), l.addEventListener("dragenter", u), l.addEventListener("dragleave", m), l.addEventListener("drop", g), () => {
-      l.removeEventListener("dragover", o), l.removeEventListener("dragenter", u), l.removeEventListener("dragleave", m), l.removeEventListener("drop", g);
+    return l.addEventListener("dragover", a), l.addEventListener("dragenter", c), l.addEventListener("dragleave", h), l.addEventListener("drop", p), () => {
+      l.removeEventListener("dragover", a), l.removeEventListener("dragenter", c), l.removeEventListener("dragleave", h), l.removeEventListener("drop", p);
     };
-  }, r = (a) => new Promise((l, o) => {
-    const u = t(a);
-    u.style.display = "none";
-    const m = setTimeout(() => {
-      o(new Error("选择取消或超时")), document.body.removeChild(u);
+  }, r = (o) => new Promise((l, a) => {
+    const c = t(o);
+    c.style.display = "none";
+    const h = setTimeout(() => {
+      a(new Error("选择取消或超时")), document.body.removeChild(c);
     }, 3e4);
-    u.onchange = (g) => {
-      clearTimeout(m);
-      const c = g.target.files;
-      c != null && c.length ? l(c) : o(new Error("未选择文件")), document.body.removeChild(u);
-    }, document.body.appendChild(u), u.click();
+    c.onchange = (p) => {
+      clearTimeout(h);
+      const u = p.target.files;
+      u != null && u.length ? l(u) : a(new Error("未选择文件")), document.body.removeChild(c);
+    }, document.body.appendChild(c), c.click();
   });
   return {
-    selectFile: (a) => r({
-      multiple: (a == null ? void 0 : a.multiple) ?? !0,
-      accept: a == null ? void 0 : a.accept,
+    selectFile: (o) => r({
+      multiple: (o == null ? void 0 : o.multiple) ?? !0,
+      accept: o == null ? void 0 : o.accept,
       directory: !1
     }),
     selectFolder: () => r({
@@ -705,45 +723,45 @@ const Nt = () => {
     initDragDom: n
   };
 };
-function Ht(e = {}) {
-  const { enabled: t = E(!0), message: n = "确定要离开此页面吗？未保存的更改可能会丢失。" } = e, r = typeof t == "boolean" ? E(t) : t, i = (s) => {
+function jt(e = {}) {
+  const { enabled: t = E(!0), message: n = "确定要离开此页面吗？未保存的更改可能会丢失。" } = e, r = typeof t == "boolean" ? E(t) : t, s = (i) => {
     if (r.value)
-      return s.preventDefault(), s.returnValue = n, n;
+      return i.preventDefault(), i.returnValue = n, n;
   };
-  return xe((s, a, l) => {
+  return xe((i, o, l) => {
     if (r.value && !confirm(e.message || "确定要离开吗？"))
       return l(!1);
     l();
   }), J(() => {
-    window.addEventListener("beforeunload", i);
+    window.addEventListener("beforeunload", s);
   }), ye(() => {
-    window.removeEventListener("beforeunload", i);
+    window.removeEventListener("beforeunload", s);
   }), {
     /**
      * 手动启用/禁用提示
      * @example setEnabled(false)
      */
-    setEnabled: (s) => {
-      r.value = s;
+    setEnabled: (i) => {
+      r.value = i;
     }
   };
 }
-const Ce = {
+const Re = {
   blurAmount: 5,
   duration: 1,
   thumbnail: ""
 };
 function R(e, t = {}) {
-  const n = { ...Ce, ...t };
+  const n = { ...Re, ...t };
   e.style.transition = `filter ${n.duration}s ease, opacity ${n.duration}s ease`, e.style.filter = `blur(${n.blurAmount}px)`, e.style.opacity = "0";
   const r = () => {
-    e.style.backgroundImage = "none", e.offsetWidth, e.style.filter = "blur(0)", e.style.opacity = "1", e.removeEventListener("load", r), e.removeEventListener("error", i);
-  }, i = () => {
-    console.error("Image failed to load", e.src), e.removeEventListener("load", r), e.removeEventListener("error", i);
+    e.style.backgroundImage = "none", e.offsetWidth, e.style.filter = "blur(0)", e.style.opacity = "1", e.removeEventListener("load", r), e.removeEventListener("error", s);
+  }, s = () => {
+    console.error("Image failed to load", e.src), e.removeEventListener("load", r), e.removeEventListener("error", s);
   };
-  e.complete ? r() : (e.addEventListener("load", r), e.addEventListener("error", i)), n.thumbnail && (e.style.backgroundImage = `url(${n.thumbnail})`, e.style.backgroundSize = "cover", e.style.backgroundPosition = "center");
+  e.complete ? r() : (e.addEventListener("load", r), e.addEventListener("error", s)), n.thumbnail && (e.style.backgroundImage = `url(${n.thumbnail})`, e.style.backgroundSize = "cover", e.style.backgroundPosition = "center");
 }
-const Me = {
+const Pe = {
   mounted(e, t) {
     if (e.tagName === "IMG")
       R(e, t.value);
@@ -764,26 +782,26 @@ const Me = {
       });
     }
   }
-}, Re = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}, De = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: Me
-}, Symbol.toStringTag, { value: "Module" })), Pe = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  default: Pe
+}, Symbol.toStringTag, { value: "Module" })), Ie = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null
-}, Symbol.toStringTag, { value: "Module" })), De = {
+}, Symbol.toStringTag, { value: "Module" })), Ae = {
   mounted: function(e) {
     e.style.cursor = "move", e.style.position = "absolute", e.onmousedown = function(t) {
       let n = t.pageX - e.offsetLeft, r = t.pageY - e.offsetTop;
-      document.onmousemove = function(i) {
-        let s = i.pageX - n, a = i.pageY - r, l = parseInt(window.getComputedStyle(e.parentNode).width) - parseInt(window.getComputedStyle(e).width), o = parseInt(window.getComputedStyle(e.parentNode).height) - parseInt(window.getComputedStyle(e).height);
-        s < 0 ? s = 0 : s > l && (s = l), a < 0 ? a = 0 : a > o && (a = o), e.style.left = s + "px", e.style.top = a + "px";
+      document.onmousemove = function(s) {
+        let i = s.pageX - n, o = s.pageY - r, l = parseInt(window.getComputedStyle(e.parentNode).width) - parseInt(window.getComputedStyle(e).width), a = parseInt(window.getComputedStyle(e.parentNode).height) - parseInt(window.getComputedStyle(e).height);
+        i < 0 ? i = 0 : i > l && (i = l), o < 0 ? o = 0 : o > a && (o = a), e.style.left = i + "px", e.style.top = o + "px";
       }, document.onmouseup = function() {
         document.onmousemove = document.onmouseup = null;
       };
     };
   }
-}, Ie = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}, Oe = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: De
+  default: Ae
 }, Symbol.toStringTag, { value: "Module" })), Q = N({
   name: "LoadingOverlay",
   props: {
@@ -826,29 +844,29 @@ const Me = {
       ]
     );
   }
-}), Ae = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}), ke = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: Q
-}, Symbol.toStringTag, { value: "Module" })), Oe = {
+}, Symbol.toStringTag, { value: "Module" })), ze = {
   mounted(e, t) {
     e.style.position = "relative";
     const n = typeof t.value == "boolean" ? { value: t.value } : t.value || {}, r = n.delay || 50;
-    let i = null;
-    const s = () => {
-      const a = _e(Q, {
+    let s = null;
+    const i = () => {
+      const o = _e(Q, {
         text: n.text,
         background: n.background,
         spinnerColor: n.spinnerColor,
         style: n.style || "loader-l13",
         visible: n.value ?? !0
-      }), l = a.mount(document.createElement("div"));
-      e._loadingInstance = l, e._loadingApp = a, e.appendChild(l.$el), K(() => {
+      }), l = o.mount(document.createElement("div"));
+      e._loadingInstance = l, e._loadingApp = o, e.appendChild(l.$el), K(() => {
         A(e, t);
       });
     };
-    n.value && (i = window.setTimeout(() => {
-      n.value && s();
-    }, r)), e._loadingTimeoutId = i;
+    n.value && (s = window.setTimeout(() => {
+      n.value && i();
+    }, r)), e._loadingTimeoutId = s;
   },
   updated(e, t) {
     if (JSON.stringify(t.oldValue) !== JSON.stringify(t.value)) {
@@ -869,80 +887,80 @@ const Me = {
   }
 };
 function A(e, t) {
-  var i, s, a;
+  var s, i, o;
   if (!e._loadingInstance) return;
-  const n = typeof t.value == "boolean" ? t.value : ((i = t.value) == null ? void 0 : i.value) ?? !0;
+  const n = typeof t.value == "boolean" ? t.value : ((s = t.value) == null ? void 0 : s.value) ?? !0;
   e.style.position = n ? "relative" : "";
   const r = e._loadingInstance.$el.parentElement;
-  r && r.parentNode === e && r !== e.lastElementChild && e.appendChild(r), (a = (s = e._loadingInstance).setVisible) == null || a.call(s, n), e._loadingInstance.$el && (e._loadingInstance.$el.style.display = n ? "flex" : "none");
+  r && r.parentNode === e && r !== e.lastElementChild && e.appendChild(r), (o = (i = e._loadingInstance).setVisible) == null || o.call(i, n), e._loadingInstance.$el && (e._loadingInstance.$el.style.display = n ? "flex" : "none");
 }
-const ke = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const Fe = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: Oe
-}, Symbol.toStringTag, { value: "Module" })), ze = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  default: ze
+}, Symbol.toStringTag, { value: "Module" })), Ne = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null
-}, Symbol.toStringTag, { value: "Module" })), Fe = {
+}, Symbol.toStringTag, { value: "Module" })), Be = {
   mounted(e, t) {
     var W, j;
     e.style.position = "absolute", e.style.userSelect = "none";
     const n = () => {
-      var h;
+      var m;
       const f = document.createElement("div");
-      return f.style.position = "absolute", f.style.pointerEvents = "none", f.style.border = "2px dashed #3498db", f.style.backgroundColor = "rgba(52, 152, 219, 0.1)", f.style.zIndex = "1000", f.style.display = "none", (h = e.parentElement) == null || h.appendChild(f), f;
+      return f.style.position = "absolute", f.style.pointerEvents = "none", f.style.border = "2px dashed #3498db", f.style.backgroundColor = "rgba(52, 152, 219, 0.1)", f.style.zIndex = "1000", f.style.display = "none", (m = e.parentElement) == null || m.appendChild(f), f;
     }, r = (f) => {
-      const h = document.createElement("div");
-      return h.className = `resize-handle resize-handle-${f}`, h.style.position = "absolute", h.style.width = "10px", h.style.height = "10px", h.style.backgroundColor = "#fff", h.style.opacity = "0", h.style.border = "1px solid #333", h.style.zIndex = "100", h.style.touchAction = "none", f.includes("top") && (h.style.top = "-5px"), f.includes("bottom") && (h.style.bottom = "-5px"), f.includes("left") && (h.style.left = "-5px"), f.includes("right") && (h.style.right = "-5px"), f === "top-left" && (h.style.cursor = "nwse-resize"), f === "top-right" && (h.style.cursor = "nesw-resize"), f === "bottom-left" && (h.style.cursor = "nesw-resize"), f === "bottom-right" && (h.style.cursor = "nwse-resize"), e.appendChild(h), h;
+      const m = document.createElement("div");
+      return m.className = `resize-handle resize-handle-${f}`, m.style.position = "absolute", m.style.width = "10px", m.style.height = "10px", m.style.backgroundColor = "#fff", m.style.opacity = "0", m.style.border = "1px solid #333", m.style.zIndex = "100", m.style.touchAction = "none", f.includes("top") && (m.style.top = "-5px"), f.includes("bottom") && (m.style.bottom = "-5px"), f.includes("left") && (m.style.left = "-5px"), f.includes("right") && (m.style.right = "-5px"), f === "top-left" && (m.style.cursor = "nwse-resize"), f === "top-right" && (m.style.cursor = "nesw-resize"), f === "bottom-left" && (m.style.cursor = "nesw-resize"), f === "bottom-right" && (m.style.cursor = "nwse-resize"), e.appendChild(m), m;
     };
     e.__dragPreview = n();
-    const i = [
+    const s = [
       r("top-left"),
       r("top-right"),
       r("bottom-left"),
       r("bottom-right")
     ];
-    e.__resizeHandles = i, e.__resizeListeners = [];
-    const s = e.parentElement;
-    if (!s) return;
-    getComputedStyle(s).position === "static" && (s.style.position = "relative");
-    const a = ((W = t.value) == null ? void 0 : W.minWidth) ?? 50, l = ((j = t.value) == null ? void 0 : j.minHeight) ?? 50;
-    let o = !1, u = null, m = 0, g = 0, c = 0, _ = 0, d = 0, v = 0, p = 0, y = 0, S = 0, w = 0;
+    e.__resizeHandles = s, e.__resizeListeners = [];
+    const i = e.parentElement;
+    if (!i) return;
+    getComputedStyle(i).position === "static" && (i.style.position = "relative");
+    const o = ((W = t.value) == null ? void 0 : W.minWidth) ?? 50, l = ((j = t.value) == null ? void 0 : j.minHeight) ?? 50;
+    let a = !1, c = null, h = 0, p = 0, u = 0, v = 0, d = 0, y = 0, g = 0, _ = 0, S = 0, w = 0;
     const I = () => ({
       left: 0,
       top: 0,
-      right: s.clientWidth,
-      bottom: s.clientHeight
+      right: i.clientWidth,
+      bottom: i.clientHeight
     }), de = () => {
       if (!e.__dragPreview) return;
       const f = e.__dragPreview;
-      f.style.display = "block", f.style.left = `${S}px`, f.style.top = `${w}px`, f.style.width = `${p}px`, f.style.height = `${y}px`;
+      f.style.display = "block", f.style.left = `${S}px`, f.style.top = `${w}px`, f.style.width = `${g}px`, f.style.height = `${_}px`;
     }, fe = () => {
       e.__dragPreview && (e.__dragPreview.style.display = "none");
-    }, he = (f, h) => {
-      f.preventDefault(), f.stopPropagation(), o = !0, u = h, m = f.clientX, g = f.clientY, c = e.offsetWidth, _ = e.offsetHeight, d = e.offsetLeft, v = e.offsetTop, p = c, y = _, S = d, w = v, document.addEventListener("mousemove", U), document.addEventListener("mouseup", H);
+    }, he = (f, m) => {
+      f.preventDefault(), f.stopPropagation(), a = !0, c = m, h = f.clientX, p = f.clientY, u = e.offsetWidth, v = e.offsetHeight, d = e.offsetLeft, y = e.offsetTop, g = u, _ = v, S = d, w = y, document.addEventListener("mousemove", U), document.addEventListener("mouseup", H);
     }, U = (f) => {
-      if (!o || !u) return;
-      const h = f.clientX - m, T = f.clientY - g, x = I();
-      switch (u) {
+      if (!a || !c) return;
+      const m = f.clientX - h, T = f.clientY - p, x = I();
+      switch (c) {
         case "top-left":
-          p = Math.max(a, c - h), y = Math.max(l, _ - T), S = d + (c - p), w = v + (_ - y);
+          g = Math.max(o, u - m), _ = Math.max(l, v - T), S = d + (u - g), w = y + (v - _);
           break;
         case "top-right":
-          p = Math.max(a, c + h), y = Math.max(l, _ - T), w = v + (_ - y);
+          g = Math.max(o, u + m), _ = Math.max(l, v - T), w = y + (v - _);
           break;
         case "bottom-left":
-          p = Math.max(a, c - h), y = Math.max(l, _ + T), S = d + (c - p);
+          g = Math.max(o, u - m), _ = Math.max(l, v + T), S = d + (u - g);
           break;
         case "bottom-right":
-          p = Math.max(a, c + h), y = Math.max(l, _ + T);
+          g = Math.max(o, u + m), _ = Math.max(l, v + T);
           break;
       }
-      S < x.left && (S = x.left, u.includes("left") && (p = c + d - x.left)), w < x.top && (w = x.top, u.includes("top") && (y = _ + v - x.top)), S + p > x.right && (p = x.right - S), w + y > x.bottom && (y = x.bottom - w), p = Math.max(a, p), y = Math.max(l, y), de();
+      S < x.left && (S = x.left, c.includes("left") && (g = u + d - x.left)), w < x.top && (w = x.top, c.includes("top") && (_ = v + y - x.top)), S + g > x.right && (g = x.right - S), w + _ > x.bottom && (_ = x.bottom - w), g = Math.max(o, g), _ = Math.max(l, _), de();
     }, H = () => {
-      o && (o = !1, e.style.width = `${p}px`, e.style.height = `${y}px`, e.style.left = `${S}px`, e.style.top = `${w}px`, fe(), document.removeEventListener("mousemove", U), document.removeEventListener("mouseup", H));
+      a && (a = !1, e.style.width = `${g}px`, e.style.height = `${_}px`, e.style.left = `${S}px`, e.style.top = `${w}px`, fe(), document.removeEventListener("mousemove", U), document.removeEventListener("mouseup", H));
     };
-    i.forEach((f, h) => {
+    s.forEach((f, m) => {
       var Y;
-      const T = ["top-left", "top-right", "bottom-left", "bottom-right"], x = (me) => he(me, T[h]);
+      const T = ["top-left", "top-right", "bottom-left", "bottom-right"], x = (me) => he(me, T[m]);
       f.addEventListener("mousedown", x), (Y = e.__resizeListeners) == null || Y.push({ mousedown: x });
     });
   },
@@ -954,9 +972,9 @@ const ke = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
       (r = e.__resizeHandles) != null && r[n] && e.__resizeHandles[n].removeEventListener("mousedown", t.mousedown);
     }), e.__dragPreview && e.__dragPreview.remove();
   }
-}, Ne = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}, Ue = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: Fe
+  default: Be
 }, Symbol.toStringTag, { value: "Module" })), ee = {
   directive: "ripple",
   color: "var(--ripple-color)",
@@ -967,7 +985,7 @@ const ke = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   delay: 60,
   disabled: !1,
   center: !1
-}, Be = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}, He = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   DEFAULT_PLUGIN_OPTIONS: ee
 }, Symbol.toStringTag, { value: "Module" })), te = ({
@@ -976,85 +994,85 @@ const ke = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   borderBottomLeftRadius: n,
   borderBottomRightRadius: r
 }) => {
-  const i = document.createElement("div");
-  return i.style.top = "0", i.style.left = "0", i.style.width = "100%", i.style.height = "100%", i.style.position = "absolute", i.style.borderRadius = `${e} ${t} ${r} ${n}`, i.style.overflow = "hidden", i.style.pointerEvents = "none", i.style.webkitMaskImage = "-webkit-radial-gradient(white, black)", i;
-}, Ue = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  const s = document.createElement("div");
+  return s.style.top = "0", s.style.left = "0", s.style.width = "100%", s.style.height = "100%", s.style.position = "absolute", s.style.borderRadius = `${e} ${t} ${r} ${n}`, s.style.overflow = "hidden", s.style.pointerEvents = "none", s.style.webkitMaskImage = "-webkit-radial-gradient(white, black)", s;
+}, We = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   createContainer: te
-}, Symbol.toStringTag, { value: "Module" })), ne = (e, t, n, r, i) => {
-  const s = document.createElement("div");
-  return s.style.position = "absolute", s.style.width = r.center ? `${Math.sqrt(i.width * i.width + i.height * i.height)}px` : `${n * 2}px`, s.style.height = r.center ? `${Math.sqrt(i.width * i.width + i.height * i.height)}px` : `${n * 2}px`, s.style.top = r.center ? `${i.height / 2}px` : `${t}px`, s.style.left = r.center ? `${i.width / 2}px` : `${e}px`, s.style.background = r.color, s.style.borderRadius = "50%", s.style.opacity = `${r.initialOpacity}`, s.style.transform = "translate(-50%,-50%) scale(0)", s.style.transition = `transform ${r.duration / 1e3}s   cubic-bezier(0, 0.5, 0.25, 1)
+}, Symbol.toStringTag, { value: "Module" })), ne = (e, t, n, r, s) => {
+  const i = document.createElement("div");
+  return i.style.position = "absolute", i.style.width = r.center ? `${Math.sqrt(s.width * s.width + s.height * s.height)}px` : `${n * 2}px`, i.style.height = r.center ? `${Math.sqrt(s.width * s.width + s.height * s.height)}px` : `${n * 2}px`, i.style.top = r.center ? `${s.height / 2}px` : `${t}px`, i.style.left = r.center ? `${s.width / 2}px` : `${e}px`, i.style.background = r.color, i.style.borderRadius = "50%", i.style.opacity = `${r.initialOpacity}`, i.style.transform = "translate(-50%,-50%) scale(0)", i.style.transition = `transform ${r.duration / 1e3}s   cubic-bezier(0, 0.5, 0.25, 1)
   , opacity ${r.duration / 1e3}s
   cubic-bezier(0.0, 0, 0.2, 1)
-  `, s;
-}, He = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  `, i;
+}, je = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   createRippleElement: ne
 }, Symbol.toStringTag, { value: "Module" }));
 function M(e, t, n, r) {
-  const i = e - n, s = t - r;
-  return Math.sqrt(i * i + s * s);
+  const s = e - n, i = t - r;
+  return Math.sqrt(s * s + i * i);
 }
-function re(e, { width: t, height: n, left: r, top: i }) {
-  const s = e.clientX - r, a = e.clientY - i, l = M(s, a, 0, 0), o = M(s, a, t, 0), u = M(s, a, 0, n), m = M(s, a, t, n), g = Math.max(l, o, u, m);
+function re(e, { width: t, height: n, left: r, top: s }) {
+  const i = e.clientX - r, o = e.clientY - s, l = M(i, o, 0, 0), a = M(i, o, t, 0), c = M(i, o, 0, n), h = M(i, o, t, n), p = Math.max(l, a, c, h);
   return {
-    x: s,
-    y: a,
-    diameter: g
+    x: i,
+    y: o,
+    diameter: p
   };
 }
-const We = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const Ye = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   getDistanceToFurthestCorner: re,
   getPythagoreanDistance: M
 }, Symbol.toStringTag, { value: "Module" })), B = "vRippleCountInternal";
-function ie(e, t) {
+function se(e, t) {
   e.dataset[B] = t.toString();
 }
 function D(e) {
   return parseInt(e.dataset[B] ?? "0", 10);
 }
-function se(e) {
+function ie(e) {
   const t = D(e);
-  ie(e, t + 1);
-}
-function ae(e) {
-  const t = D(e);
-  ie(e, t - 1);
+  se(e, t + 1);
 }
 function oe(e) {
+  const t = D(e);
+  se(e, t - 1);
+}
+function ae(e) {
   delete e.dataset[B];
 }
-const je = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const Ve = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  decrementRippleCount: ae,
-  deleteRippleCount: oe,
+  decrementRippleCount: oe,
+  deleteRippleCount: ae,
   getRippleCount: D,
-  incrementRippleCount: se
-}, Symbol.toStringTag, { value: "Module" })), Ye = 1.05, O = /* @__PURE__ */ new WeakMap(), Xe = { ...ee }, Ve = (e, t, n) => {
-  const r = t.getBoundingClientRect(), i = window.getComputedStyle(t), { diameter: s, x: a, y: l } = re(e, r), o = te(i), u = ne(a, l, s * Ye, n, r);
-  let m = "", g = !1, c;
-  function _() {
-    u.style.transition = "opacity 120ms ease in out", u.style.opacity = "0", setTimeout(() => {
-      o.remove(), ae(t), D(t) === 0 && (oe(t), t.style.position = m);
+  incrementRippleCount: ie
+}, Symbol.toStringTag, { value: "Module" })), Xe = 1.05, O = /* @__PURE__ */ new WeakMap(), Ge = { ...ee }, qe = (e, t, n) => {
+  const r = t.getBoundingClientRect(), s = window.getComputedStyle(t), { diameter: i, x: o, y: l } = re(e, r), a = te(s), c = ne(o, l, i * Xe, n, r);
+  let h = "", p = !1, u;
+  function v() {
+    c.style.transition = "opacity 120ms ease in out", c.style.opacity = "0", setTimeout(() => {
+      a.remove(), oe(t), D(t) === 0 && (ae(t), t.style.position = h);
     }, 100);
   }
-  function d(p) {
-    typeof p < "u" && document.removeEventListener("pointerup", d), g ? _() : g = !0;
+  function d(g) {
+    typeof g < "u" && document.removeEventListener("pointerup", d), p ? v() : p = !0;
   }
-  function v() {
-    clearTimeout(c), o.remove(), document.removeEventListener("pointerup", d), document.removeEventListener("pointercancel", d), document.removeEventListener("pointercancel", v);
+  function y() {
+    clearTimeout(u), a.remove(), document.removeEventListener("pointerup", d), document.removeEventListener("pointercancel", d), document.removeEventListener("pointercancel", y);
   }
-  se(t), i.position === "static" && (t.style.position && (m = t.style.position), t.style.position = "relative"), o.appendChild(u), t.appendChild(o), document.addEventListener("pointerup", d), document.addEventListener("pointercancel", d), c = setTimeout(() => {
-    document.removeEventListener("pointercancel", v), u.style.transform = "translate(-50%,-50%) scale(1)", u.style.opacity = `${n.finalOpacity}`, setTimeout(() => d(), n.duration);
-  }, n.delay), document.addEventListener("pointercancel", v);
-}, Ge = {
+  ie(t), s.position === "static" && (t.style.position && (h = t.style.position), t.style.position = "relative"), a.appendChild(c), t.appendChild(a), document.addEventListener("pointerup", d), document.addEventListener("pointercancel", d), u = setTimeout(() => {
+    document.removeEventListener("pointercancel", y), c.style.transform = "translate(-50%,-50%) scale(1)", c.style.opacity = `${n.finalOpacity}`, setTimeout(() => d(), n.duration);
+  }, n.delay), document.addEventListener("pointercancel", y);
+}, Ze = {
   mounted(e, t) {
     O.set(e, t.value ?? {}), e.addEventListener("pointerdown", (n) => {
-      var i;
+      var s;
       const r = O.get(e);
-      (i = t.value) != null && i.disabled || r !== !1 && Ve(n, e, {
-        ...Xe,
+      (s = t.value) != null && s.disabled || r !== !1 && qe(n, e, {
+        ...Ge,
         ...r
       });
     });
@@ -1062,24 +1080,24 @@ const je = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   updated(e, t) {
     O.set(e, t.value ?? {});
   }
-}, qe = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}, Je = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: Ge
-}, Symbol.toStringTag, { value: "Module" })), V = 50, G = 500, le = /* @__PURE__ */ new WeakMap(), Ze = (e) => {
+  default: Ze
+}, Symbol.toStringTag, { value: "Module" })), X = 50, G = 500, le = /* @__PURE__ */ new WeakMap(), Ke = (e) => {
   const t = new IntersectionObserver((n) => {
     for (const r of n)
       if (r.isIntersecting) {
-        const i = le.get(r.target);
-        i && i.play(), t.unobserve(e);
+        const s = le.get(r.target);
+        s && s.play(), t.unobserve(e);
       }
   });
   t.observe(e);
-}, Je = (e, t) => e.getBoundingClientRect().top - t > window.innerHeight, Ke = {
+}, Qe = (e, t) => e.getBoundingClientRect().top - t > window.innerHeight, et = {
   mounted(e, t) {
-    let n = V, r = G;
-    if (typeof t.value == "number" ? n = t.value : t.value && typeof t.value == "object" && (n = t.value.distance ?? V, r = t.value.duration ?? G), !Je(e, n))
+    let n = X, r = G;
+    if (typeof t.value == "number" ? n = t.value : t.value && typeof t.value == "object" && (n = t.value.distance ?? X, r = t.value.duration ?? G), !Qe(e, n))
       return;
-    const i = e.animate(
+    const s = e.animate(
       [
         { transform: `translateY(${n}px)`, opacity: 0.5 },
         // 起始状态：向下偏移，半透明
@@ -1095,12 +1113,12 @@ const je = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
         // 动画结束后保持最终状态
       }
     );
-    i.pause(), le.set(e, i), Ze(e);
+    s.pause(), le.set(e, s), Ke(e);
   }
-}, Qe = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}, tt = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: Ke
-}, Symbol.toStringTag, { value: "Module" })), q = /* @__PURE__ */ Object.assign({ "./blur-fade-in/index.ts": Re, "./blur-fade-in/types.ts": Pe, "./draggable/index.ts": Ie, "./loading/index.ts": ke, "./loading/loading.ts": Ae, "./loading/types.ts": ze, "./resize/index.ts": Ne, "./ripple/index.ts": qe, "./ripple/options.ts": Be, "./ripple/utils/create-container-element.ts": Ue, "./ripple/utils/create-ripple-element.ts": He, "./ripple/utils/get-element-position-utils.ts": We, "./ripple/utils/ripple-count.ts": je, "./slide-in/index.ts": Qe }), Wt = {
+  default: et
+}, Symbol.toStringTag, { value: "Module" })), q = /* @__PURE__ */ Object.assign({ "./blur-fade-in/index.ts": De, "./blur-fade-in/types.ts": Ie, "./draggable/index.ts": Oe, "./loading/index.ts": Fe, "./loading/loading.ts": ke, "./loading/types.ts": Ne, "./resize/index.ts": Ue, "./ripple/index.ts": Je, "./ripple/options.ts": He, "./ripple/utils/create-container-element.ts": We, "./ripple/utils/create-ripple-element.ts": je, "./ripple/utils/get-element-position-utils.ts": Ye, "./ripple/utils/ripple-count.ts": Ve, "./slide-in/index.ts": tt }), Yt = {
   install: function(e) {
     for (const t in q) {
       const n = q[t].default;
@@ -1109,7 +1127,7 @@ const je = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
       t.split("/")[2] === "index.ts" && e.directive(r, n);
     }
   }
-}, et = "C", tt = "cl", F = (e) => `${tt}__${e}`, ce = (e) => `${et}${e || ""}`, k = N({
+}, nt = "C", rt = "cl", F = (e) => `${rt}__${e}`, ce = (e) => `${nt}${e || ""}`, k = N({
   name: "Icon",
   props: {
     /**
@@ -1160,11 +1178,11 @@ const je = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     }
   },
   render() {
-    const { type: e, size: t, color: n, name: r, spin: i } = this, s = F(`${e}-icon`), a = i ? F(`${e}-icon-spin`) : "";
+    const { type: e, size: t, color: n, name: r, spin: s } = this, i = F(`${e}-icon`), o = s ? F(`${e}-icon-spin`) : "";
     return e === "svg" ? $(
       "svg",
       {
-        class: [s, a],
+        class: [i, o],
         style: {
           width: `${t}px`,
           height: `${t}px`
@@ -1174,7 +1192,7 @@ const je = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
         default: () => [$("use", { "xlink:href": `#${r}` })]
       }
     ) : $("i", {
-      class: ["ri-" + r, s, a],
+      class: ["ri-" + r, i, o],
       style: {
         fontSize: `${t}px`,
         color: n
@@ -1219,37 +1237,37 @@ const je = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
     emit: t,
     slots: n
   }) {
-    const r = F("segmented"), i = E(null), s = E(null), a = E(-1), l = E(!1), o = X(() => e.options.findIndex((d) => d.value === e.value)), u = (d) => {
+    const r = F("segmented"), s = E(null), i = E(null), o = E(-1), l = E(!1), a = V(() => e.options.findIndex((d) => d.value === e.value)), c = (d) => {
       e.disabled || e.value !== d && (t("update:value", d), t("change", d));
-    }, m = async (d = !1) => {
-      if (!i.value || !s.value) return;
+    }, h = async (d = !1) => {
+      if (!s.value || !i.value) return;
       await K();
-      const v = i.value, p = s.value, y = v.parentElement;
-      if (!y) return;
-      const S = y.getBoundingClientRect(), w = v.getBoundingClientRect();
-      if (d && (p.style.transition = "none"), p.style.width = `${w.width}px`, p.style.height = `${w.height}px`, p.style.left = `${w.left - S.left}px`, !d && a.value !== -1 && o.value !== -1) {
-        const I = o.value > a.value ? "right" : "left";
-        p.classList.remove(`${r}-thumb-left`, `${r}-thumb-right`), p.classList.add(`${r}-thumb-${I}`);
+      const y = s.value, g = i.value, _ = y.parentElement;
+      if (!_) return;
+      const S = _.getBoundingClientRect(), w = y.getBoundingClientRect();
+      if (d && (g.style.transition = "none"), g.style.width = `${w.width}px`, g.style.height = `${w.height}px`, g.style.left = `${w.left - S.left}px`, !d && o.value !== -1 && a.value !== -1) {
+        const I = a.value > o.value ? "right" : "left";
+        g.classList.remove(`${r}-thumb-left`, `${r}-thumb-right`), g.classList.add(`${r}-thumb-${I}`);
       }
       d && requestAnimationFrame(() => {
-        p.style.transition = "";
-      }), a.value = o.value;
+        g.style.transition = "";
+      }), o.value = a.value;
     };
     J(() => {
-      l.value = !0, m(!0);
-    }), be(() => e.value, () => m());
-    const g = X(() => ({
+      l.value = !0, h(!0);
+    }), be(() => e.value, () => h());
+    const p = V(() => ({
       [r]: !0,
       [`${r}-block`]: e.block,
       [`${r}-disabled`]: e.disabled,
       [`${r}-${e.size}`]: !0
-    })), c = (d) => ({
+    })), u = (d) => ({
       [`${r}-item`]: !0,
       [`${r}-item-selected`]: e.value === d.value,
       [`${r}-item-disabled`]: d.disabled
-    }), _ = (d) => {
-      const v = `label-${d.value}`;
-      return n[v] ? n[v]({
+    }), v = (d) => {
+      const y = `label-${d.value}`;
+      return n[y] ? n[y]({
         option: d
       }) : L(we, null, [d.icon && L(ue, {
         class: "mr-5",
@@ -1259,72 +1277,72 @@ const je = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
       }, [d.label])]);
     };
     return () => L("div", {
-      class: g.value
+      class: p.value
     }, [L("div", {
-      ref: s,
+      ref: i,
       class: `${r}-thumb`
-    }, null), e.options.map((d, v) => L("div", {
-      ref: e.value === d.value ? i : null,
+    }, null), e.options.map((d, y) => L("div", {
+      ref: e.value === d.value ? s : null,
       key: d.value,
-      class: c(d),
-      onClick: () => !d.disabled && u(d.value),
-      "data-index": v
-    }, [_(d)]))]);
+      class: u(d),
+      onClick: () => !d.disabled && c(d.value),
+      "data-index": y
+    }, [v(d)]))]);
   }
-}), nt = Object.assign(z, {
+}), st = Object.assign(z, {
   install(e) {
     e.component(ce(z.name), z);
   }
 }), Z = {
   Icon: ue,
-  Segmented: nt
-}, jt = (e) => {
+  Segmented: st
+}, Vt = (e) => {
   Object.keys(Z).forEach((t) => {
     e.use(Z[t]);
   });
 };
 export {
-  Ot as BaseCanvas,
+  zt as BaseCanvas,
   Le as BaseGL,
   ue as CIcon,
-  nt as CSegmented,
-  kt as Emitter,
-  Ft as Random,
-  jt as RegisterComponents,
-  Wt as RegisterDirectives,
-  zt as TimeDiff,
-  It as addEventListen,
+  st as CSegmented,
+  Ft as Emitter,
+  Bt as Random,
+  Vt as RegisterComponents,
+  Yt as RegisterDirectives,
+  Nt as TimeDiff,
+  Ot as addEventListen,
   Se as copyToClipboard,
-  Dt as copyToClipboardWithCallback,
-  Et as isAlpha,
-  Tt as isAlphaNum,
-  Lt as isAlphaNumUnderline,
-  dt as isArray,
-  Pt as isBlank,
-  ft as isBoolean,
-  St as isChinese,
-  vt as isDate,
-  bt as isEmail,
-  ut as isFunction,
-  xt as isIdCard,
-  Ct as isLower,
-  ht as isNull,
-  yt as isNullOrUndefined,
-  lt as isNumber,
-  ct as isObject,
-  wt as isPhone,
-  Rt as isPort,
-  gt as isPromise,
-  pt as isRegExp,
-  ot as isString,
-  Mt as isTel,
-  mt as isUndefined,
-  $t as isUpper,
-  _t as isUrl,
+  At as copyToClipboardWithCallback,
+  Lt as isAlpha,
+  $t as isAlphaNum,
+  Ct as isAlphaNumUnderline,
+  ht as isArray,
+  It as isBlank,
+  mt as isBoolean,
+  Tt as isChinese,
+  _t as isDate,
+  xt as isEmail,
+  ft as isFunction,
+  Et as isIdCard,
+  Rt as isLower,
+  pt as isNull,
+  bt as isNullOrUndefined,
+  ut as isNumber,
+  dt as isObject,
+  St as isPhone,
+  Dt as isPort,
+  yt as isPromise,
+  vt as isRegExp,
+  ct as isString,
+  Pt as isTel,
+  gt as isUndefined,
+  Mt as isUpper,
+  wt as isUrl,
   P as objectUtils,
-  At as removeEventListen,
-  Ut as useFileSelect,
-  Ht as useLeaveConfirm,
-  Bt as useLoading,
-  Nt as useTheme
+  kt as removeEventListen,
+  Wt as useFileSelect,
+  jt as useLeaveConfirm,
+  Ht as useLoading,
+  Ut as useTheme
 };

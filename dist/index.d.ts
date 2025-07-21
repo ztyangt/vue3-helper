@@ -501,6 +501,15 @@ export declare class Emitter<T extends string, EventMap extends Record<T, any[]>
     clear(): void;
 }
 
+/**
+ * 生成指定 HSL 范围内的随机颜色（支持多范围和空参数）
+ * @param hueRanges 色相范围数组，如 [[0, 30], [180, 240]]（0-360），为空时使用默认范围
+ * @param saturationRanges 饱和度范围数组，如 [[50, 70], [80, 100]]（0-100），为空时使用默认范围
+ * @param lightnessRanges 亮度范围数组，如 [[30, 50], [70, 90]]（0-100），为空时使用默认范围
+ * @returns 十六进制颜色字符串，如 "#FF0000"
+ */
+declare function generateRandomColorInRanges(hueRanges?: [number, number][] | null, saturationRanges?: [number, number][] | null, lightnessRanges?: [number, number][] | null): string;
+
 export declare type IconInstance = InstanceType<typeof _default>;
 
 export declare type IconProps = IconInstance["$props"];
@@ -777,7 +786,7 @@ export declare class Random {
      * 生成随机十六进制颜色代码
      * @returns 颜色代码，如 #ff0000
      */
-    static color(): string;
+    static color(...params: Parameters<typeof generateRandomColorInRanges>): string;
     /**
      * 生成随机日期
      * @returns 随机日期对象

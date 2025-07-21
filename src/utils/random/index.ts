@@ -1,3 +1,5 @@
+import { generateRandomColorInRanges } from "./color";
+
 export class Random {
   /**
    * 生成随机字符串
@@ -68,13 +70,14 @@ export class Random {
   }
 
   /**
-   * 生成随机十六进制颜色代码
+   * 生成随机十六进制颜色
    * @returns 颜色代码，如 #ff0000
    */
-  static color(): string {
-    return `#${Math.floor(Math.random() * 0xffffff)
-      .toString(16)
-      .padStart(6, "0")}`;
+  static color(...params: Parameters<typeof generateRandomColorInRanges>): string {
+    // return `#${Math.floor(Math.random() * 0xffffff)
+    //   .toString(16)
+    //   .padStart(6, "0")}`;
+    return generateRandomColorInRanges(...params);
   }
 
   /**
