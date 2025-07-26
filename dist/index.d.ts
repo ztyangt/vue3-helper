@@ -864,35 +864,37 @@ export declare class Time {
      */
     static format(date?: Date | number, format?: string): string;
     /**
-     * 获取人性化时间（带范围限制）
+     * 人性化时间展示
      * @param date 日期对象或时间戳
      * @param options 配置选项
-     *   - now: 当前时间，默认为 new Date()
-     *   - format: 超出范围时的格式，默认为 'YYYY-MM-DD'
-     *   - ranges: 人性化展示的时间范围配置（单位：秒）
-     *     - seconds: 秒范围，默认为 60
-     *     - minutes: 分钟范围，默认为 3600 (60*60)
-     *     - hours: 小时范围，默认为 86400 (24*60*60)
-     *     - days: 天范围，默认为 2592000 (30*24*60*60)
-     *     - months: 月范围，默认为 31536000 (12*30*24*60*60)
-     * @returns 人性化时间字符串或格式化后的日期
+     * @returns 人性化时间字符串或格式化后的时间字符串
      */
     static humanize(date: Date | number, options?: {
+        /**
+         * 范围阈值（毫秒），在此范围内的时间会显示为相对时间
+         * 默认值：7天（604800000毫秒）
+         */
+        threshold?: number;
+        /**
+         * 超出范围后的格式化字符串
+         * 默认值："YYYY-MM-DD"
+         */
+        defaultFormat?: string;
+        /**
+         * 当前时间，默认为 new Date()
+         */
         now?: Date | number;
-        format?: string;
-        ranges?: {
-            seconds?: number;
-            minutes?: number;
-            hours?: number;
-            days?: number;
-            months?: number;
-        };
+        /**
+         * 是否显示相对时间的后缀（如"前"、"后"）
+         * 默认值：true
+         */
+        showSuffix?: boolean;
     }): string;
     /**
      * 获取两个日期之间的差值
      * @param date1 第一个日期
      * @param date2 第二个日期，默认为当前时间
-     * @returns 差值对象，包含年、月、日、小时、分钟、秒、毫秒
+     * @returns 差值对象，包含年、月、日、小时、分钟、秒、毫秒，带有符号表示方向（正数表示date2较晚）
      */
     static diff(date1: Date | number, date2?: Date | number): {
         years: number;
@@ -903,13 +905,6 @@ export declare class Time {
         seconds: number;
         milliseconds: number;
     };
-    /**
-     * 添加时间
-     * @param date 原始日期
-     * @param value 要添加的值
-     * @param unit 时间单位 ('year' | 'month' | 'day' | 'hour' | 'minute' | 'second' | 'millisecond')
-     * @returns 新的Date对象
-     */
     static add(date: Date | number, value: number, unit: "year" | "month" | "day" | "hour" | "minute" | "second" | "millisecond"): Date;
     /**
      * 减去时间

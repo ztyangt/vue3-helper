@@ -67,115 +67,95 @@ export class Time {
   }
 
   /**
-   * 获取人性化时间（带范围限制）
+   * 人性化时间展示
    * @param date 日期对象或时间戳
    * @param options 配置选项
-   *   - now: 当前时间，默认为 new Date()
-   *   - format: 超出范围时的格式，默认为 'YYYY-MM-DD'
-   *   - ranges: 人性化展示的时间范围配置（单位：秒）
-   *     - seconds: 秒范围，默认为 60
-   *     - minutes: 分钟范围，默认为 3600 (60*60)
-   *     - hours: 小时范围，默认为 86400 (24*60*60)
-   *     - days: 天范围，默认为 2592000 (30*24*60*60)
-   *     - months: 月范围，默认为 31536000 (12*30*24*60*60)
-   * @returns 人性化时间字符串或格式化后的日期
+   * @returns 人性化时间字符串或格式化后的时间字符串
    */
   static humanize(
     date: Date | number,
     options: {
+      /**
+       * 范围阈值（毫秒），在此范围内的时间会显示为相对时间
+       * 默认值：7天（604800000毫秒）
+       */
+      threshold?: number;
+      /**
+       * 超出范围后的格式化字符串
+       * 默认值："YYYY-MM-DD"
+       */
+      defaultFormat?: string;
+      /**
+       * 当前时间，默认为 new Date()
+       */
       now?: Date | number;
-      format?: string;
-      ranges?: {
-        seconds?: number;
-        minutes?: number;
-        hours?: number;
-        days?: number;
-        months?: number;
-      };
+      /**
+       * 是否显示相对时间的后缀（如"前"、"后"）
+       * 默认值：true
+       */
+      showSuffix?: boolean;
     } = {}
   ): string {
-    const { now = new Date(), format = "YYYY-MM-DD", ranges = {} } = options;
-
-    // 默认范围配置（单位：秒）
-    const defaultRanges = {
-      seconds: 60,
-      minutes: 60 * 60,
-      hours: 24 * 60 * 60,
-      days: 30 * 24 * 60 * 60,
-      months: 12 * 30 * 24 * 60 * 60,
-    };
-
-    // 合并用户自定义范围
-    const mergedRanges = {
-      seconds: ranges.seconds ?? defaultRanges.seconds,
-      minutes: ranges.minutes ?? defaultRanges.minutes,
-      hours: ranges.hours ?? defaultRanges.hours,
-      days: ranges.days ?? defaultRanges.days,
-      months: ranges.months ?? defaultRanges.months,
-    };
+    const {
+      threshold = 604800000, // 7天
+      defaultFormat = "YYYY-MM-DD",
+      now = new Date(),
+      showSuffix = true,
+    } = options;
 
     const d = date instanceof Date ? date : new Date(date);
-    const n = now instanceof Date ? now : new Date(now);
+    const current = now instanceof Date ? now : new Date(now);
 
-    if (!this.isValid(d) || !this.isValid(n)) {
-      return this.format(d, format);
+    if (!this.isValid(d)) {
+      return "Invalid Date";
     }
 
-    const diffInSeconds = Math.floor((n.getTime() - d.getTime()) / 1000);
-    const absDiff = Math.abs(diffInSeconds);
+    const diffMs = current.getTime() - d.getTime();
+    const absDiffMs = Math.abs(diffMs);
 
-    // 检查是否在人性化展示范围内
-    const inRange =
-      absDiff < mergedRanges.seconds ||
-      (absDiff < mergedRanges.minutes && absDiff >= mergedRanges.seconds) ||
-      (absDiff < mergedRanges.hours && absDiff >= mergedRanges.minutes) ||
-      (absDiff < mergedRanges.days && absDiff >= mergedRanges.hours) ||
-      (absDiff < mergedRanges.months && absDiff >= mergedRanges.days);
-
-    if (!inRange) {
-      return this.format(d, format);
+    // 如果时间差超出阈值，则使用默认格式返回
+    if (absDiffMs > threshold) {
+      return this.format(d, defaultFormat);
     }
 
-    if (absDiff < mergedRanges.seconds) {
-      return diffInSeconds < 0 ? `${absDiff}秒后` : absDiff <= 5 ? "刚刚" : `${absDiff}秒前`;
+    // 定义时间单位和对应的毫秒数
+    const units: Array<{ unit: string; ms: number; past: string; future: string }> = [
+      { unit: "年", ms: 31536000000, past: "年前", future: "年后" },
+      { unit: "个月", ms: 2592000000, past: "个月前", future: "个月后" },
+      { unit: "天", ms: 86400000, past: "天前", future: "天后" },
+      { unit: "小时", ms: 3600000, past: "小时前", future: "小时后" },
+      { unit: "分钟", ms: 60000, past: "分钟前", future: "分钟后" },
+      { unit: "秒", ms: 1000, past: "秒前", future: "秒后" },
+    ];
+
+    // 查找最合适的时间单位
+    for (const { unit, ms, past, future } of units) {
+      if (absDiffMs >= ms) {
+        const value = Math.floor(absDiffMs / ms);
+        const suffix = showSuffix ? (diffMs >= 0 ? past : future) : unit;
+        return `${value}${suffix}`;
+      }
     }
 
-    const diffInMinutes = Math.floor(absDiff / 60);
-    if (absDiff < mergedRanges.minutes) {
-      return diffInSeconds < 0 ? `${diffInMinutes}分钟后` : `${diffInMinutes}分钟前`;
-    }
-
-    const diffInHours = Math.floor(diffInMinutes / 60);
-    if (absDiff < mergedRanges.hours) {
-      return diffInSeconds < 0 ? `${diffInHours}小时后` : `${diffInHours}小时前`;
-    }
-
-    const diffInDays = Math.floor(diffInHours / 24);
-    if (absDiff < mergedRanges.days) {
-      return diffInSeconds < 0 ? `${diffInDays}天后` : `${diffInDays}天前`;
-    }
-
-    const diffInMonths = Math.floor(diffInDays / 30);
-    if (absDiff < mergedRanges.months) {
-      return diffInSeconds < 0 ? `${diffInMonths}个月后` : `${diffInMonths}个月前`;
-    }
-
-    return this.format(d, format);
+    // 小于1秒则显示"刚刚"或"现在"
+    return showSuffix ? (diffMs >= 0 ? "刚刚" : "现在") : "刚刚";
   }
 
   /**
    * 获取两个日期之间的差值
    * @param date1 第一个日期
    * @param date2 第二个日期，默认为当前时间
-   * @returns 差值对象，包含年、月、日、小时、分钟、秒、毫秒
+   * @returns 差值对象，包含年、月、日、小时、分钟、秒、毫秒，带有符号表示方向（正数表示date2较晚）
    */
   static diff(
     date1: Date | number,
     date2: Date | number = new Date()
   ): { years: number; months: number; days: number; hours: number; minutes: number; seconds: number; milliseconds: number } {
+    // 转换为Date对象（如果输入是时间戳）
     const d1 = date1 instanceof Date ? date1 : new Date(date1);
     const d2 = date2 instanceof Date ? date2 : new Date(date2);
 
+    // 检查日期有效性
     if (!this.isValid(d1) || !this.isValid(d2)) {
       return {
         years: 0,
@@ -188,27 +168,47 @@ export class Time {
       };
     }
 
+    // 计算毫秒级差值（date2较晚则为正数）
     const diffInMs = d2.getTime() - d1.getTime();
-    const absDiff = Math.abs(diffInMs);
+    const sign = Math.sign(diffInMs); // 保存差值的正负符号
 
+    // 计算各时间单位的绝对值差值
+    const seconds = Math.abs(diffInMs) / 1000; // 总秒数
+    const minutes = seconds / 60; // 总分钟数
+    const hours = minutes / 60; // 总小时数
+    const days = hours / 24; // 总天数
+
+    // 计算实际的年月日差异（考虑日历月份天数变化）
+    let years = d2.getFullYear() - d1.getFullYear(); // 年份差
+    let months = d2.getMonth() - d1.getMonth(); // 月份差
+    let daysDiff = d2.getDate() - d1.getDate(); // 天数差
+
+    // 处理天数差为负的情况（如1月31日到2月1日）
+    if (daysDiff < 0) {
+      months--; // 借一个月
+      // 获取上个月的最后一天
+      const lastDayOfMonth = new Date(d2.getFullYear(), d2.getMonth(), 0).getDate();
+      daysDiff += lastDayOfMonth; // 补上借用的天数
+    }
+
+    // 处理月份差为负的情况（如12月到1月）
+    if (months < 0) {
+      years--; // 借一年
+      months += 12; // 补上借用的12个月
+    }
+
+    // 返回带符号的结果
     return {
-      years: Math.floor(absDiff / (365.25 * 24 * 60 * 60 * 1000)),
-      months: Math.floor(absDiff / (30.44 * 24 * 60 * 60 * 1000)),
-      days: Math.floor(absDiff / (24 * 60 * 60 * 1000)),
-      hours: Math.floor(absDiff / (60 * 60 * 1000)),
-      minutes: Math.floor(absDiff / (60 * 1000)),
-      seconds: Math.floor(absDiff / 1000),
-      milliseconds: absDiff,
+      years: sign * Math.abs(years), // 符号化年差
+      months: sign * Math.abs(years * 12 + months), // 符号化总月差
+      days: sign * Math.floor(days), // 符号化天差（基于24小时制）
+      hours: sign * Math.floor(hours), // 符号化小时差
+      minutes: sign * Math.floor(minutes), // 符号化分钟差
+      seconds: sign * Math.floor(seconds), // 符号化秒差
+      milliseconds: diffInMs, // 原始毫秒差（已带符号）
     };
   }
 
-  /**
-   * 添加时间
-   * @param date 原始日期
-   * @param value 要添加的值
-   * @param unit 时间单位 ('year' | 'month' | 'day' | 'hour' | 'minute' | 'second' | 'millisecond')
-   * @returns 新的Date对象
-   */
   static add(date: Date | number, value: number, unit: "year" | "month" | "day" | "hour" | "minute" | "second" | "millisecond"): Date {
     const d = date instanceof Date ? new Date(date) : new Date(date);
 
@@ -221,7 +221,15 @@ export class Time {
         d.setFullYear(d.getFullYear() + value);
         break;
       case "month":
+        // 特殊处理月份加减，防止跨月边界问题
+        const originalDate = d.getDate();
         d.setMonth(d.getMonth() + value);
+
+        // 检查是否跨月（如1月31日加到2月）
+        if (d.getDate() !== originalDate) {
+          // 回退到上个月的最后一天
+          d.setDate(0);
+        }
         break;
       case "day":
         d.setDate(d.getDate() + value);
@@ -380,4 +388,24 @@ export class Time {
     const time = d.getTime();
     return time >= s.getTime() && time <= e.getTime();
   }
+
+  /**
+   * 转换不同精度的时间戳为毫秒
+   * @param timestamp 时间戳
+   * @param precision 精度 ('ms' | 's' | 'us' | 'ns')
+   * @returns 毫秒时间戳
+   */
+  // private static normalizeTimestamp(timestamp: number, precision: "ms" | "s" | "us" | "ns" = "ms"): number {
+  //   switch (precision) {
+  //     case "s": // 秒级时间戳
+  //       return timestamp * 1000;
+  //     case "us": // 微秒级时间戳
+  //       return timestamp / 1000;
+  //     case "ns": // 纳秒级时间戳
+  //       return timestamp / 1000000;
+  //     case "ms": // 毫秒级时间戳
+  //     default:
+  //       return timestamp;
+  //   }
+  // }
 }
