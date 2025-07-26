@@ -84,7 +84,7 @@ export declare const CIcon: {
     validator: (value: string) => boolean;
     };
     size: {
-    type: (NumberConstructor | StringConstructor)[];
+    type: (StringConstructor | NumberConstructor)[];
     default: number;
     };
     color: {
@@ -116,7 +116,7 @@ export declare const CIcon: {
     validator: (value: string) => boolean;
     };
     size: {
-    type: (NumberConstructor | StringConstructor)[];
+    type: (StringConstructor | NumberConstructor)[];
     default: number;
     };
     color: {
@@ -145,7 +145,7 @@ default: string;
 validator: (value: string) => boolean;
 };
 size: {
-type: (NumberConstructor | StringConstructor)[];
+type: (StringConstructor | NumberConstructor)[];
 default: number;
 };
 color: {
@@ -193,7 +193,7 @@ export declare const CSegmented: {
     validator: (value: SegmentedOption[]) => boolean;
     };
     value: {
-    type: (NumberConstructor | StringConstructor)[];
+    type: (StringConstructor | NumberConstructor)[];
     default: string;
     };
     disabled: {
@@ -234,7 +234,7 @@ export declare const CSegmented: {
     validator: (value: SegmentedOption[]) => boolean;
     };
     value: {
-    type: (NumberConstructor | StringConstructor)[];
+    type: (StringConstructor | NumberConstructor)[];
     default: string;
     };
     disabled: {
@@ -269,7 +269,7 @@ required: true;
 validator: (value: SegmentedOption[]) => boolean;
 };
 value: {
-type: (NumberConstructor | StringConstructor)[];
+type: (StringConstructor | NumberConstructor)[];
 default: string;
 };
 disabled: {
@@ -321,7 +321,7 @@ validator: (value: string) => boolean;
 * @default 16
 */
 size: {
-type: (NumberConstructor | StringConstructor)[];
+type: (StringConstructor | NumberConstructor)[];
 default: number;
 };
 /**
@@ -368,7 +368,7 @@ validator: (value: string) => boolean;
 * @default 16
 */
 size: {
-type: (NumberConstructor | StringConstructor)[];
+type: (StringConstructor | NumberConstructor)[];
 default: number;
 };
 /**
@@ -414,7 +414,7 @@ required: true;
 validator: (value: SegmentedOption_2[]) => boolean;
 };
 value: {
-type: (NumberConstructor | StringConstructor)[];
+type: (StringConstructor | NumberConstructor)[];
 default: string;
 };
 disabled: {
@@ -440,7 +440,7 @@ required: true;
 validator: (value: SegmentedOption_2[]) => boolean;
 };
 value: {
-type: (NumberConstructor | StringConstructor)[];
+type: (StringConstructor | NumberConstructor)[];
 default: string;
 };
 disabled: {
@@ -783,7 +783,7 @@ export declare class Random {
      */
     static object<T>(object: T, length: number): T;
     /**
-     * 生成随机十六进制颜色代码
+     * 生成随机十六进制颜色
      * @returns 颜色代码，如 #ff0000
      */
     static color(...params: Parameters<typeof generateRandomColorInRanges>): string;
@@ -838,87 +838,141 @@ declare interface SelectionOptions {
     dragCallback?: (e: DragEvent) => void;
 }
 
-export declare class TimeDiff {
+export declare class Time {
     /**
-     * 计算时间差或格式化日期
-     * @param date 目标日期
-     * @param baseDate 基准日期（默认当前时间）
+     * 格式化日期
+     * @param date 日期对象或时间戳
+     * @param format 格式字符串，支持以下占位符：
+     *   YYYY - 四位年份
+     *   YY - 两位年份
+     *   MM - 两位月份 (01-12)
+     *   M - 月份 (1-12)
+     *   DD - 两位日期 (01-31)
+     *   D - 日期 (1-31)
+     *   HH - 24小时制小时 (00-23)
+     *   H - 24小时制小时 (0-23)
+     *   hh - 12小时制小时 (01-12)
+     *   h - 12小时制小时 (1-12)
+     *   mm - 分钟 (00-59)
+     *   m - 分钟 (0-59)
+     *   ss - 秒 (00-59)
+     *   s - 秒 (0-59)
+     *   SSS - 毫秒 (000-999)
+     *   A - 大写的上午/下午
+     *   a - 小写的上午/下午
+     * @returns 格式化后的日期字符串
+     */
+    static format(date?: Date | number, format?: string): string;
+    /**
+     * 获取人性化时间（带范围限制）
+     * @param date 日期对象或时间戳
      * @param options 配置选项
-     * @returns 时间差结果或格式化后的日期字符串
+     *   - now: 当前时间，默认为 new Date()
+     *   - format: 超出范围时的格式，默认为 'YYYY-MM-DD'
+     *   - ranges: 人性化展示的时间范围配置（单位：秒）
+     *     - seconds: 秒范围，默认为 60
+     *     - minutes: 分钟范围，默认为 3600 (60*60)
+     *     - hours: 小时范围，默认为 86400 (24*60*60)
+     *     - days: 天范围，默认为 2592000 (30*24*60*60)
+     *     - months: 月范围，默认为 31536000 (12*30*24*60*60)
+     * @returns 人性化时间字符串或格式化后的日期
      */
-    static diff(date: Date | string | number, baseDate?: Date | string | number, options?: TimeDiffOptions): string | string[] | TimeDiffResult | Record<string, number>;
-    /**
-     * 解析时间范围值为毫秒
-     * @param value 时间范围值
-     * @returns 毫秒数
-     */
-    private static parseTimeRangeValue;
-    /**
-     * 检查日期是否在相对时间范围内
-     * @param targetDate 目标日期
-     * @param now 当前时间戳（毫秒）
-     * @param range 范围配置
-     * @returns 是否在范围内
-     */
-    private static checkRelativeTimeRange;
-    /**
-     * 计算两个日期的时间差
-     * @param date1 开始日期
-     * @param date2 结束日期
-     * @param options 配置选项
-     * @returns 时间差结果
-     */
-    private static calculateTimeDiff;
-    /**
-     * 格式化超出范围的日期
-     * @param date 日期
-     * @param format 格式化方式
-     * @returns 格式化后的字符串
-     */
-    private static formatOutOfRange;
-    /**
-     * 获取可读的时间差描述（中文）
-     * @param date 目标日期
-     * @param baseDate 基准日期（默认当前时间）
-     * @returns 人类友好的时间差描述
-     */
-    static humanize(date: Date | string | number, options?: {
-        range?: TimeRangeOptions;
+    static humanize(date: Date | number, options?: {
+        now?: Date | number;
+        format?: string;
+        ranges?: {
+            seconds?: number;
+            minutes?: number;
+            hours?: number;
+            days?: number;
+            months?: number;
+        };
     }): string;
     /**
-     * 解析日期输入
-     * @param date 日期输入
-     * @returns 解析后的Date对象
-     * @throws 如果输入格式无效将抛出错误
+     * 获取两个日期之间的差值
+     * @param date1 第一个日期
+     * @param date2 第二个日期，默认为当前时间
+     * @returns 差值对象，包含年、月、日、小时、分钟、秒、毫秒
      */
-    private static parseDate;
+    static diff(date1: Date | number, date2?: Date | number): {
+        years: number;
+        months: number;
+        days: number;
+        hours: number;
+        minutes: number;
+        seconds: number;
+        milliseconds: number;
+    };
+    /**
+     * 添加时间
+     * @param date 原始日期
+     * @param value 要添加的值
+     * @param unit 时间单位 ('year' | 'month' | 'day' | 'hour' | 'minute' | 'second' | 'millisecond')
+     * @returns 新的Date对象
+     */
+    static add(date: Date | number, value: number, unit: "year" | "month" | "day" | "hour" | "minute" | "second" | "millisecond"): Date;
+    /**
+     * 减去时间
+     * @param date 原始日期
+     * @param value 要减去的值
+     * @param unit 时间单位 ('year' | 'month' | 'day' | 'hour' | 'minute' | 'second' | 'millisecond')
+     * @returns 新的Date对象
+     */
+    static subtract(date: Date | number, value: number, unit: "year" | "month" | "day" | "hour" | "minute" | "second" | "millisecond"): Date;
+    /**
+     * 检查日期是否有效
+     * @param date 日期对象或时间戳
+     * @returns 是否有效
+     */
+    static isValid(date: Date | number): boolean;
+    /**
+     * 获取当前时间戳（毫秒）
+     * @returns 当前时间戳
+     */
+    static now(): number;
+    /**
+     * 获取某个月的第一天
+     * @param date 日期对象或时间戳
+     * @returns 该月第一天的Date对象
+     */
+    static startOfMonth(date: Date | number): Date;
+    /**
+     * 获取某个月的最后一天
+     * @param date 日期对象或时间戳
+     * @returns 该月最后一天的Date对象
+     */
+    static endOfMonth(date: Date | number): Date;
+    /**
+     * 获取某天的开始时间（00:00:00.000）
+     * @param date 日期对象或时间戳
+     * @returns 该天开始的Date对象
+     */
+    static startOfDay(date: Date | number): Date;
+    /**
+     * 获取某天的结束时间（23:59:59.999）
+     * @param date 日期对象或时间戳
+     * @returns 该天结束的Date对象
+     */
+    static endOfDay(date: Date | number): Date;
+    /**
+     * 比较两个日期
+     * @param date1 第一个日期
+     * @param date2 第二个日期
+     * @returns 比较结果：
+     *   -1: date1 在 date2 之前
+     *    0: date1 等于 date2
+     *    1: date1 在 date2 之后
+     */
+    static compare(date1: Date | number, date2: Date | number): number;
+    /**
+     * 检查日期是否在范围内
+     * @param date 要检查的日期
+     * @param start 范围开始日期
+     * @param end 范围结束日期
+     * @returns 是否在范围内
+     */
+    static isBetween(date: Date | number, start: Date | number, end: Date | number): boolean;
 }
-
-declare type TimeDiffFormat = "full" | "short" | "long" | "object" | "array";
-
-declare type TimeDiffOptions = {
-    format?: TimeDiffFormat;
-    units?: TimeUnit[];
-    round?: boolean;
-    range?: TimeRangeOptions;
-};
-
-declare type TimeDiffResult = Record<TimeUnit, number>;
-
-declare type TimeRangeOptions = {
-    /** 最早时间（相对于当前时间），如："2 days" 或毫秒值 */
-    earliest?: TimeRangeValue;
-    /** 最晚时间（相对于当前时间），如："1 hour" 或毫秒值 */
-    latest?: TimeRangeValue;
-    /** 超出范围的日期格式化方式 */
-    outOfRangeFormat?: string | ((date: Date) => string);
-    /** 是否包含边界值（默认包含） */
-    inclusive?: boolean;
-};
-
-declare type TimeRangeValue = `${number} ${TimeUnit}` | number;
-
-declare type TimeUnit = "year" | "month" | "week" | "day" | "hour" | "minute" | "second";
 
 export declare const useFileSelect: (options?: SelectionOptions) => {
     selectFile: (selectOptions?: {
