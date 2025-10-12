@@ -167,6 +167,7 @@ $justify-content-values: (
 
 @each $key, $value in $justify-content-values {
   .jc-#{$key} {
+    display: flex;
     justify-content: $value;
   }
 }
