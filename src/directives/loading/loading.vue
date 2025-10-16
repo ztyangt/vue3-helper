@@ -1,7 +1,40 @@
+<template>
+  <div class="custom-loading-mask" :style="{ backgroundColor: background }">
+    <div class="custom-loading-spinner">
+      <div class="custom-loading-circular">
+        <svg viewBox="25 25 50 50" class="circular">
+          <circle cx="50" cy="50" r="20" fill="none" class="path"></circle>
+        </svg>
+      </div>
+      <span v-if="text" class="custom-loading-text">{{ text }}</span>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+
+export default defineComponent({
+  name: "LoadingComponent",
+
+  props: {
+    text: {
+      type: String as PropType<string | undefined>,
+      default: undefined,
+    },
+    background: {
+      type: String as PropType<string>,
+      default: "rgba(0, 0, 0, 0.4)",
+    },
+  },
+});
+</script>
+
+<style scoped>
 .custom-loading-mask {
   position: absolute;
   z-index: 2000;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.4);
   margin: 0;
   top: 0;
   right: 0;
@@ -24,6 +57,8 @@
 }
 
 .custom-loading-circular .circular {
+  height: 42px;
+  width: 42px;
   animation: loading-rotate 2s linear infinite;
 }
 
@@ -32,13 +67,15 @@
   stroke-dasharray: 90, 150;
   stroke-dashoffset: 0;
   stroke-width: 2;
+  stroke: #409eff;
   stroke-linecap: round;
 }
 
 .custom-loading-text {
   display: block;
   margin-top: 12px;
-  font-weight: 500;
+  color: #409eff;
+  font-size: 14px;
 }
 
 @keyframes loading-rotate {
@@ -61,3 +98,4 @@
     stroke-dashoffset: -120px;
   }
 }
+</style>

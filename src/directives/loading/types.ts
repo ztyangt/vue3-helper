@@ -1,10 +1,11 @@
+// 类型定义
 export interface LoadingOptions {
-  value?: boolean;
+  loading: boolean;
   text?: string;
   background?: string;
   spinnerColor?: string;
-  style?: string;
-  delay?: number;
+  textColor?: string;
+  size?: "small" | "medium" | "large";
+  customClass?: string;
 }
-
 export type LoadingBinding = boolean | LoadingOptions;

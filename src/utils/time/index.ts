@@ -23,7 +23,8 @@ export class Time {
    * @returns 格式化后的日期字符串
    */
   static format(date: Date | number = new Date(), format: string = "YYYY-MM-DD HH:mm:ss"): string {
-    const d = date instanceof Date ? date : new Date(date);
+    // const d = date instanceof Date ? date : new Date(date);
+    const d = new Date(date);
 
     if (!this.isValid(d)) {
       return "Invalid Date";

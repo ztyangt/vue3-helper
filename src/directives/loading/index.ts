@@ -1,119 +1,87 @@
-import { createApp, type Directive, type App, type ComponentPublicInstance, type DirectiveBinding, nextTick } from "vue";
+import { createApp, type Directive, nextTick } from "vue";
 import LoadingComponent from "./loading.ts";
-import type { LoadingOptions, LoadingBinding } from "./types.ts";
+import type { LoadingBinding } from "./types.ts";
 
-// 定义 Loading 组件实例类型
-interface LoadingInstance extends ComponentPublicInstance {
-  setText?: (text: string) => void;
-  setVisible?: (visible: boolean) => void;
-}
+// 存储加载实例的 WeakMap
+const loadingInstances = new WeakMap<HTMLElement, any>();
 
-// 定义元素扩展类型
-interface LoadingEl extends HTMLElement {
-  _loadingInstance?: LoadingInstance;
-  _loadingApp?: App<Element>;
-  _loadingTimeoutId?: number | null;
-}
+// 创建加载实例
+const createLoadingInstance = (el: HTMLElement, binding: any) => {
+  const options = typeof binding.value === "boolean" ? { loading: binding.value } : binding.value;
 
-// 创建 loading 指令
-const loadingDirective: Directive<LoadingEl, LoadingBinding> = {
-  mounted(el: LoadingEl, binding: DirectiveBinding<LoadingBinding>) {
+  const instance = createApp(LoadingComponent, {
+    text: options.text,
+    background: options.background,
+    spinnerColor: options.spinnerColor,
+    textColor: options.textColor,
+    size: options.size,
+    customClass: options.customClass,
+  });
+
+  const loadingEl = document.createElement("div");
+  el.appendChild(loadingEl);
+  instance.mount(loadingEl);
+
+  loadingInstances.set(el, instance);
+  return instance;
+};
+
+// 销毁加载实例
+const destroyLoadingInstance = (el: HTMLElement) => {
+  const instance = loadingInstances.get(el);
+  if (instance) {
+    instance.unmount();
+    loadingInstances.delete(el);
+  }
+};
+
+// 获取元素定位样式
+const getPositionStyle = (el: HTMLElement) => {
+  const position = getComputedStyle(el).position;
+  if (position === "static" || position === "") {
     el.style.position = "relative";
-    const options: LoadingOptions = typeof binding.value === "boolean" ? { value: binding.value } : binding.value || {};
+  }
+};
 
-    // 添加延迟处理
-    const delay = options.delay || 50;
-    let timeoutId: number | null = null;
+export const vLoading: Directive<HTMLElement, LoadingBinding> = {
+  mounted(el, binding) {
+    const options = typeof binding.value === "boolean" ? { loading: binding.value } : binding.value;
 
-    const showLoading = () => {
-      const app = createApp(LoadingComponent, {
-        text: options.text,
-        background: options.background,
-        spinnerColor: options.spinnerColor,
-        style: options.style || "loader-l13",
-        visible: options.value ?? true,
-      });
+    // 确保元素有定位
+    getPositionStyle(el);
 
-      const instance = app.mount(document.createElement("div")) as LoadingInstance;
-      el._loadingInstance = instance;
-      el._loadingApp = app;
-      el.appendChild(instance.$el);
+    if (options.loading) {
+      createLoadingInstance(el, binding);
+    }
+  },
 
+  updated(el, binding) {
+    const options = typeof binding.value === "boolean" ? { loading: binding.value } : binding.value;
+
+    const oldOptions = typeof binding.oldValue === "boolean" ? { loading: binding.oldValue } : binding.oldValue;
+
+    // 如果加载状态发生变化
+    if (options.loading !== oldOptions?.loading) {
+      if (options.loading) {
+        nextTick(() => {
+          createLoadingInstance(el, binding);
+        });
+      } else {
+        destroyLoadingInstance(el);
+      }
+    }
+    // 如果选项发生变化但加载状态不变
+    else if (options.loading && JSON.stringify(options) !== JSON.stringify(oldOptions)) {
+      destroyLoadingInstance(el);
       nextTick(() => {
-        updateLoading(el, binding);
+        createLoadingInstance(el, binding);
       });
-    };
-
-    if (options.value) {
-      timeoutId = window.setTimeout(() => {
-        if (options.value) {
-          showLoading();
-        }
-      }, delay);
-    }
-
-    // 保存timeoutId以便后续清除
-    el._loadingTimeoutId = timeoutId;
-  },
-  updated(el: LoadingEl, binding: DirectiveBinding<LoadingBinding>) {
-    // 深度比较对象值变化
-    if (JSON.stringify(binding.oldValue) !== JSON.stringify(binding.value)) {
-      const options: LoadingOptions = typeof binding.value === "boolean" ? { value: binding.value } : binding.value || {};
-
-      // 清除之前的定时器
-      if (el._loadingTimeoutId) {
-        clearTimeout(el._loadingTimeoutId);
-        el._loadingTimeoutId = null;
-      }
-
-      // 如果loading变为false，直接更新状态
-      if (!options.value) {
-        updateLoading(el, binding);
-        return;
-      }
-
-      // 设置新的延迟定时器
-      const delay = options.delay || 0;
-      el._loadingTimeoutId = window.setTimeout(() => {
-        if (options.value) {
-          updateLoading(el, binding);
-        }
-      }, delay);
     }
   },
-  unmounted(el: LoadingEl) {
-    // 清除定时器
-    if (el._loadingTimeoutId) {
-      clearTimeout(el._loadingTimeoutId);
-    }
-    el._loadingApp?.unmount();
-    el._loadingInstance?.$el?.remove();
-    el._loadingInstance = undefined;
-    el._loadingApp = undefined;
+
+  unmounted(el) {
+    destroyLoadingInstance(el);
   },
 };
 
-function updateLoading(el: LoadingEl, binding: DirectiveBinding<LoadingBinding>) {
-  if (!el._loadingInstance) return;
-
-  const isLoading = typeof binding.value === "boolean" ? binding.value : binding.value?.value ?? true;
-
-  // 设置父元素定位
-  el.style.position = isLoading ? "relative" : "";
-
-  // 确保loading容器是最后一个子元素
-  const container = el._loadingInstance.$el.parentElement;
-  if (container && container.parentNode === el && container !== el.lastElementChild) {
-    el.appendChild(container);
-  }
-
-  // 更新显示状态
-  el._loadingInstance.setVisible?.(isLoading);
-
-  // 直接控制显示，双重保障
-  if (el._loadingInstance.$el) {
-    el._loadingInstance.$el.style.display = isLoading ? "flex" : "none";
-  }
-}
-
-export default loadingDirective;
+export default vLoading;
