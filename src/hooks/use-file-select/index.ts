@@ -82,14 +82,11 @@ export const useFileSelect = (options?: SelectionOptions) => {
       const fileInput = createFileInput(config);
       fileInput.style.display = "none"; // 隐藏但必须挂载到DOM
 
-      // 添加超时拒绝（防止用户取消选择）
-      const timeoutId = setTimeout(() => {
-        reject(new Error("选择取消或超时"));
-        document.body.removeChild(fileInput);
-      }, 30_000); // 30秒超时
+      window.addEventListener("focus", () => {
+        document.body.removeChild(fileInput); // 确保在点击后立即移除
+      });
 
       fileInput.onchange = (e) => {
-        clearTimeout(timeoutId);
         const files = (e.target as HTMLInputElement).files;
         if (files?.length) {
           resolve(files);
