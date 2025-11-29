@@ -82,9 +82,15 @@ export const useFileSelect = (options?: SelectionOptions) => {
       const fileInput = createFileInput(config);
       fileInput.style.display = "none"; // 隐藏但必须挂载到DOM
 
-      window.addEventListener("focus", () => {
-        document.body.removeChild(fileInput); // 确保在点击后立即移除
-      });
+      const handleFocus = () => {
+        // 检查元素是否存在于DOM中，避免重复移除
+        if (fileInput.parentNode === document.body) {
+          document.body.removeChild(fileInput);
+        }
+        window.removeEventListener("focus", handleFocus); // 移除事件监听器
+      };
+
+      window.addEventListener("focus", handleFocus);
 
       fileInput.onchange = (e) => {
         const files = (e.target as HTMLInputElement).files;
@@ -93,7 +99,11 @@ export const useFileSelect = (options?: SelectionOptions) => {
         } else {
           reject(new Error("未选择文件"));
         }
-        document.body.removeChild(fileInput); // 使用后立即清理
+        // 检查元素是否存在于DOM中，避免重复移除
+        if (fileInput.parentNode === document.body) {
+          document.body.removeChild(fileInput);
+        }
+        window.removeEventListener("focus", handleFocus); // 移除事件监听器
       };
 
       document.body.appendChild(fileInput); // 挂载到DOM

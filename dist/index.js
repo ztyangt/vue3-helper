@@ -2,10 +2,10 @@ var _e = Object.defineProperty;
 var be = (e, t, n) => t in e ? _e(e, t, { enumerable: !0, configurable: !0, writable: !0, value: n }) : e[t] = n;
 var b = (e, t, n) => be(e, typeof t != "symbol" ? t + "" : t, n);
 import { useDark as we } from "@vueuse/core";
-import { ref as D, onMounted as ne, onBeforeUnmount as xe, defineComponent as H, computed as F, h as E, nextTick as N, createApp as Se, watch as Ee, createVNode as M, Fragment as De } from "vue";
+import { ref as D, onMounted as ne, onBeforeUnmount as xe, defineComponent as H, computed as F, h as E, nextTick as N, createApp as Se, watch as Ee, createVNode as L, Fragment as De } from "vue";
 import { onBeforeRouteLeave as Ce } from "vue-router";
-const mt = (e) => typeof e == "string", pt = (e) => typeof e == "number", gt = (e) => typeof e == "object", yt = (e) => typeof e == "function", vt = (e) => Array.isArray(e), _t = (e) => typeof e == "boolean", bt = (e) => e === null, wt = (e) => e === void 0, xt = (e) => e instanceof RegExp, St = (e) => e instanceof Promise, Et = (e) => e instanceof Date, Dt = (e) => e == null, Ct = (e) => /^http[s]?:\/\/.*/.test(e), Mt = (e) => /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(e), Lt = (e) => /^0?(13[0-9]|15[012356789]|18[0-9]|14[123578]|16[6]|17[035768]|19[19])[0-9]{8}$/.test(e), Tt = (e) => /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(e), Pt = (e) => /^[\u4e00-\u9fa5]{0,}$/.test(e), $t = (e) => /^[a-zA-Z]+$/.test(e), kt = (e) => /^[A-Za-z0-9]+$/.test(e), Rt = (e) => /^[A-Za-z0-9_]+$/.test(e), zt = (e) => /^[A-Z]+$/.test(e), At = (e) => /^[a-z]+$/.test(e), It = (e) => /^(400|800)([0-9\\-]{7,10})|(([0-9]{4}|[0-9]{3})([- ])?)?([0-9]{7,8})(([- 转])*([0-9]{1,4}))?$/.test(e), Ot = (e) => /^([0-9]|[1-9]\d|[1-9]\d{2}|[1-9]\d{3}|[1-5]\d{4}|6[0-4]\d{3}|65[0-4]\d{2}|655[0-2]\d|6553[0-5])$/.test(e), Ft = (e) => e == null || e === "" || e === 0 || e === !1 || Array.isArray(e) && e.length === 0 || typeof e == "object" && Object.keys(e).length === 0;
-async function Me(e) {
+const mt = (e) => typeof e == "string", pt = (e) => typeof e == "number", gt = (e) => typeof e == "object", yt = (e) => typeof e == "function", vt = (e) => Array.isArray(e), _t = (e) => typeof e == "boolean", bt = (e) => e === null, wt = (e) => e === void 0, xt = (e) => e instanceof RegExp, St = (e) => e instanceof Promise, Et = (e) => e instanceof Date, Dt = (e) => e == null, Ct = (e) => /^http[s]?:\/\/.*/.test(e), Lt = (e) => /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(e), Mt = (e) => /^0?(13[0-9]|15[012356789]|18[0-9]|14[123578]|16[6]|17[035768]|19[19])[0-9]{8}$/.test(e), Tt = (e) => /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(e), Pt = (e) => /^[\u4e00-\u9fa5]{0,}$/.test(e), $t = (e) => /^[a-zA-Z]+$/.test(e), kt = (e) => /^[A-Za-z0-9]+$/.test(e), Rt = (e) => /^[A-Za-z0-9_]+$/.test(e), zt = (e) => /^[A-Z]+$/.test(e), At = (e) => /^[a-z]+$/.test(e), It = (e) => /^(400|800)([0-9\\-]{7,10})|(([0-9]{4}|[0-9]{3})([- ])?)?([0-9]{7,8})(([- 转])*([0-9]{1,4}))?$/.test(e), Ot = (e) => /^([0-9]|[1-9]\d|[1-9]\d{2}|[1-9]\d{3}|[1-5]\d{4}|6[0-4]\d{3}|65[0-4]\d{2}|655[0-2]\d|6553[0-5])$/.test(e), Ft = (e) => e == null || e === "" || e === 0 || e === !1 || Array.isArray(e) && e.length === 0 || typeof e == "object" && Object.keys(e).length === 0;
+async function Le(e) {
   try {
     if (navigator.clipboard && window.isSecureContext)
       return await navigator.clipboard.writeText(e), !0;
@@ -23,7 +23,7 @@ async function Me(e) {
   }
 }
 function Nt(e, t) {
-  Me(e).then(t).catch(() => t(!1));
+  Le(e).then(t).catch(() => t(!1));
 }
 function Yt(e, t, n, r = !1) {
   e.addEventListener && typeof e.addEventListener == "function" && e.addEventListener(t, n, r);
@@ -31,7 +31,7 @@ function Yt(e, t, n, r = !1) {
 function Bt(e, t, n, r = !1) {
   e.removeEventListener && typeof e.removeEventListener == "function" && e.removeEventListener(t, n, r);
 }
-var Le = `#version 300 es
+var Me = `#version 300 es
 
 in vec4 a_Position;
 
@@ -61,7 +61,7 @@ class Pe {
     this.canvas.width = this.canvas.clientWidth * s, this.canvas.height = this.canvas.clientHeight * s;
     const i = r.getContext("webgl2", { alpha: !1 });
     if (!i) throw new Error("WebGL2 not supported");
-    this.gl = i, this.resizeCanvas(), this.program = this.initProgram(n.vertexShaderSource || Le, n.fragmentShaderSource || Te);
+    this.gl = i, this.resizeCanvas(), this.program = this.initProgram(n.vertexShaderSource || Me, n.fragmentShaderSource || Te);
   }
   // 更新片段着色器
   updateFragmentShader(t) {
@@ -800,13 +800,12 @@ const jt = () => {
   }, r = (o) => new Promise((a, u) => {
     const l = t(o);
     l.style.display = "none";
-    const m = setTimeout(() => {
-      u(new Error("选择取消或超时")), document.body.removeChild(l);
-    }, 3e4);
-    l.onchange = (p) => {
-      clearTimeout(m);
+    const m = () => {
+      l.parentNode === document.body && document.body.removeChild(l), window.removeEventListener("focus", m);
+    };
+    window.addEventListener("focus", m), l.onchange = (p) => {
       const d = p.target.files;
-      d != null && d.length ? a(d) : u(new Error("未选择文件")), document.body.removeChild(l);
+      d != null && d.length ? a(d) : u(new Error("未选择文件")), l.parentNode === document.body && document.body.removeChild(l), window.removeEventListener("focus", m);
     }, document.body.appendChild(l), l.click();
   });
   return {
@@ -1206,12 +1205,12 @@ const Ie = {
   __proto__: null,
   createRippleElement: oe
 }, Symbol.toStringTag, { value: "Module" }));
-function L(e, t, n, r) {
+function M(e, t, n, r) {
   const s = e - n, i = t - r;
   return Math.sqrt(s * s + i * i);
 }
 function ae(e, { width: t, height: n, left: r, top: s }) {
-  const i = e.clientX - r, o = e.clientY - s, a = L(i, o, 0, 0), u = L(i, o, t, 0), l = L(i, o, 0, n), m = L(i, o, t, n), p = Math.max(a, u, l, m);
+  const i = e.clientX - r, o = e.clientY - s, a = M(i, o, 0, 0), u = M(i, o, t, 0), l = M(i, o, 0, n), m = M(i, o, t, n), p = Math.max(a, u, l, m);
   return {
     x: i,
     y: o,
@@ -1221,7 +1220,7 @@ function ae(e, { width: t, height: n, left: r, top: s }) {
 const Ze = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   getDistanceToFurthestCorner: ae,
-  getPythagoreanDistance: L
+  getPythagoreanDistance: M
 }, Symbol.toStringTag, { value: "Module" })), U = "vRippleCountInternal";
 function le(e, t) {
   e.dataset[U] = t.toString();
@@ -1466,19 +1465,19 @@ const Je = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
       const v = `label-${c.value}`;
       return n[v] ? n[v]({
         option: c
-      }) : M(De, null, [c.icon && M(me, {
+      }) : L(De, null, [c.icon && L(me, {
         class: "mr-5",
         name: c.icon
-      }, null), M("span", {
+      }, null), L("span", {
         class: `${r}-item-label`
       }, [c.label])]);
     };
-    return () => M("div", {
+    return () => L("div", {
       class: p.value
-    }, [M("div", {
+    }, [L("div", {
       ref: i,
       class: `${r}-thumb`
-    }, null), e.options.map((c, v) => M("div", {
+    }, null), e.options.map((c, v) => L("div", {
       ref: e.value === c.value ? s : null,
       key: c.value,
       class: d(c),
@@ -1509,7 +1508,7 @@ export {
   Zt as RegisterDirectives,
   Vt as Time,
   Yt as addEventListen,
-  Me as copyToClipboard,
+  Le as copyToClipboard,
   Nt as copyToClipboardWithCallback,
   $t as isAlpha,
   kt as isAlphaNum,
@@ -1519,7 +1518,7 @@ export {
   _t as isBoolean,
   Pt as isChinese,
   Et as isDate,
-  Mt as isEmail,
+  Lt as isEmail,
   yt as isFunction,
   Tt as isIdCard,
   At as isLower,
@@ -1527,7 +1526,7 @@ export {
   Dt as isNullOrUndefined,
   pt as isNumber,
   gt as isObject,
-  Lt as isPhone,
+  Mt as isPhone,
   Ot as isPort,
   St as isPromise,
   xt as isRegExp,
