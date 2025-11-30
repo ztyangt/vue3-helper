@@ -16,7 +16,7 @@ export const sidebarConfig = [
       { text: "random", link: "/utils/random/" },
       { text: "listen", link: "/utils/listen/" },
       { text: "emitter", link: "/utils/emitter/" },
-      { text: "cropper", link: "/utils/cropper/" },
+      // { text: "cropper", link: "/utils/cropper/" },
       // { text: "objectUtils", link: "/utils/object-utils/" },
     ],
   },

@@ -99,8 +99,8 @@ export declare const CIcon: {
     default: boolean;
     };
     }>> & Readonly<{}>, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, PublicProps, {
-    size: string | number;
     type: IconType;
+    size: string | number;
     spin: boolean;
     }, true, {}, {}, GlobalComponents, GlobalDirectives, string, {}, any, ComponentProvideOptions, {
     P: {};
@@ -131,8 +131,8 @@ export declare const CIcon: {
     default: boolean;
     };
     }>> & Readonly<{}>, {}, {}, {}, {}, {
-    size: string | number;
     type: IconType;
+    size: string | number;
     spin: boolean;
     }>;
     __isFragment?: never;
@@ -160,8 +160,8 @@ type: BooleanConstructor;
 default: boolean;
 };
 }>> & Readonly<{}>, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {}, string, {
-size: string | number;
 type: IconType;
+size: string | number;
 spin: boolean;
 }, {}, string, {}, GlobalComponents, GlobalDirectives, string, ComponentProvideOptions> & VNodeProps & AllowedComponentProps & ComponentCustomProps & {
     install(app: App): void;
@@ -180,6 +180,22 @@ export declare function copyToClipboard(text: string): Promise<boolean>;
  * @param callback 完成后的回调函数，参数为是否成功
  */
 export declare function copyToClipboardWithCallback(text: string, callback: (success: boolean) => void): void;
+
+export declare class Cropper extends EventEmitter {
+    private canvas;
+    private ctx;
+    private container;
+    private options;
+    constructor(container: HTMLElement, options: CropperOptions);
+    private init;
+}
+
+declare interface CropperOptions {
+    /**
+     * 宽高比
+     */
+    aspectRatio?: number;
+}
 
 export declare const CSegmented: {
     new (...args: any[]): CreateComponentPublicInstanceWithMixins<Readonly<ExtractPropTypes<    {
@@ -212,10 +228,10 @@ export declare const CSegmented: {
     "update:value": (_value: string | number) => true;
     change: (_value: string | number) => true;
     }, PublicProps, {
+    disabled: boolean;
     value: string | number;
     size: "small" | "medium" | "large";
     block: boolean;
-    disabled: boolean;
     }, true, {}, {}, GlobalComponents, GlobalDirectives, string, {}, any, ComponentProvideOptions, {
     P: {};
     B: {};
@@ -250,10 +266,10 @@ export declare const CSegmented: {
     onChange?: (_value: string | number) => any;
     "onUpdate:value"?: (_value: string | number) => any;
     }>, () => any, {}, {}, {}, {
+    disabled: boolean;
     value: string | number;
     size: "small" | "medium" | "large";
     block: boolean;
-    disabled: boolean;
     }>;
     __isFragment?: never;
     __isTeleport?: never;
@@ -288,10 +304,10 @@ onChange?: (_value: string | number) => any;
 "update:value": (_value: string | number) => true;
 change: (_value: string | number) => true;
 }, string, {
+disabled: boolean;
 value: string | number;
 size: "small" | "medium" | "large";
 block: boolean;
-disabled: boolean;
 }, {}, string, {}, GlobalComponents, GlobalDirectives, string, ComponentProvideOptions> & VNodeProps & AllowedComponentProps & ComponentCustomProps & {
     install(app: App): void;
 };
@@ -398,8 +414,8 @@ type: BooleanConstructor;
 default: boolean;
 };
 }>> & Readonly<{}>, {
-size: string | number;
 type: IconType_2;
+size: string | number;
 spin: boolean;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
@@ -456,10 +472,10 @@ validator: (value: string) => boolean;
 onChange?: (_value: string | number) => any;
 "onUpdate:value"?: (_value: string | number) => any;
 }>, {
+disabled: boolean;
 value: string | number;
 size: "small" | "medium" | "large";
 block: boolean;
-disabled: boolean;
 }, {}, {}, {}, string, ComponentProvideOptions, true, {}, any>;
 
 export declare class Emitter<T extends string, EventMap extends Record<T, any[]>> {
@@ -499,6 +515,54 @@ export declare class Emitter<T extends string, EventMap extends Record<T, any[]>
      * 清除所有事件监听器
      */
     clear(): void;
+}
+
+declare type EventCallback = (...args: any[]) => void;
+
+export declare class EventEmitter {
+    private events;
+    /**
+     * 监听事件
+     * @param eventName 事件名称
+     * @param callback 回调函数
+     * @param once 是否只执行一次
+     */
+    on(eventName: string, callback: EventCallback, once?: boolean): this;
+    /**
+     * 监听事件，只执行一次
+     * @param eventName 事件名称
+     * @param callback 回调函数
+     */
+    once(eventName: string, callback: EventCallback): this;
+    /**
+     * 移除事件监听
+     * @param eventName 事件名称
+     * @param callback 要移除的回调函数（可选，不传则移除该事件所有监听）
+     */
+    off(eventName: string, callback?: EventCallback): this;
+    /**
+     * 触发事件
+     * @param eventName 事件名称
+     * @param args 传递给回调函数的参数
+     */
+    emit(eventName: string, ...args: any[]): boolean;
+    /**
+     * 清除所有事件监听
+     */
+    clear(): this;
+    /**
+     * 获取某个事件的监听器数量
+     * @param eventName 事件名称
+     */
+    listenerCount(eventName: string): number;
+    /**
+     * 获取所有已注册的事件名称
+     */
+    eventNames(): string[];
+    /**
+     * 移除所有事件监听（别名方法）
+     */
+    removeAllListeners(): this;
 }
 
 /**
