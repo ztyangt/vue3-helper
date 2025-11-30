@@ -26,5 +26,4 @@ unplugin
 scripts
 dev
 docs/.vitepress/cache
-dist
 test/

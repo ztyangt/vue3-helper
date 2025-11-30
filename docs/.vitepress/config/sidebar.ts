@@ -16,6 +16,7 @@ export const sidebarConfig = [
       { text: "random", link: "/utils/random/" },
       { text: "listen", link: "/utils/listen/" },
       { text: "emitter", link: "/utils/emitter/" },
+      { text: "cropper", link: "/utils/cropper/" },
       // { text: "objectUtils", link: "/utils/object-utils/" },
     ],
   },
@@ -33,7 +34,6 @@ export const sidebarConfig = [
     items: [
       { text: "字体图标", link: "/components/icon/" },
       { text: "分段控制器", link: "/components/segmented/" },
-      // { text: "图片裁剪器", link: "/components/cropper/" },
     ],
   },
   {
@@ -46,5 +46,9 @@ export const sidebarConfig = [
       { text: "loading", link: "/directives/loading/" },
       { text: "blurFadeIn", link: "/directives/blur-fade-in/" },
     ],
+  },
+  {
+    text: "共享",
+    items: [{ text: "EventEmitter", link: "/shared/emitter/" }],
   },
 ];
